@@ -1,0 +1,56 @@
+
+body
+{
+background-image: url("../image/Background2.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  margin: 0;
+}
+#game
+{
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: auto;
+    margin-right:auto;
+    width: 500px
+}
+
+/* version utilisée par la version DOM */
+
+.emptyCase {
+width: 50px; 
+margin: 1px; 
+display: inline-block; 
+height: 50px; 
+background-image:url("../image/freecasev3.png")
+}
+.obstacleCase{
+    width: 50px; 
+    margin: 1px; 
+    display: inline-block; 
+    height: 50px; 
+    background-image:url("../image/blockcasev3.png")
+}
+.chestCase{
+    width: 50px; 
+    margin: 1px; 
+    display: inline-block; 
+    height: 50px; 
+    background-image:url("../image/chestV2.gif")
+}
+.player{
+    width: 50px; 
+    margin: 1px; 
+    display: inline-block; 
+    height: 50px; 
+    background-image:url("../image/playernaked1v2.jpg")
+}
+
+.player2{
+    width: 50px; 
+    margin: 1px; 
+    display: inline-block; 
+    height: 50px; 
+    background-image:url("../image/player2naked1v2.jpg")
+}
+
