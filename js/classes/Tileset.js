@@ -17,16 +17,20 @@ function Tileset(url) {
 // Méthode de dessin du tile numéro "number" dans le contexte 2D "context" aux coordonnées x et y
 Tileset.prototype.drawTile = function (number, context, xDestination, yDestination) {
     // pour X et Y
-    var xSourceEnTiles = number % this.width;
+    var xSourceTiles = number % this.width;
 
-    if (xSourceEnTiles == 0) xSourceEnTiles = this.width;
-    var ySourceEnTiles = Math.ceil(number / this.width);
+    if (xSourceTiles == 0) xSourceTiles = this.width;
+    var ySourceTiles = Math.ceil(number / this.width);
 
-    var xSource = (xSourceEnTiles - 1) * Tilewidth;
-    var ySource = (ySourceEnTiles - 1) * Tilewidth;
+    var xSource = (xSourceTiles - 1) * Tilewidth;
+    var ySource = (ySourceTiles - 1) * Tilewidth;
     // pourquoi le -1 :le tile numéro 1 est situé aux coordonnées (0, 0), pas (50, 50).
     context.drawImage(this.image, xSource, ySource, Tilewidth, Tilewidth, xDestination, yDestination, Tilewidth, Tilewidth);
 }
+
+/* souci ici: l'image n'est pas encore complètement chargée quand on lui demande de se dessiner. 
+Pour remédier à ça, on va créer une fonction load qui va simplement loader l'image, 
+et appeler une fonction dès qu'elle a terminé =>*/
 
 Tileset.prototype.loadImage = function (callback) {
     this.image.onload = (function () { //ici si on passe regarde la valeur de "this" elle correspond à Tileset
