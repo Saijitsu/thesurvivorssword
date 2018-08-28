@@ -16,7 +16,6 @@ window.onload = function () {
 /*
     for (var i = 0; i < 10; i++) {
         for (var j = 0; j < 10; j++) {
-            // attribution d'un ID/CELL
             var dx = j * 50;
             var dy = i * 50;
             switch (board[i][j]) {
@@ -29,10 +28,10 @@ window.onload = function () {
                 case "chestCase":
                     ctx.drawImage(imgChestCase, dx, dy);
                     break;
-                case 101:
+                case player1Case:
                     ctx.drawImage(imgPlayer1, dx, dy);
                     break;
-                case 102:
+                case player2Case:
                     ctx.drawImage(imgPlayer2, dx, dy);
                     break;
             }
