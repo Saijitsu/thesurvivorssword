@@ -22,6 +22,7 @@ var xSource = (xSourceEnTiles - 1) * 50;
 var ySource = (ySourceEnTiles - 1) * 50;
 // pourquoi le -1 :le tile numéro 1 est situé aux coordonnées (0, 0), pas (50, 50).
 context.drawImage(this.image, xSource, ySource, 50, 50, xDestination, yDestination, 50, 50);
+}
 
 Tileset.prototype.loadImage = function(callback){
     this.image.onload = (function(){//ici 'this' c'est Tileset
@@ -31,8 +32,6 @@ Tileset.prototype.loadImage = function(callback){
       callback();
     }).bind(this);
 }
-}
-
 // Callback cf. bind
 
 /* RAPPEL
