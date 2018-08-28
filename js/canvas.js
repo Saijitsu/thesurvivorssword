@@ -1,13 +1,5 @@
-var imgEmptyCase = new Image(); // Crée un nouvel élément img
-imgEmptyCase.src = "../image/freeCasev3.png"; // Définit le chemin vers sa source
-var imgObstacleCase = new Image(); // Crée un nouvel élément img
-imgObstacleCase.src = "../image/blockCasev3.png"; // Définit le chemin vers sa source
-var imgChestCase = new Image(); // Crée un nouvel élément img
-imgChestCase.src = "../image/chestV2.gif"; // Définit le chemin vers sa source
-var imgPlayer1 = new Image(); // Crée un nouvel élément img
-imgPlayer1.src = "../image/playerNaked1v2.jpg"; // Définit le chemin vers sa source
-var imgPlayer2 = new Image(); // Crée un nouvel élément img
-imgPlayer2.src = "../image/player2Naked1v2.jpg"; // Définit le chemin vers sa source 
+var Tilewidth = 50;
+var ts = new Tileset("basicImage.png");
 
 window.onload = function () {
     var canvas = document.getElementById('canvas');
@@ -15,28 +7,46 @@ window.onload = function () {
     // Variables utiles au canvas
     // vérifier la présence du canvas:
     console.log(canvas)
+    ts.loadImage(start);
+
+    function start(){
+    ts.drawTile(1, ctx, Tilewidth, Tilewidth);
+    ts.drawTile(2, ctx, Tilewidth*2, Tilewidth);
+    ts.drawTile(3, ctx, Tilewidth*3, Tilewidth);
+    ts.drawTile(4, ctx, Tilewidth*4, Tilewidth);
+    ts.drawTile(5, ctx, Tilewidth*5, Tilewidth);
+    }
+
     for (var i = 0; i < 10; i++) {
         for (var j = 0; j < 10; j++) {
-            // attribution d'un ID/CELL
-            var dx = j * 50;
-            var dy = i * 50;
+            var dx = j * Tilewidth;
+            var dy = i * Tilewidth;
             switch (board[i][j]) {
-                case emptyCase:
-                    ctx.drawImage(imgEmptyCase, dx, dy);
+                case "emptyCase":
+                    ctx.drawImage(1, ctx, dx, dy);
                     break;
-                case obstacleCase:
-                    ctx.drawImage(imgObstacleCase, dx, dy);
+                case "obstacleCase":
+                    ctx.drawImage(2, ctx, dx, dy);
                     break;
-                case chestCase:
-                    ctx.drawImage(imgChestCase, dx, dy);
+                case "chestCase":
+                    ctx.drawImage(3, ctx, dx, dy);
                     break;
-                case player1Case:
-                    ctx.drawImage(imgPlayer1, dx, dy);
+                case "player1Case":
+                    ctx.drawImage(4, ctx, dx, dy);
                     break;
-                case player2Case:
-                    ctx.drawImage(imgPlayer2, dx, dy);
+                case "player2Case":
+                    ctx.drawImage(5, ctx, dx, dy);
                     break;
             }
+        }
+    }
+}
+Map.prototype.dessinerMap = function(context) {
+    for(var i = 0, l = this.terrain.length ; i < l ; i++) {
+        var ligne = this.terrain[i];
+        var y = i * tailleTuile;
+        for(var j = 0, k = ligne.length ; j < k ; j++) {
+            this.tileset.dessinerTile(ligne[j], context, j * tailleTuile, y);
         }
     }
 }
