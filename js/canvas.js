@@ -1,3 +1,5 @@
+////////////////////LE CANVAS////////////////////////////
+
 var Tilewidth = 50;
 var ts = new Tileset("basicImage.png");
 

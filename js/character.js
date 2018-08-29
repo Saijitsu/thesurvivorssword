@@ -1,7 +1,7 @@
 ////////////////////////////////////// CHARACTER AND WEAPONS //////////////////////////////////////////
 // Les Personnages-------------------------------------------------------------------------------------
 
-function Character(name, heal, weapons, id) {
+function Character(name, heal, weapons) { //Constructeur
     this.name = name;
     this.heal = heal;
     this.weapons = weapons;
@@ -33,16 +33,6 @@ Character.prototype.opponent = function () {
     return opponentIs
 };
 
-// Blessure infligée par l'adversaire. ==> BROUILLON
-Character.prototype.injury = function () {
-    var receiveDommage = this.heal = this.heal - this.opponent; // voir pour ajouter l'atk de l'adversaire ici
-    return receiveDommage
-};
-// Le joueur attaque l'adversaire. ==> BROUILLON
-Character.prototype.attack = function () {
-    var dommageDone = this.opponent - this.weapons; // voir pour ajouter ici les dommages sur la santé de l'adversaire
-    return dommageDone
-};
 // Le joueur équipe une arme et profite d'un bonus de puissance en conséquence.
 Character.prototype.equipedWeapons = function () {
     var equipedWeapons = this.weapons

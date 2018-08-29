@@ -1,3 +1,5 @@
+//////////////// TILES MAPPING ///////////////////////////////////////////////
+
 function Tileset(url) {
     // Chargement de l'image dans l'attribut image
     this.image = new Image();
@@ -28,16 +30,3 @@ Tileset.prototype.drawTile = function (number, context, xDestination, yDestinati
     // pourquoi le -1 :le tile numéro 1 est situé aux coordonnées (0, 0), pas (50, 50).
     context.drawImage(this.image, xSource, ySource, Tilewidth, Tilewidth, xDestination, yDestination, Tilewidth, Tilewidth);
 }
-
-/* RAPPEL
-image          / L'image source /                this.image
-
-sx    / Coordonnée x du tile dans le tileset /      xxxxx
-sy    / Coordonnée y du tile dans le tileset /      xxxxx
-sw    / Largeur de l'image source /                Tilewidth
-sh    / Hauteur de l'image source /                Tilewidth
-dx    / Coordonnée x de destination /            xDestination
-dy    / Coordonnée y de destination /            yDestination
-dw    / Largeur de l'image a dessiner /            Tilewidth
-dh    / Hauteur de l'image a dessiner /            Tilewidth
-*/

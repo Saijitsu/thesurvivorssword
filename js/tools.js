@@ -1,4 +1,5 @@
-// TOOLS SECTION
+// TOOLS SECTION : OUTILS POUR CREER L'ALEA DU BOARD
+
 // Board de 100 Cellules rangées dans un ordre aléatoire (entre 0 et 99).
 function randomInt(mini, maxi) {
     var nb = mini + (maxi + 1 - mini) * Math.random();
