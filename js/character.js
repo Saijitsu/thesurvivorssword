@@ -61,30 +61,3 @@ Character.prototype.equipedWeapons = function () {
     }
     return power
 };
-// Localisation du joueur sur l'axe X
-Character.prototype.playerLocationX = function () {
-    if (this == player1) {
-        return player1LocationX
-    }
-    if (this == player2) {
-        return player2LocationX
-    }
-};
-// Localisation du joueur sur l'axe Y
-Character.prototype.playerLocationY = function () {
-    if (this == player1) {
-        return player1LocationY
-    }
-    if (this == player2) {
-        return player2LocationY
-    }
-};
-// Localisation du joueur
-Character.prototype.playerLocation = function () {
-    if (this == player1) {
-        return "board" + "[" + player1LocationX + "]" + "[" + player1LocationY + "]";
-    }
-    if (this == player2) {
-        return "board" + "[" + player2LocationX + "]" + "[" + player2LocationY + "]";
-    }
-};

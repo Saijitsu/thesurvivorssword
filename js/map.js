@@ -43,8 +43,8 @@ var player2Case = new Cell(102);
 
 // Les Terrains -------------------------------------------------------------------------------
 // RAPPEL: rows = Y values /Columns = X values
-                                       // Map.prototype.creation = function () {}
-                                       //Map.prototype.creation()
+// Map.prototype.creation = function () {}
+//Map.prototype.creation()
 
 for (var y = 0; y < (board.length); y++) {
     for (var x = 0; x < (board.length); x++) {
@@ -61,17 +61,12 @@ for (var y = 0; y < (board.length); y++) {
         };
         if ((x + y * board.length) == randomList[14]) {
             board[y][x] = player1Case; // Affectation du Joueur 1
-            player1LocationY = (valueof = y);
-            player1LocationX = (valueof = x);
         };
         if ((x + y * board.length) == randomList[15]) {
-            board[y][x] = player2Case; // Affectation du Joueur 2 => RESTE A RENDRE FONCTIONNEL L'ALGORITHME DE COLLISION
-            player2LocationY = (valueof = y);
-            player2LocationX = (valueof = x);
+            board[y][x] = emptyCase; // Affectation par défaut d'une cellules vides
+            var nb = 15;
+            var placeToDrop = characterCollision(x, y, board.length, nb) // Affectation du Joueur 2
         }
     }
 }
 
-/*Map.prototype.numberCase = function () {
-    return x + y * board.length
-}*/
