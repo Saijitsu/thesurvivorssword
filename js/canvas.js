@@ -14,20 +14,20 @@ window.onload = function () {
         for (var j = 0; j < 10; j++) {
             var dx = j * Tilewidth;
             var dy = i * Tilewidth;
-            switch (board[i][j]) {
-                case emptyCase:
+            switch (board[i][j].contain) {
+                case 0:
                     ts.drawTile(1, ctx, dx, dy);
                     break;
-                case obstacleCase:
+                case 1:
                     ts.drawTile(2, ctx, dx, dy);
                     break;
-                case chestCase:
+                case 2:
                     ts.drawTile(3, ctx, dx, dy);
                     break;
-                case player1Case:
+                case 101:
                     ts.drawTile(4, ctx, dx, dy);
                     break;
-                case player2Case:
+                case 102:
                     ts.drawTile(5, ctx, dx, dy);
                     break;
             }
