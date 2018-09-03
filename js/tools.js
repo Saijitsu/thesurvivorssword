@@ -52,6 +52,26 @@ function containType() {
     }
 };
 
+function testIfFree() {
+    var testContainType = containType();
+    if (testContainType === 1) {
+        console.log("Ceci est un arbre");
+        return false
+    } else if (testContainType === 2) {
+        console.log("Ceci est un coffre");
+        return true
+    } else if (testContainType === 101) {
+        console.log("Ceci est le Joueur 1");
+        return false
+    } else if (testContainType === 102) {
+        console.log("Ceci est le Joueur 2");
+        return false
+    } else {
+        console.log("Ceci est un terrain vide");
+        return true
+    }
+}
+
 
 ////// brouillon ///////
 // Algorithme de collision: il va chercher la valeur des cellules proches
@@ -71,35 +91,6 @@ function characterCollision() { //En brouillon
         var nbDiagonaleHautDroite = caseNb - 11;
         var nbDiagonaleBasGauche = caseNb + 9;
         var nbDiagonaleBasDroite = caseNb + 11;
-
-
-        // : calcul le reste de la division euclidienne
-        var yNbBas = ((nbBas - xNbBas) / board.length);
-        var yNbHaut = ((nbHaut - xNbHaut) / board.length);
-        var yNbGauche = ((nbGauche - xNbGauche) / board.length);
-        var yNbDroite = ((nbDroite - xNbDroite) / board.length);
-        var ynbDiagonaleHautGauche = ((nbDiagonaleHautGauche - xnbDiagonaleHautGauche) / board.length);
-        var ynbDiagonaleHautDroite = ((nbDiagonaleHautDroite - xnbDiagonaleHautDroite) / board.length);
-        var ynbDiagonaleBasGauche = ((nbDiagonaleBasGauche - xnbDiagonaleBasGauche) / board.length);
-        var ynbDiagonaleBasDroite = ((nbDiagonaleBasDroite - xnbDiagonaleBasDroite) / board.length);
-
-        var xNbBas = nbBas - (yNbBas * board.length);
-        var xNbHaut = nbHaut - (yNbHaut * board.length);
-        var xNbGauche = nbGauche - (yNbGauche * board.length);
-        var xNbDroite = nbDroite - (yNbDroite * board.length);
-        var xnbDiagonaleHautGauche = nbDiagonaleHautGauche - (ynbDiagonaleHautGauche * board.length);
-        var xnbDiagonaleHautDroite = nbDiagonaleHautDroite - (ynbDiagonaleHautDroite * board.length);
-        var xnbDiagonaleBasGauche = nbDiagonaleBasGauche - (ynbDiagonaleBasGauche * board.length);
-        var xnbDiagonaleBasDroite = nbDiagonaleBasDroite - (ynbDiagonaleBasDroite * board.length);
-
-        var bas = (xNbBas + yNbBas * board.length);
-        var haut = (xNbHaut + yNbHaut * board.length);
-        var gauche = (xNbGauche + yNbGauche * board.length);
-        var droite = (xNbDroite + yNbDroite * board.length);
-        var diagonaleHautGauche = (xnbDiagonaleHautGauche + ynbDiagonaleHautGauche * board.length);
-        var diagonaleHautDroite = (xnbDiagonaleHautDroite + ynbDiagonaleHautDroite * board.length);
-        var diagonaleBasGauche = (xnbDiagonaleBasGauche + ynbDiagonaleBasGauche * board.length);
-        var diagonaleBasDroite = (xnbDiagonaleBasDroite + ynbDiagonaleBasDroite * board.length);
 
 
         if (board[yNbBas][xNbBas].contain != 101 && board[yNbHaut][xNbHaut].contain != 101 &&

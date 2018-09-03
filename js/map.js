@@ -17,9 +17,12 @@ function Map(rows, columns, width, height) {
     this.totalCells = this.rows * this.columns;
 }
 
-function Cell(contain, numberCase) {
+function Cell(contain, numberCase, y, x, freeCell) {
     this.contain = contain;
     this.numberCase = numberCase;
+    this.y = y;
+    this.x = x;
+    this.freeCell = freeCell;
 }
 
 // Les caractéristiques de la Map
@@ -41,7 +44,10 @@ for (var y = 0; y < (board.length); y++) {
         var nbCell = Number(x + y * board.length);
         // create the object and store a reference to the cell object so you can do something with it later
         var containTypeCall = containType(x, y, board.length, board)
-        var cell = new Cell(containTypeCall, nbCell);
+        var yCell = y;
+        var xCell = x;
+        var cellStatut = testIfFree(x, y, board.length, board)
+        var cell = new Cell(containTypeCall, nbCell, yCell, xCell, cellStatut);
         // build list of references
         board[y][x] = cell
     }
