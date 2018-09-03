@@ -23,10 +23,10 @@ Character.prototype.describe = function () {
 Character.prototype.opponent = function () {
     var opponentIs = this.id;
     switch (this.id) {
-        case player1Case.name:
+        case player1.name:
             opponentIs = player2Case.name
             break;
-        case player2Case.name:
+        case player2.name:
             opponentIs = player1Case.name
             break;
     }

@@ -32,6 +32,7 @@ for (var i = 0; i < myMap.rows; i++) {
 }
 
 // définition du contenu du tableau
+
 var nbCell = Number(x + y * board.length);
 
 for (var y = 0; y < (board.length); y++) {
@@ -45,4 +46,8 @@ for (var y = 0; y < (board.length); y++) {
         board[y][x] = cell
     }
 }
+
 console.log(board);
+
+
+
