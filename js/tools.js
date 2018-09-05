@@ -33,46 +33,45 @@ function containType() {
         (x + y * board.length) == randomList[3] || (x + y * board.length) == randomList[4] || (x + y * board.length) == randomList[5] ||
         (x + y * board.length) == randomList[6] || (x + y * board.length) == randomList[7] || (x + y * board.length) == randomList[8] ||
         (x + y * board.length) == randomList[9]) {
-        return 1; // Affectation des cellules obstacles
+        var nbCell = x + y * board.length
+        var cell = new Cell(1, nbCell, y, x, false);
+        // build list of references
+        return cell; // Affectation des cellules obstacles
     } else if ((x + y * board.length) == randomList[10] || (x + y * board.length) == randomList[11] || (x + y * board.length) == randomList[12] ||
         (x + y * board.length) == randomList[13]) {
-        return 2; // Affectation des coffres
+        var nbCell = x + y * board.length
+        var cell = new Cell(2, nbCell, y, x, true);
+        return cell; // Affectation des coffres
     } else if ((x + y * board.length) == randomList[14]) {
+        var nbCell = x + y * board.length
+        var cell = new Cell(101, nbCell, y, x, false);
         player1.position = cell.numberCell
-        return 101; // Affectation du Joueur 1
+        return cell; // Affectation du Joueur 1
     } else if ((x + y * board.length) == randomList[15]) {
-        if (characterNear(x, y, board.length, board) == true) {
-            return 0; // Joueur 1 proche: Affectation d'une cellule vide.
-        }
-        if (characterNear(x, y, board.length, board) == false) {
+        if (characterNear(x, y, board.length, board, numberToTest = randomList[15]) == false) {
+            var nbCell = x + y * board.length
+            var cell = new Cell(102, nbCell, y, x, false);
             player2.position = cell.numberCell
-            return 102; // Safe zone: Affectation du Joueur 2
+            return cell; // Safe zone: Affectation du Joueur 2
+        } else if (characterNear(x, y, board.length, board, numberToTest = randomList[15]) == true) {
+            DropPlayer2() // Unsafe zone: Nouvelle Affectation du Joueur 2
+            var nbCell = x + y * board.length
+            var cell = new Cell(0, nbCell, y, x, true);
+            return cell; // Joueur 1 proche: Affectation d'une cellule vide.
         }
     } else {
-        return 0; // Affectation par défaut de cellules vides
+        if (board[y][x] !== undefined) {
+            var nbCell = x + y * board.length
+            var cell = new Cell(102, nbCell, y, x, false);
+            player2.position = cell.numberCell
+            return cell; // Confirmation de la Cellule Joueur 2{
+        } else {
+            var nbCell = x + y * board.length
+            var cell = new Cell(0, nbCell, y, x, true);
+            return cell; // Affectation par défaut de cellules vides
+        }
     }
 };
-
-function testIfFree() {
-    var testContainType = containType();
-    if (testContainType === 1) {
-        console.log("Ceci est un arbre");
-        return false
-    } else if (testContainType === 2) {
-        console.log("Ceci est un coffre");
-        return true
-    } else if (testContainType === 101) {
-        console.log("Ceci est le Joueur 1");
-        return false
-    } else if (testContainType === 102) {
-        console.log("Ceci est le Joueur 2");
-        return false
-    } else {
-        console.log("Ceci est un terrain vide");
-        return true
-    }
-}
-
 
 // On renvoie un entier aléatoire entre une valeur min (incluse)
 // et une valeur max (incluse).
@@ -84,39 +83,37 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-var testCharacterNear = characterNear(x, y, board.length, board);
 // Appel le joueur 2 sur la carte s'il n'a pas pu être placé à la création de la carte.
-function verifyDropPlayer2() {
-    var numberDropTry = 16
-    if (testCharacterNear === false) {
-        console.log("Il n'y a pas eu de contact entre les joueurs à la création du terrain!");
-    }
-    if (testCharacterNear === true) {
-        var min = 16;
-        var max = 99;
-        var numberDropTry = getRandomIntInclusive(min, max);
-        numberDropTryChaine = numberDropTry.toString() //chn.substr(début[, longueur])
+function DropPlayer2() {
+    console.log("Il n'y eu un contact entre les joueurs à la création du terrain! \nL'emplacement Joueur 2 a été réinitialisé")
+    var min = 16;
+    var max = 99;
+    var numberDropTry = getRandomIntInclusive(min, max);
+    if (characterNear(x, y, board.length, board, numberToTest = randomList[numberDropTry]) == false) {
+        var numberToDrop = randomList[numberDropTry]
+        numberDropTryChaine = numberToDrop.toString() //chn.substr(début[, longueur])
         //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
-        if (randomList[numberDropTry] < 10) {
+        if (numberToDrop < 10) {
             var dropY = 0
             var dropX = parseInt(numberDropTryChaine.substr(1))
-        }
-        if (randomList[numberDropTry] > 10) {
+        } else if (numberToDrop > 10) {
             var dropY = parseInt(numberDropTryChaine.substr(0, 1))
             var dropX = parseInt(numberDropTryChaine.substr(1, 1))
         }
-        if (board[dropY][dropX].freeCell == true) {
-            console.log("Il n'y eu un contact entre les joueurs à la création du terrain! \nEmplacement Joueur 2 réinitialisé")
-            return numberDropTry;
-        } else {
-            verifyDropPlayer1()
-        }
+        var cell = new Cell(102, numberToDrop, dropY, dropX, false);
+        // build list of references
+        board[dropY][dropX] = cell
+        player2.position = cell.numberCell
+        console.log("Le Joueur 2 à trouvé ou attérir!")
+        return cell
+    } else {
+        DropPlayer2()
     }
 }
 
 function characterNear() {
     var p1CellNumber = randomList[14]
-    var p2CellNumber = randomList[15]
+    var p2CellNumber = numberToTest
 
     var nbBas = p2CellNumber + 10;
     var nbHaut = p2CellNumber - 10;
