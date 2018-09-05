@@ -1,10 +1,11 @@
 ////////////////////////////////////// CHARACTER AND WEAPONS //////////////////////////////////////////
 // Les Personnages-------------------------------------------------------------------------------------
 
-function Character(name, heal, weapons) { //Constructeur
+function Character(name, heal, weapons, position) { //Constructeur
     this.name = name;
     this.heal = heal;
     this.weapons = weapons;
+    this.position = position;
 };
 
 // Objet joueur premier
@@ -16,18 +17,18 @@ var player2 = new Character("Joueur 2", 100, 103);
 // Les fonctions applicables à l'ensemble des Character 
 Character.prototype.describe = function () {
     var description = this.name + " a " + this.heal + " points de vie et peut infliger " +
-        this.equipedWeapons() + " dégâts à chaque attaque. Son identifant de guerre est le " + this.id;
+        this.equipedWeapons() + " dégâts à chaque attaque.";
     return description;
 }
 // Identification de l'adversaire.
 Character.prototype.opponent = function () {
-    var opponentIs = this.id;
+    var opponentIs = this.id; // a modifier
     switch (this.id) {
         case player1.name:
-            opponentIs = player2Case.name
+            opponentIs = player2.name
             break;
         case player2.name:
-            opponentIs = player1Case.name
+            opponentIs = player1.name
             break;
     }
     return opponentIs
@@ -61,3 +62,4 @@ Character.prototype.equipedWeapons = function () {
     }
     return power
 };
+

@@ -17,9 +17,9 @@ function Map(rows, columns, width, height) {
     this.totalCells = this.rows * this.columns;
 }
 
-function Cell(contain, numberCase, y, x, freeCell) {
+function Cell(contain, numberCell, y, x, freeCell) {
     this.contain = contain;
-    this.numberCase = numberCase;
+    this.numberCell = numberCell;
     this.y = y;
     this.x = x;
     this.freeCell = freeCell;
@@ -35,13 +35,10 @@ for (var i = 0; i < myMap.rows; i++) {
 }
 
 // définition du contenu du tableau
-
-var nbCell = Number(x + y * board.length);
-
 for (var y = 0; y < (board.length); y++) {
     for (var x = 0; x < (board.length); x++) {
         // build a algorithme to reference them
-        var nbCell = Number(x + y * board.length);
+        var nbCell = Number(x + y * board.length)
         // create the object and store a reference to the cell object so you can do something with it later
         var containTypeCall = containType(x, y, board.length, board)
         var yCell = y;
@@ -53,7 +50,21 @@ for (var y = 0; y < (board.length); y++) {
     }
 }
 
+var checkPlayer2 = function () {
+    if (testCharacterNear === true) {
+        numberDropTryChaine = numberDropTry.toString() //chn.substr(début[, longueur])
+        //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
+        if (randomList[numberDropTry] < 10) {
+            var dropY = 0
+            var dropX = parseInt(numberDropTryChaine.substr(1))
+        }
+        if (randomList[numberDropTry] > 10) {
+            var dropY = parseInt(numberDropTryChaine.substr(0, 1))
+            var dropX = parseInt(numberDropTryChaine.substr(1, 1))
+        }
+        board[dropY][dropX].contain == 102;
+        board[dropY][dropX].freeCell == false;
+    }
+}
+
 console.log(board);
-
-
-

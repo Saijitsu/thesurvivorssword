@@ -25,12 +25,6 @@ for (i = 0; i < 100 /*myMap.totalCells*/ ; i++) {
 randomList.shuffle(); // on mélange les éléments du tableau
 console.log(randomList.join());
 
-// Attribution de l'entrée pour chaques cellules
-var numberToUpgrade = -1; // numéro de la case de départ moins 1 unité.
-function nbCase() {
-    numberToUpgrade++;
-    return numberToUpgrade
-}
 // Outils de création du contenu: this.contain 
 // Les Terrains -------------------------------------------------------------------------------
 // RAPPEL: rows = Y values /Columns = X values
@@ -44,9 +38,16 @@ function containType() {
         (x + y * board.length) == randomList[13]) {
         return 2; // Affectation des coffres
     } else if ((x + y * board.length) == randomList[14]) {
+        player1.position = cell.numberCell
         return 101; // Affectation du Joueur 1
     } else if ((x + y * board.length) == randomList[15]) {
-        return 102; // Affectation du Joueur 2    
+        if (characterNear(x, y, board.length, board) == true) {
+            return 0; // Joueur 1 proche: Affectation d'une cellule vide.
+        }
+        if (characterNear(x, y, board.length, board) == false) {
+            player2.position = cell.numberCell
+            return 102; // Safe zone: Affectation du Joueur 2
+        }
     } else {
         return 0; // Affectation par défaut de cellules vides
     }
@@ -73,34 +74,116 @@ function testIfFree() {
 }
 
 
-////// brouillon ///////
-// Algorithme de collision: il va chercher la valeur des cellules proches
-// characterCollision(x, y, board.length)
-function characterCollision() { //En brouillon
-    CaseNb = board[x][y].numberCase
-    while (CaseNb < 99) {
-        var i = CaseNb - (y * board.length);
-        var j = ((CaseNb - x) / board.length);
-        var CaseNb = board[i][j].numberCase;
+// On renvoie un entier aléatoire entre une valeur min (incluse)
+// et une valeur max (incluse).
+// Attention : si on utilisait Math.round(), on aurait une distribution
+// non uniforme !
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-        var nbBas = (CaseNb + 10);
-        var nbHaut = (CaseNb - 10);
-        var nbGauche = (CaseNb + 1);
-        var nbDroite = (CaseNb - 1);
-        var nbDiagonaleHautGauche = caseNb - 9;
-        var nbDiagonaleHautDroite = caseNb - 11;
-        var nbDiagonaleBasGauche = caseNb + 9;
-        var nbDiagonaleBasDroite = caseNb + 11;
-
-
-        if (board[yNbBas][xNbBas].contain != 101 && board[yNbHaut][xNbHaut].contain != 101 &&
-            board[yNbGauche][xNbGauche].contain != 101 && board[yNbDroite][xNbDroite].contain != 101 &&
-            board[ynbDiagonaleHautGauche][xnbDiagonaleHautGauche].contain != 101 && board[ynbDiagonaleHautDroite][xnbDiagonaleHautDroite].contain != 101 &&
-            board[ynbDiagonaleBasGauche][xnbDiagonaleBasGauche].contain != 101 && board[ynbDiagonaleBasDroite][xnbDiagonaleBasDroite].contain != 101) {
-            return safePlace;
+var testCharacterNear = characterNear(x, y, board.length, board);
+// Appel le joueur 2 sur la carte s'il n'a pas pu être placé à la création de la carte.
+function verifyDropPlayer2() {
+    var numberDropTry = 16
+    if (testCharacterNear === false) {
+        console.log("Il n'y a pas eu de contact entre les joueurs à la création du terrain!");
+    }
+    if (testCharacterNear === true) {
+        var min = 16;
+        var max = 99;
+        var numberDropTry = getRandomIntInclusive(min, max);
+        numberDropTryChaine = numberDropTry.toString() //chn.substr(début[, longueur])
+        //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
+        if (randomList[numberDropTry] < 10) {
+            var dropY = 0
+            var dropX = parseInt(numberDropTryChaine.substr(1))
+        }
+        if (randomList[numberDropTry] > 10) {
+            var dropY = parseInt(numberDropTryChaine.substr(0, 1))
+            var dropX = parseInt(numberDropTryChaine.substr(1, 1))
+        }
+        if (board[dropY][dropX].freeCell == true) {
+            console.log("Il n'y eu un contact entre les joueurs à la création du terrain! \nEmplacement Joueur 2 réinitialisé")
+            return numberDropTry;
         } else {
-            CaseNb++;
-            return unsafePlace;
+            verifyDropPlayer1()
         }
     }
 }
+
+function characterNear() {
+    var p1CellNumber = randomList[14]
+    var p2CellNumber = randomList[15]
+
+    var nbBas = p2CellNumber + 10;
+    var nbHaut = p2CellNumber - 10;
+    var nbGauche = p2CellNumber + 1;
+    var nbDroite = p2CellNumber - 1;
+    var nbDiagonaleHautGauche = p2CellNumber - 9;
+    var nbDiagonaleHautDroite = p2CellNumber - 11;
+    var nbDiagonaleBasGauche = p2CellNumber + 9;
+    var nbDiagonaleBasDroite = p2CellNumber + 11;
+
+    if (nbBas == p1CellNumber || nbHaut == p1CellNumber || nbGauche == p1CellNumber || nbDroite == p1CellNumber ||
+        nbDiagonaleBasDroite == p1CellNumber || nbDiagonaleHautGauche == p1CellNumber ||
+        nbDiagonaleHautDroite == p1CellNumber || nbDiagonaleBasGauche == p1CellNumber) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+/*  Algo collides
+   // Coordonnées de Tile1
+    var p1CellNumber = randomList[14]
+    p1CellNumber = p1CellNumber.toString() //chn.substr(début[, longueur])
+    //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
+
+    if (randomList[14] < 10) {
+        var p1CellNumberY = 0
+        var p1CellNumberX = parseInt(p1CellNumber.substr(1))
+    }
+    if (randomList[14] > 10) {
+        var p1CellNumberY = parseInt(p1CellNumber.substr(0, 1))
+        var p1CellNumberX = parseInt(p1CellNumber.substr(1, 1))
+    }
+    // Coordonnées de Tile2
+
+    var p2CellNumber = randomList[15]
+    p2CellNumber = p2CellNumber.toString() //chn.substr(début[, longueur])
+    if (randomList[15] < 10) {
+        var p2CellNumberY = 0
+        var p2CellNumberX = parseInt(p2CellNumber.substr(1))
+    }
+    if (randomList[15] > 10) {
+        var p2CellNumberY = parseInt(p2CellNumber.substr(0, 1))
+        var p2CellNumberX = parseInt(p2CellNumber.substr(1, 1))
+    }
+
+    var tile1 = {
+        x: p1CellNumberX,
+        y: p1CellNumberY,
+        width: 50,
+        height: 50
+    }
+    var tile2 = {
+        x: p2CellNumberX,
+        y: p2CellNumberY,
+        width: 50,
+        height: 50
+    }
+    if (tile1.x < tile2.x + tile2.width &&
+        tile1.x + tile1.width > tile2.x &&
+        tile1.y < tile2.y + tile2.height &&
+        tile1.height + tile1.y > tile2.y) {
+        return "collision";
+        // collision détectée !
+    } else {
+        return "safePlace";
+        // pas de collision détectée !
+    }
+}*/
