@@ -115,46 +115,15 @@ function characterNear() {
     var p1CellNumber = randomList[14]
     var p2CellNumber = numberToTest
 
-    var nbBas = p2CellNumber + 10;
-    var nbHaut = p2CellNumber - 10;
-    var nbGauche = p2CellNumber + 1;
-    var nbDroite = p2CellNumber - 1;
-    var nbDiagonaleHautGauche = p2CellNumber - 9;
-    var nbDiagonaleHautDroite = p2CellNumber - 11;
-    var nbDiagonaleBasGauche = p2CellNumber + 9;
-    var nbDiagonaleBasDroite = p2CellNumber + 11;
-
-    if (nbBas == p1CellNumber || nbHaut == p1CellNumber || nbGauche == p1CellNumber || nbDroite == p1CellNumber ||
-        nbDiagonaleBasDroite == p1CellNumber || nbDiagonaleHautGauche == p1CellNumber ||
-        nbDiagonaleHautDroite == p1CellNumber || nbDiagonaleBasGauche == p1CellNumber) {
-        return true;
-    } else {
-        return false;
+    var valueToTest = [1, 2, 3, 4, 7, 8, 9, 11, 12, 13, 21, 31, 7, 8, 9, 10, 19, 20, 29, 30, 40, -1, -2, -3, -4, -7, -8, -9, -10, -11, -12, -13, -19, -20, -21, -31, -29, -30, -40]
+    for (var i = 0; i < valueToTest.length; i++) {
+        var valueToAdd = valueToTest[i]
+        if (p2CellNumber != (p1CellNumber + valueToAdd)) {} else if (p2CellNumber = (p1CellNumber + valueToAdd)) {
+            return true;
+        }
     }
+    return false;
 }
-/*  var valueOfCharacterNear = []
-
-    if (p1CellNumber != p2CellNumber) {
-        for (var i = 1; i < 4; i++) {
-            if (nbBas * i == p1CellNumber || nbHaut * i == p1CellNumber || nbGauche * i == p1CellNumber || nbDroite * i == p1CellNumber ||
-                nbDiagonaleBasDroite * i == p1CellNumber || nbDiagonaleHautGauche * i == p1CellNumber ||
-                nbDiagonaleHautDroite * i == p1CellNumber || nbDiagonaleBasGauche * i == p1CellNumber) {
-                var newLength = valueOfCharacterNear.push(1)
-            }
-        }
-        if (valueOfCharacterNear.length == 3){
-            for (var i = 0; i < 3; i++){
-                
-            }
-        }
-    }
-    if (nbBas == p1CellNumber || nbHaut == p1CellNumber || nbGauche == p1CellNumber || nbDroite == p1CellNumber ||
-        nbDiagonaleBasDroite == p1CellNumber || nbDiagonaleHautGauche == p1CellNumber ||
-        nbDiagonaleHautDroite == p1CellNumber || nbDiagonaleBasGauche == p1CellNumber) {
-        return true;
-    } else {
-        return false;
-    }*/
 
 /*  Algo collides
    // Coordonnées de Tile1
