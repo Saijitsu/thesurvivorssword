@@ -95,7 +95,7 @@ function DropPlayer2() {
         //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
         if (numberToDrop < 10) {
             var dropY = 0
-            var dropX = parseInt(numberDropTryChaine.substr(1))
+            var dropX = parseInt(numberDropTryChaine.substr(1, 1))
         } else if (numberToDrop > 10) {
             var dropY = parseInt(numberDropTryChaine.substr(0, 1))
             var dropX = parseInt(numberDropTryChaine.substr(1, 1))
@@ -132,7 +132,29 @@ function characterNear() {
         return false;
     }
 }
+/*  var valueOfCharacterNear = []
 
+    if (p1CellNumber != p2CellNumber) {
+        for (var i = 1; i < 4; i++) {
+            if (nbBas * i == p1CellNumber || nbHaut * i == p1CellNumber || nbGauche * i == p1CellNumber || nbDroite * i == p1CellNumber ||
+                nbDiagonaleBasDroite * i == p1CellNumber || nbDiagonaleHautGauche * i == p1CellNumber ||
+                nbDiagonaleHautDroite * i == p1CellNumber || nbDiagonaleBasGauche * i == p1CellNumber) {
+                var newLength = valueOfCharacterNear.push(1)
+            }
+        }
+        if (valueOfCharacterNear.length == 3){
+            for (var i = 0; i < 3; i++){
+                
+            }
+        }
+    }
+    if (nbBas == p1CellNumber || nbHaut == p1CellNumber || nbGauche == p1CellNumber || nbDroite == p1CellNumber ||
+        nbDiagonaleBasDroite == p1CellNumber || nbDiagonaleHautGauche == p1CellNumber ||
+        nbDiagonaleHautDroite == p1CellNumber || nbDiagonaleBasGauche == p1CellNumber) {
+        return true;
+    } else {
+        return false;
+    }*/
 
 /*  Algo collides
    // Coordonnées de Tile1
