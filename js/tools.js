@@ -95,7 +95,7 @@ function DropPlayer2() {
         //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
         if (numberToDrop < 10) {
             var dropY = 0
-            var dropX = parseInt(numberDropTryChaine.substr(1, 1))
+            var dropX = numberToDrop
         } else if (numberToDrop > 10) {
             var dropY = parseInt(numberDropTryChaine.substr(0, 1))
             var dropX = parseInt(numberDropTryChaine.substr(1, 1))
