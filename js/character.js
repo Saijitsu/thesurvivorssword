@@ -17,13 +17,13 @@ var player2 = new Character("Joueur 2", 100, 103);
 // Les fonctions applicables à l'ensemble des Character 
 Character.prototype.describe = function () {
     var description = this.name + " a " + this.heal + " points de vie et peut infliger " +
-        this.equipedWeapons() + " dégâts à chaque attaque.";
+        this.dommageDeal() + " dégâts à chaque attaque au " +this.opponent() + ".";
     return description;
 }
 // Identification de l'adversaire.
 Character.prototype.opponent = function () {
-    var opponentIs = this.id; // a modifier
-    switch (this.id) {
+    var opponentIs = this.name; // a modifier
+    switch (this.name) {
         case player1.name:
             opponentIs = player2.name
             break;
@@ -35,9 +35,9 @@ Character.prototype.opponent = function () {
 };
 
 // Le joueur équipe une arme et profite d'un bonus de puissance en conséquence.
-Character.prototype.equipedWeapons = function () {
-    var equipedWeapons = this.weapons
-    switch (equipedWeapons) {
+Character.prototype.dommageDeal = function () {
+    var dommageDeal = this.weapons
+    switch (dommageDeal) {
         case 103:
             power = 10
             break;
