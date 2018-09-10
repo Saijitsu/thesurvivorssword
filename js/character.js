@@ -7,59 +7,57 @@ function Character(name, heal, weapons, position) { //Constructeur
     this.weapons = weapons;
     this.position = position;
 };
-
-// Objet joueur premier
-var player1 = new Character("Joueur 1", 100, 103);
-
-// Objet joueur second
-var player2 = new Character("Joueur 2", 100, 103);
-
 // Les fonctions applicables à l'ensemble des Character 
 Character.prototype.describe = function () {
-    var description = this.name + " a " + this.heal + " points de vie et peut infliger " +
-        this.dommageDeal() + " dégâts à chaque attaque au " +this.opponent() + ".";
+    var description = this.name + " est sur la case n°" + this.id().position + " et dispose de " +
+        this.heal + " points de vie, il est équipé de l'arme : \"" +
+        this.equipedWeapons() + "\" et peut infliger " +
+        this.dommageDeal() + " dégâts à chaque attaque au " + this.opponent().name +
+        " qui est installé sur la case n°" + this.opponent().position + ".";
     return description;
 }
+// Identification du personnage.
+Character.prototype.id = function () {
+    var id = this.name; // a modifier
+    switch (this.name) {
+        case player1.name:
+            id = players[0]
+            break;
+        case player2.name:
+            id = players[1]
+            break;
+    }
+    return id
+};
+
 // Identification de l'adversaire.
 Character.prototype.opponent = function () {
     var opponentIs = this.name; // a modifier
     switch (this.name) {
         case player1.name:
-            opponentIs = player2.name
+            opponentIs = players[1]
             break;
         case player2.name:
-            opponentIs = player1.name
+            opponentIs = players[0]
             break;
     }
     return opponentIs
 };
-
 // Le joueur équipe une arme et profite d'un bonus de puissance en conséquence.
 Character.prototype.dommageDeal = function () {
-    var dommageDeal = this.weapons
-    switch (dommageDeal) {
-        case 103:
-            power = 10
-            break;
-        case 104:
-            power = 13
-            break;
-        case 105:
-            power = 15
-            break;
-        case 106:
-            power = 17
-            break;
-        case 107:
-            power = 14
-            break;
-        case 108:
-            power = 18
-            break;
-        case 109:
-            power = 19
-            break;
-    }
-    return power
+    return this.weapons.power
 };
 
+// Le joueur équipe une arme du nom de:
+Character.prototype.equipedWeapons = function () {
+    return this.weapons.name
+};
+
+// Objet joueur premier
+var player1 = new Character("Joueur 1", 100, weapons[0]);
+
+// Objet joueur second
+var player2 = new Character("Joueur 2", 100, weapons[0]);
+
+// Character Array!
+var players = [player1, player2]

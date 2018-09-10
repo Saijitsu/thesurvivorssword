@@ -1,8 +1,7 @@
 // Les Armes ------------------------------------------------------------------------------------
-function Weapons(name, power, id) {
+function Weapons(name, power) {
     this.name = name;
     this.power = power;
-    this.id = id;
 }
 
 // Fonctions applicables aux armes
@@ -13,18 +12,19 @@ Weapons.prototype.describe = function () {
 };
 
 // Objet Arme 0
-var peasantSword = new Weapons("Peasant Sword", 10, 103);
+var peasantSword = new Weapons("Peasant Sword", 10);
 // Objet Arme 1
-var swordOfWind = new Weapons("Sword Of Wind", 13, 104);
+var swordOfWind = new Weapons("Sword Of Wind", 13);
 // Objet Arme 2
-var swordOfFire = new Weapons("Sword Of Wind", 15, 105);
+var swordOfFire = new Weapons("Sword Of Wind", 15);
 // Objet Arme 3
-var swordOfThunder = new Weapons("Sword Of Wind", 17, 106);
+var swordOfThunder = new Weapons("Sword Of Wind", 17);
 // Objet Arme 4
-var magicWand = new Weapons("Magic Wand", 14, 107);
+var magicWand = new Weapons("Magic Wand", 14);
 // Objet Arme 5
-var bowOfLight = new Weapons("Bow Of Light", 18, 108);
+var bowOfLight = new Weapons("Bow Of Light", 18);
 // Objet Arme 6
-var ironHammer = new Weapons("Iron Hammer", 19, 109);
+var ironHammer = new Weapons("Iron Hammer", 19);
 
+// Weapons Array!
 var weapons = [peasantSword, swordOfWind, swordOfFire, swordOfThunder, magicWand, bowOfLight, ironHammer]
