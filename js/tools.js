@@ -44,13 +44,13 @@ function containType() {
         return cell; // Affectation des coffres
     } else if ((x + y * board.length) == randomList[14]) {
         var nbCell = x + y * board.length
-        var cell = new Cell(101, nbCell, y, x, false);
+        var cell = new Cell(players[0], nbCell, y, x, false);
         player1.position = cell.numberCell
         return cell; // Affectation du Joueur 1
     } else if ((x + y * board.length) == randomList[15]) {
         if (characterNear(x, y, board.length, board, numberToTest = randomList[15]) == false) {
             var nbCell = x + y * board.length
-            var cell = new Cell(102, nbCell, y, x, false);
+            var cell = new Cell(players[1], nbCell, y, x, false);
             player2.position = cell.numberCell
             return cell; // Safe zone: Affectation du Joueur 2
         } else if (characterNear(x, y, board.length, board, numberToTest = randomList[15]) == true) {
@@ -62,7 +62,7 @@ function containType() {
     } else {
         if (board[y][x] !== undefined) {
             var nbCell = x + y * board.length
-            var cell = new Cell(102, nbCell, y, x, false);
+            var cell = new Cell(players[1], nbCell, y, x, false);
             player2.position = cell.numberCell
             return cell; // Confirmation de la Cellule Joueur 2{
         } else {
@@ -100,7 +100,7 @@ function DropPlayer2() {
             var dropY = parseInt(numberDropTryChaine.substr(0, 1))
             var dropX = parseInt(numberDropTryChaine.substr(1, 1))
         }
-        var cell = new Cell(102, numberToDrop, dropY, dropX, false);
+        var cell = new Cell(players[1], numberToDrop, dropY, dropX, false);
         // build list of references
         board[dropY][dropX] = cell
         player2.position = cell.numberCell
@@ -124,6 +124,42 @@ function characterNear() {
     }
     return false;
 }
+
+// converse a number case to x, y.
+function numberToDrop (){
+    numberDropTryChaine = numberToDrop.toString() //chn.substr(début[, longueur])
+    //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
+    if (numberToDrop < 10) {
+        var dropY = 0
+        var dropX = numberToDrop
+    } else if (numberToDrop > 10) {
+        var dropY = parseInt(numberDropTryChaine.substr(0, 1))
+        var dropX = parseInt(numberDropTryChaine.substr(1, 1))
+    }
+    return dropY, dropX
+}
+
+// test le contenu des cases.
+function testContainType() {
+    var valueToTest = containType();
+    if (valueToTest === 1) {
+        console.log("Ceci est un arbre");
+        return false
+    } /*else if (testContainType === 2) {
+        console.log("Ceci est un coffre");
+        return true
+    } else if (testContainType === players[0]) {
+        console.log("Ceci est le Joueur 1");
+        return false
+    } else if (testContainType === players[1]) {
+        console.log("Ceci est le Joueur 2");
+        return false
+    }*/ else {
+        console.log("Ceci est un terrain vide");
+        return true
+    }
+}
+
 
 /*  Algo collides
    // Coordonnées de Tile1

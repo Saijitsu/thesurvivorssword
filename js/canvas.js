@@ -24,10 +24,10 @@ window.onload = function draw() {
                 case 2: // Chest
                     ts.drawTile(3, ctx, dx, dy);
                     break;
-                case 101: // Player 1
+                case players[0]: // Player 1
                     ts.drawTile(4, ctx, dx, dy);
                     break;
-                case 102: // Player 2
+                case players[1]: // Player 2
                     ts.drawTile(5, ctx, dx, dy);
                     break;
             }

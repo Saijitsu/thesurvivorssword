@@ -53,6 +53,43 @@ Character.prototype.equipedWeapons = function () {
     return this.weapons.name
 };
 
+// place were selected player can move:
+
+/*Character.protocole.freeCaseToMove = function(){
+    if (this.position >= 0 && this.position <= 99){
+        var numberToDrop = this.position;
+        var valueToTest = numberToDrop;
+        if (testContainType(valueToTest) == true ){
+            numberToDrop(numberToDrop);
+            board[dropY][dropX].contain == this.id
+
+        }
+
+
+
+    }
+    else{
+        return false
+    }
+}*/
+    
+// Character move methode:
+Character.prototype.playerMove = function () {
+    // The function will check if key is push or not.
+    if (e.keyCode == "37") {
+        this.position = (this.position - 1);
+    } // Right
+    else if (e.keyCode == "38") {
+        this.position = (this.position - 10);
+    } // Upper
+    else if (e.keyCode == "39") {
+        this.position = (this.position + 1);
+    } // Left
+    else if (e.keyCode == "40") {
+        this.position = (this.position +10);
+    } // Lower 
+}
+
 // Objet joueur premier
 var player1 = new Character("Joueur 1", 100, weapons[0]);
 
