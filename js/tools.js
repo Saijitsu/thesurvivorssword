@@ -90,17 +90,17 @@ function DropPlayer2() {
     var max = 99;
     var numberDropTry = getRandomIntInclusive(min, max);
     if (characterNear(x, y, board.length, board, numberToTest = randomList[numberDropTry]) == false) {
-        var numberToDrop = randomList[numberDropTry]
-        numberDropTryChaine = numberToDrop.toString() //chn.substr(début[, longueur])
+        var cellWhereToDrop = randomList[numberDropTry]
+        chaineTransform = cellWhereToDrop.toString() //chn.substr(début[, longueur])
         //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
-        if (numberToDrop < 10) {
+        if (cellWhereToDrop < 10) {
             var dropY = 0
-            var dropX = numberToDrop
-        } else if (numberToDrop > 10) {
-            var dropY = parseInt(numberDropTryChaine.substr(0, 1))
-            var dropX = parseInt(numberDropTryChaine.substr(1, 1))
+            var dropX = cellWhereToDrop;
+        } else if (cellWhereToDrop > 10) {
+            var dropY = parseInt(chaineTransform.substr(0, 1))
+            var dropX = parseInt(chaineTransform.substr(1, 1))
         }
-        var cell = new Cell(players[1], numberToDrop, dropY, dropX, false);
+        var cell = new Cell(players[1], cellWhereToDrop, dropY, dropX, false);
         // build list of references
         board[dropY][dropX] = cell
         player2.position = cell.numberCell
@@ -115,7 +115,9 @@ function characterNear() {
     var p1CellNumber = randomList[14]
     var p2CellNumber = numberToTest
 
-    var valueToTest = [1, 2, 3, 4, 7, 8, 9, 11, 12, 13, 21, 31, 7, 8, 9, 10, 19, 20, 29, 30, 40, -1, -2, -3, -4, -7, -8, -9, -10, -11, -12, -13, -19, -20, -21, -31, -29, -30, -40]
+    var valueToTest = [1, 2, 3, 4, 7, 8, 9, 11, 12, 13, 21, 31, 7, 8, 9, 10,
+        19, 20, 29, 30, 40, -1, -2, -3, -4, -7, -8, -9, -10, -11, -12, -13, -19, -20, -21, -31, -29, -30, -40
+    ]
     for (var i = 0; i < valueToTest.length; i++) {
         var valueToAdd = valueToTest[i]
         if (p2CellNumber != (p1CellNumber + valueToAdd)) {} else if (p2CellNumber = (p1CellNumber + valueToAdd)) {
@@ -126,15 +128,15 @@ function characterNear() {
 }
 
 // converse a number case to x, y.
-function numberToDrop (){
-    numberDropTryChaine = numberToDrop.toString() //chn.substr(début[, longueur])
+function deduceYX() {
+    chaineTransform = cellWhereToDrop.toString() //chn.substr(début[, longueur])
     //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
-    if (numberToDrop < 10) {
+    if (cellWhereToDrop < 10) {
         var dropY = 0
-        var dropX = numberToDrop
-    } else if (numberToDrop > 10) {
-        var dropY = parseInt(numberDropTryChaine.substr(0, 1))
-        var dropX = parseInt(numberDropTryChaine.substr(1, 1))
+        var dropX = cellWhereToDrop;
+    } else if (cellWhereToDrop > 10) {
+        var dropY = parseInt(chaineTransform.substr(0, 1))
+        var dropX = parseInt(chaineTransform.substr(1, 1))
     }
     return dropY, dropX
 }
@@ -145,21 +147,37 @@ function testContainType() {
     if (valueToTest === 1) {
         console.log("Ceci est un arbre");
         return false
-    } /*else if (testContainType === 2) {
-        console.log("Ceci est un coffre");
-        return true
-    } else if (testContainType === players[0]) {
-        console.log("Ceci est le Joueur 1");
-        return false
-    } else if (testContainType === players[1]) {
-        console.log("Ceci est le Joueur 2");
-        return false
-    }*/ else {
+    }
+    /*else if (testContainType === 2) {
+           console.log("Ceci est un coffre");
+           return true
+       } else if (testContainType === players[0]) {
+           console.log("Ceci est le Joueur 1");
+           return false
+       } else if (testContainType === players[1]) {
+           console.log("Ceci est le Joueur 2");
+           return false
+       }*/
+    else {
         console.log("Ceci est un terrain vide");
         return true
     }
 }
 
+// place were selected player can move:
+function testNearlyCell(){
+    if (cellWhereToMove >= 0 && cellWhereToMove <= 99) {
+        var valueToTest = cellWhereToMove;
+        if (testContainType(valueToTest) == true) {
+            deduceYX(cellWhereToMove);
+            board[dropY][dropX].contain == this.id;
+            board[dropY][dropX].freeCell == false;
+            return true
+        }
+    } else {
+        return false
+    }
+}
 
 /*  Algo collides
    // Coordonnées de Tile1

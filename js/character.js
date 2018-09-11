@@ -1,11 +1,12 @@
 ////////////////////////////////////// CHARACTER AND WEAPONS //////////////////////////////////////////
 // Les Personnages-------------------------------------------------------------------------------------
 
-function Character(name, heal, weapons, position) { //Constructeur
+function Character(name, heal, weapons, position, remainingMove) { //Constructeur
     this.name = name;
     this.heal = heal;
     this.weapons = weapons;
     this.position = position;
+    this.remainingMove = remainingMove;
 };
 // Les fonctions applicables à l'ensemble des Character 
 Character.prototype.describe = function () {
@@ -53,40 +54,44 @@ Character.prototype.equipedWeapons = function () {
     return this.weapons.name
 };
 
-// place were selected player can move:
-
-/*Character.protocole.freeCaseToMove = function(){
-    if (this.position >= 0 && this.position <= 99){
-        var numberToDrop = this.position;
-        var valueToTest = numberToDrop;
-        if (testContainType(valueToTest) == true ){
-            numberToDrop(numberToDrop);
-            board[dropY][dropX].contain == this.id
-
-        }
-
-
-
-    }
-    else{
-        return false
-    }
-}*/
-    
 // Character move methode:
 Character.prototype.playerMove = function () {
     // The function will check if key is push or not.
     if (e.keyCode == "37") {
-        this.position = (this.position - 1);
+        if (this.remainingMove > 0) {
+            cellWhereToMove = (this.position - 1);
+            var result = testNearlyCell(cellWhereToMove, board, this);
+            if (result == true) {
+                return this.remainingMove - 1
+            }
+        }
     } // Right
     else if (e.keyCode == "38") {
-        this.position = (this.position - 10);
+        if (this.remainingMove > 0) {
+            cellWhereToMove = (this.position - 10);
+            var result = testNearlyCell(cellWhereToMove, board, this);
+            if (result == true) {
+                return this.remainingMove - 1
+            }
+        }
     } // Upper
     else if (e.keyCode == "39") {
-        this.position = (this.position + 1);
+        if (this.remainingMove > 0) {
+            cellWhereToMove = (this.position + 1);
+            var result = testNearlyCell(cellWhereToMove, board, this);
+            if (result == true) {
+                return this.remainingMove - 1
+            }
+        }
     } // Left
     else if (e.keyCode == "40") {
-        this.position = (this.position +10);
+        if (this.remainingMove > 0) {
+            cellWhereToMove = (this.position + 10);
+            var result = testNearlyCell(cellWhereToMove, board, this);
+            if (result == true) {
+                return this.remainingMove - 1
+            }
+        }
     } // Lower 
 }
 
