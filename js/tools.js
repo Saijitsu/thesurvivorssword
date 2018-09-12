@@ -179,6 +179,39 @@ function testNearlyCell(){
     }
 }
 
+//////////////////////////// test ///////////////////////////////////////
+
+function highLightningCell() {
+    var startingCell = this.position
+    var unMovableCell = []
+    var highLightning = [] // A alimenter avec les cellules a mettre en surbrillance.
+    var valueToTest = [1, 2, 3, 10, 20, 30, -1, -2, -3, -10, -20, -30]
+    for (var i = 0; i < valueToTest.length; i++) {
+        var valueToAdd = valueToTest[i]
+        var cellWhereMove = (startingCell + valueToAdd)
+        var result = testNearlyCell(cellWhereMove)
+        if (result == true) {
+            deduceYX(cellWhereToMove);
+            board[dropY][dropX].contain == this.id;
+            board[dropY][dropX].freeCell == false;
+
+        } else if (p2CellNumber = (startingCell + valueToAdd)) {
+            unMovableCell.push[value] //Mettre en forme
+        }
+    }
+    return false;
+}
+
+function testNearlyCell() {
+    if (cellWhereToMove >= 0 && cellWhereToMove <= 99) {
+        if (testContainType(cellWhereToMove) == true) {
+
+            return true
+        }
+    } else {
+        return false
+    }
+}
 
 /*  Algo collides
    // Coordonnées de Tile1
