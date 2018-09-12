@@ -164,6 +164,8 @@ function testContainType() {
     }
 }
 
+//////////////////////////// test: brouillon, non efficiant ///////////////////////////////////////
+
 // place were selected player can move:
 function testNearlyCell(){
     if (cellWhereToMove >= 0 && cellWhereToMove <= 99) {
@@ -178,8 +180,6 @@ function testNearlyCell(){
         return false
     }
 }
-
-//////////////////////////// test ///////////////////////////////////////
 
 function highLightningCell() {
     var startingCell = this.position
