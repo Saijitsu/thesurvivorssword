@@ -179,6 +179,7 @@ function testNearlyCell(){
     }
 }
 
+
 /*  Algo collides
    // Coordonnées de Tile1
     var p1CellNumber = randomList[14]

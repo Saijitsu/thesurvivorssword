@@ -54,8 +54,10 @@ Character.prototype.equipedWeapons = function () {
     return this.weapons.name
 };
 
+/*
 // Character move methode:
-Character.prototype.playerMove = function () {
+Character.prototype.playerMove = function (e) {
+    e.preventDefault(); // No scrolling with keyboard.
     // The function will check if key is push or not.
     if (e.keyCode == "37") {
         if (this.remainingMove > 0) {
@@ -93,7 +95,7 @@ Character.prototype.playerMove = function () {
             }
         }
     } // Lower 
-}
+}*/
 
 // Objet joueur premier
 var player1 = new Character("Joueur 1", 100, weapons[0]);
