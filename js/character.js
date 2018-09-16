@@ -54,8 +54,19 @@ Character.prototype.equipedWeapons = function () {
     return this.weapons.name
 };
 
+// Objet joueur premier
+var player1 = new Character("Joueur 1", 100, weapons[0]);
+
+// Objet joueur second
+var player2 = new Character("Joueur 2", 100, weapons[0]);
+
+// Character Array!
+var players = [player1, player2];
+
+
+
 /*
-// Character move methode:
+// Character move methode with:
 Character.prototype.playerMove = function (e) {
     e.preventDefault(); // No scrolling with keyboard.
     // The function will check if key is push or not.
@@ -96,12 +107,3 @@ Character.prototype.playerMove = function (e) {
         }
     } // Lower 
 }*/
-
-// Objet joueur premier
-var player1 = new Character("Joueur 1", 100, weapons[0]);
-
-// Objet joueur second
-var player2 = new Character("Joueur 2", 100, weapons[0]);
-
-// Character Array!
-var players = [player1, player2]
