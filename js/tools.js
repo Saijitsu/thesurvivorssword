@@ -141,39 +141,58 @@ function deduceYX() {
     return dropY, dropX
 }
 
+// Return where user click on canvas.
+canvas.addEventListener("click", function (e) {
+    var mousePosition = getMousePosition(canvas, e);
+    var message = 'Mouse click position is: ' + (Math.floor(mousePosition.y / 50)) + ',' + (Math.floor(mousePosition.x / 50));
+    writeMessage(message);
+}, false);
+
+function getMousePosition(canvas, e) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+    };
+}
+/*method which returns the mouse coordinates based on the position 
+ of the client mouse and the position of the canvas obtained from 
+ the getBoundingClientRect() method of the window object:
+ The Element.getBoundingClientRect() method returns 
+ the size of an element and its position relative to the viewport*/
+
+function writeMessage(message) {
+    console.log(message)
+}
+
+//////////////////////////// test: brouillon, non efficiant, devenu obsolète ///////////////////////////////////////
 // test le contenu des cases.
 function testContainType() {
-    var valueToTest = containType();
-    if (valueToTest === 1) {
+    var valueToTest = containType().contain;
+    if (valueToTest=== 1) {
         console.log("Ceci est un arbre");
         return false
-    }
-    /*else if (testContainType === 2) {
-           console.log("Ceci est un coffre");
-           return true
-       } else if (testContainType === players[0]) {
-           console.log("Ceci est le Joueur 1");
-           return false
-       } else if (testContainType === players[1]) {
-           console.log("Ceci est le Joueur 2");
-           return false
-       }*/
-    else {
+    } else if (valueToTest=== 2) {
+        console.log("Ceci est un coffre");
+        return true
+    } else if (valueToTest=== players[0]) {
+        console.log("Ceci est le Joueur 1");
+        return false
+    } else if (valueToTest=== players[1]) {
+        console.log("Ceci est le Joueur 2");
+        return false
+    } else {
         console.log("Ceci est un terrain vide");
         return true
     }
 }
 
-//////////////////////////// test: brouillon, non efficiant ///////////////////////////////////////
-
 // place were selected player can move:
-function testNearlyCell(){
+function testNearlyCell() {
+    var cellWhereToMove = cellWhereToMove;
     if (cellWhereToMove >= 0 && cellWhereToMove <= 99) {
-        var valueToTest = cellWhereToMove;
-        if (testContainType(valueToTest) == true) {
-            deduceYX(cellWhereToMove);
-            board[dropY][dropX].contain == this.id;
-            board[dropY][dropX].freeCell == false;
+        deduceYX(cellWhereToMove);
+        if (board[dropY][dropX].freeCell == true) {
             return true
         }
     } else {
@@ -200,17 +219,6 @@ function highLightningCell() {
         }
     }
     return false;
-}
-
-function testNearlyCell() {
-    if (cellWhereToMove >= 0 && cellWhereToMove <= 99) {
-        if (testContainType(cellWhereToMove) == true) {
-
-            return true
-        }
-    } else {
-        return false
-    }
 }
 
 /*  Algo collides

@@ -44,6 +44,7 @@ Character.prototype.opponent = function () {
     }
     return opponentIs
 };
+
 // Le joueur équipe une arme et profite d'un bonus de puissance en conséquence.
 Character.prototype.dommageDeal = function () {
     return this.weapons.power
@@ -54,6 +55,30 @@ Character.prototype.equipedWeapons = function () {
     return this.weapons.name
 };
 
+// methode in progress =>
+Character.prototype.playerMove = function () {
+    var startingCell = this.position
+    var unMovableCell = []
+    var highLightning = [] // A alimenter avec les cellules a mettre en surbrillance.
+    var valueToTest = [1, 2, 3, 10, 20, 30, -1, -2, -3, -10, -20, -30]
+    for (var i = 0; i < valueToTest.length; i++) {
+        var valueToAdd = valueToTest[i]
+        var cellWhereToMove = (startingCell + valueToAdd)
+        console.log(cellWhereToMove);
+        var result = testNearlyCell(cellWhereToMove)
+        if (result == true) {
+            if (cellWhereToMove >= 0 && cellWhereToMove <= 99){
+             highLightning.push(cellWhereToMove)    
+            }
+        }else if(result == false){
+                unMovableCell.push(cellWhereToMove)
+        }
+    }
+    console.log(unMovableCell)
+    console.log(highLightning)
+    return highLightning, unMovableCell
+}
+
 // Objet joueur premier
 var player1 = new Character("Joueur 1", 100, weapons[0]);
 
@@ -62,7 +87,6 @@ var player2 = new Character("Joueur 2", 100, weapons[0]);
 
 // Character Array!
 var players = [player1, player2];
-
 
 
 /*
