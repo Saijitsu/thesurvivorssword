@@ -61,28 +61,113 @@ Character.prototype.equipedWeapons = function () {
 Character.prototype.playerMove = function () {
     var startingCell = this.position
     var highLightning = [] // A alimenter avec les cellules a mettre en surbrillance.
-    var valueToTest = [1, 2, 3, -1, -2, -3, 10, 20, 30, -10, -20, -30]
-    for (var i = 0; i < valueToTest.length; i++) {
-        var valueToAdd = valueToTest[i]
-        var cellWhereToDrop = (startingCell + valueToAdd)
+    var valueToTest = [1, 2, 3, -1, -2, -3, 10, 20, 30, -10, -20, -30];
+    var i = 0;
+    for (i = 0; i < 3; i++) {
+        var valueToAdd = valueToTest[i];
+        var cellWhereToDrop = (startingCell + valueToAdd);
         if (cellWhereToDrop >= 0 && cellWhereToDrop <= 99) {
-            chaineTransform = cellWhereToDrop.toString() //chn.substr(début[, longueur])
+           var chaineTransform = cellWhereToDrop.toString() //chn.substr(début[, longueur])
             //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
-            if (cellWhereToDrop < 10) {
-                var dropY = 0
-                var dropX = cellWhereToDrop;
-            } else if (cellWhereToDrop > 10) {
+            if (cellWhereToDrop <= 9) {
+                numberTodeduceYX = "0" + chaineTransform
+                var dropY = parseInt(numberTodeduceYX.substr(0, 1))
+                var dropX = parseInt(numberTodeduceYX.substr(1, 1))
+            } else if (cellWhereToDrop >= 10) {
                 var dropY = parseInt(chaineTransform.substr(0, 1))
                 var dropX = parseInt(chaineTransform.substr(1, 1))
             }
             if (board[dropY][dropX].freeCell == true) {
                 var line = this.y;
-                if (i <= 5 && dropY == line ) {
+                if (i <= 5 && dropY == line) {
                     highLightning.push(cellWhereToDrop)
                 }
                 if (i > 5) {
                     highLightning.push(cellWhereToDrop)
                 }
+            } else {
+                i = 3
+            }
+        }
+    }
+    for (i = 3; i < 6; i++) {
+        var valueToAdd = valueToTest[i];
+        var cellWhereToDrop = (startingCell + valueToAdd);
+        if (cellWhereToDrop >= 0 && cellWhereToDrop <= 99) {
+            var chaineTransform = cellWhereToDrop.toString() //chn.substr(début[, longueur])
+            //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
+            if (cellWhereToDrop <= 9) {
+                numberTodeduceYX = "0" + chaineTransform
+                var dropY = parseInt(numberTodeduceYX.substr(0, 1))
+                var dropX = parseInt(numberTodeduceYX.substr(1, 1))
+            } else if (cellWhereToDrop >= 10) {
+                var dropY = parseInt(chaineTransform.substr(0, 1))
+                var dropX = parseInt(chaineTransform.substr(1, 1))
+            }
+            if (board[dropY][dropX].freeCell == true) {
+                var line = this.y;
+                if (i <= 5 && dropY == line) {
+                    highLightning.push(cellWhereToDrop)
+                }
+                if (i > 5) {
+                    highLightning.push(cellWhereToDrop)
+                }
+            } else {
+                i = 6
+            }
+        }
+    }
+    for (i = 6; i < 9; i++) {
+        var valueToAdd = valueToTest[i];
+        var cellWhereToDrop = (startingCell + valueToAdd);
+        if (cellWhereToDrop >= 0 && cellWhereToDrop <= 99) {
+            var chaineTransform = cellWhereToDrop.toString() //chn.substr(début[, longueur])
+            //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
+            if (cellWhereToDrop <= 9) {
+                numberTodeduceYX = "0" + chaineTransform
+                var dropY = parseInt(numberTodeduceYX.substr(0, 1))
+                var dropX = parseInt(numberTodeduceYX.substr(1, 1))
+            } else if (cellWhereToDrop >= 10) {
+                var dropY = parseInt(chaineTransform.substr(0, 1))
+                var dropX = parseInt(chaineTransform.substr(1, 1))
+            }
+            if (board[dropY][dropX].freeCell == true) {
+                var line = this.y;
+                if (i <= 5 && dropY == line) {
+                    highLightning.push(cellWhereToDrop)
+                }
+                if (i > 5) {
+                    highLightning.push(cellWhereToDrop)
+                }
+            } else {
+                i = 9
+            }
+        }
+    }
+    for (i = 9; i < valueToTest.length; i++) {
+        var valueToAdd = valueToTest[i];
+        var cellWhereToDrop = (startingCell + valueToAdd);
+        if (cellWhereToDrop >= 0 && cellWhereToDrop <= 99) {
+            var chaineTransform = cellWhereToDrop.toString() //chn.substr(début[, longueur])
+            //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
+            if (cellWhereToDrop <= 9) {
+                numberTodeduceYX = "0" + chaineTransform
+                var dropY = parseInt(numberTodeduceYX.substr(0, 1))
+                var dropX = parseInt(numberTodeduceYX.substr(1, 1))
+            } else if (cellWhereToDrop >= 10) {
+                var dropY = parseInt(chaineTransform.substr(0, 1))
+                var dropX = parseInt(chaineTransform.substr(1, 1))
+            }
+            if (board[dropY][dropX].freeCell == true) {
+                var line = this.y;
+                if (i <= 5 && dropY == line) {
+                    highLightning.push(cellWhereToDrop)
+                }
+                if (i > 5) {
+                    highLightning.push(cellWhereToDrop)
+                }
+            } else {
+                i = valueToTest.length
             }
         }
     }

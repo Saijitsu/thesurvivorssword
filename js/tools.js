@@ -133,20 +133,6 @@ function characterNear() {
     return false;
 }
 
-// converse a number case to x, y.
-function deduceYX() {
-    chaineTransform = cellWhereToDrop.toString() //chn.substr(début[, longueur])
-    //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
-    if (cellWhereToDrop < 10) {
-        var dropY = 0
-        var dropX = cellWhereToDrop;
-    } else if (cellWhereToDrop > 10) {
-        var dropY = parseInt(chaineTransform.substr(0, 1))
-        var dropX = parseInt(chaineTransform.substr(1, 1))
-    }
-    return dropY, dropX
-}
-
 // Return where user click on canvas.
 canvas.addEventListener("click", function (e) {
     var mousePosition = getMousePosition(canvas, e);
