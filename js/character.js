@@ -1,12 +1,14 @@
 ////////////////////////////////////// CHARACTER AND WEAPONS //////////////////////////////////////////
 // Les Personnages-------------------------------------------------------------------------------------
 
-function Character(name, heal, weapons, position, remainingMove) { //Constructeur
+function Character(name, heal, weapons, position, remainingMove, y, x) { //Constructeur
     this.name = name;
     this.heal = heal;
     this.weapons = weapons;
     this.position = position;
     this.remainingMove = remainingMove;
+    this.y = y;
+    this.x = x;
 };
 // Les fonctions applicables à l'ensemble des Character 
 Character.prototype.describe = function () {
@@ -58,25 +60,34 @@ Character.prototype.equipedWeapons = function () {
 // methode in progress =>
 Character.prototype.playerMove = function () {
     var startingCell = this.position
-    var unMovableCell = []
     var highLightning = [] // A alimenter avec les cellules a mettre en surbrillance.
-    var valueToTest = [1, 2, 3, 10, 20, 30, -1, -2, -3, -10, -20, -30]
+    var valueToTest = [1, 2, 3, -1, -2, -3, 10, 20, 30, -10, -20, -30]
     for (var i = 0; i < valueToTest.length; i++) {
         var valueToAdd = valueToTest[i]
-        var cellWhereToMove = (startingCell + valueToAdd)
-        console.log(cellWhereToMove);
-        var result = testNearlyCell(cellWhereToMove)
-        if (result == true) {
-            if (cellWhereToMove >= 0 && cellWhereToMove <= 99){
-             highLightning.push(cellWhereToMove)    
+        var cellWhereToDrop = (startingCell + valueToAdd)
+        if (cellWhereToDrop >= 0 && cellWhereToDrop <= 99) {
+            chaineTransform = cellWhereToDrop.toString() //chn.substr(début[, longueur])
+            //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
+            if (cellWhereToDrop < 10) {
+                var dropY = 0
+                var dropX = cellWhereToDrop;
+            } else if (cellWhereToDrop > 10) {
+                var dropY = parseInt(chaineTransform.substr(0, 1))
+                var dropX = parseInt(chaineTransform.substr(1, 1))
             }
-        }else if(result == false){
-                unMovableCell.push(cellWhereToMove)
+            if (board[dropY][dropX].freeCell == true) {
+                var line = this.y;
+                if (i <= 5 && dropY == line ) {
+                    highLightning.push(cellWhereToDrop)
+                }
+                if (i > 5) {
+                    highLightning.push(cellWhereToDrop)
+                }
+            }
         }
     }
-    console.log(unMovableCell)
-    console.log(highLightning)
-    return highLightning, unMovableCell
+    console.log(this.name + " can move to this places: " + highLightning)
+    return highLightning
 }
 
 // Objet joueur premier
@@ -96,8 +107,8 @@ Character.prototype.playerMove = function (e) {
     // The function will check if key is push or not.
     if (e.keyCode == "37") {
         if (this.remainingMove > 0) {
-            cellWhereToMove = (this.position - 1);
-            var result = testNearlyCell(cellWhereToMove, board, this);
+            cellWhereToDrop = (this.position - 1);
+            var result = testNearlyCell(cellWhereToDrop, board, this);
             if (result == true) {
                 return this.remainingMove - 1
             }
@@ -105,8 +116,8 @@ Character.prototype.playerMove = function (e) {
     } // Right
     else if (e.keyCode == "38") {
         if (this.remainingMove > 0) {
-            cellWhereToMove = (this.position - 10);
-            var result = testNearlyCell(cellWhereToMove, board, this);
+            cellWhereToDrop = (this.position - 10);
+            var result = testNearlyCell(cellWhereToDrop, board, this);
             if (result == true) {
                 return this.remainingMove - 1
             }
@@ -114,8 +125,8 @@ Character.prototype.playerMove = function (e) {
     } // Upper
     else if (e.keyCode == "39") {
         if (this.remainingMove > 0) {
-            cellWhereToMove = (this.position + 1);
-            var result = testNearlyCell(cellWhereToMove, board, this);
+            cellWhereToDrop = (this.position + 1);
+            var result = testNearlyCell(cellWhereToDrop, board, this);
             if (result == true) {
                 return this.remainingMove - 1
             }
@@ -123,8 +134,8 @@ Character.prototype.playerMove = function (e) {
     } // Left
     else if (e.keyCode == "40") {
         if (this.remainingMove > 0) {
-            cellWhereToMove = (this.position + 10);
-            var result = testNearlyCell(cellWhereToMove, board, this);
+            cellWhereToDrop = (this.position + 10);
+            var result = testNearlyCell(cellWhereToDrop, board, this);
             if (result == true) {
                 return this.remainingMove - 1
             }

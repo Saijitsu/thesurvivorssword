@@ -45,13 +45,17 @@ function containType() {
     } else if ((x + y * board.length) == randomList[14]) {
         var nbCell = x + y * board.length
         var cell = new Cell(players[0], nbCell, y, x, false);
-        player1.position = cell.numberCell
+        player1.position = cell.numberCell;
+        player1.y = y;
+        player1.x = x;
         return cell; // Affectation du Joueur 1
     } else if ((x + y * board.length) == randomList[15]) {
         if (characterNear(x, y, board.length, board, numberToTest = randomList[15]) == false) {
             var nbCell = x + y * board.length
             var cell = new Cell(players[1], nbCell, y, x, false);
-            player2.position = cell.numberCell
+            player2.position = cell.numberCell;
+            player2.y = y;
+            player2.x = x;
             return cell; // Safe zone: Affectation du Joueur 2
         } else if (characterNear(x, y, board.length, board, numberToTest = randomList[15]) == true) {
             DropPlayer2() // Unsafe zone: Nouvelle Affectation du Joueur 2
@@ -64,6 +68,8 @@ function containType() {
             var nbCell = x + y * board.length
             var cell = new Cell(players[1], nbCell, y, x, false);
             player2.position = cell.numberCell
+            player2.y = y;
+            player2.x = x;
             return cell; // Confirmation de la Cellule Joueur 2{
         } else {
             var nbCell = x + y * board.length
@@ -169,16 +175,16 @@ function writeMessage(message) {
 // test le contenu des cases.
 function testContainType() {
     var valueToTest = containType().contain;
-    if (valueToTest=== 1) {
+    if (valueToTest === 1) {
         console.log("Ceci est un arbre");
         return false
-    } else if (valueToTest=== 2) {
+    } else if (valueToTest === 2) {
         console.log("Ceci est un coffre");
         return true
-    } else if (valueToTest=== players[0]) {
+    } else if (valueToTest === players[0]) {
         console.log("Ceci est le Joueur 1");
         return false
-    } else if (valueToTest=== players[1]) {
+    } else if (valueToTest === players[1]) {
         console.log("Ceci est le Joueur 2");
         return false
     } else {
@@ -187,11 +193,11 @@ function testContainType() {
     }
 }
 
-// place were selected player can move:
+// place were selected player can move: //brouillon
 function testNearlyCell() {
-    var cellWhereToMove = cellWhereToMove;
-    if (cellWhereToMove >= 0 && cellWhereToMove <= 99) {
-        deduceYX(cellWhereToMove);
+    var valueToTest = cellWhereToMove;
+    if (valueToTest >= 0 && valueToTest <= 99) {
+        deduceYX(valueToTest);
         if (board[dropY][dropX].freeCell == true) {
             return true
         }
@@ -199,75 +205,3 @@ function testNearlyCell() {
         return false
     }
 }
-
-function highLightningCell() {
-    var startingCell = this.position
-    var unMovableCell = []
-    var highLightning = [] // A alimenter avec les cellules a mettre en surbrillance.
-    var valueToTest = [1, 2, 3, 10, 20, 30, -1, -2, -3, -10, -20, -30]
-    for (var i = 0; i < valueToTest.length; i++) {
-        var valueToAdd = valueToTest[i]
-        var cellWhereMove = (startingCell + valueToAdd)
-        var result = testNearlyCell(cellWhereMove)
-        if (result == true) {
-            deduceYX(cellWhereToMove);
-            board[dropY][dropX].contain == this.id;
-            board[dropY][dropX].freeCell == false;
-
-        } else if (p2CellNumber = (startingCell + valueToAdd)) {
-            unMovableCell.push[value] //Mettre en forme
-        }
-    }
-    return false;
-}
-
-/*  Algo collides
-   // Coordonnées de Tile1
-    var p1CellNumber = randomList[14]
-    p1CellNumber = p1CellNumber.toString() //chn.substr(début[, longueur])
-    //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
-
-    if (randomList[14] < 10) {
-        var p1CellNumberY = 0
-        var p1CellNumberX = parseInt(p1CellNumber.substr(1))
-    }
-    if (randomList[14] > 10) {
-        var p1CellNumberY = parseInt(p1CellNumber.substr(0, 1))
-        var p1CellNumberX = parseInt(p1CellNumber.substr(1, 1))
-    }
-    // Coordonnées de Tile2
-
-    var p2CellNumber = randomList[15]
-    p2CellNumber = p2CellNumber.toString() //chn.substr(début[, longueur])
-    if (randomList[15] < 10) {
-        var p2CellNumberY = 0
-        var p2CellNumberX = parseInt(p2CellNumber.substr(1))
-    }
-    if (randomList[15] > 10) {
-        var p2CellNumberY = parseInt(p2CellNumber.substr(0, 1))
-        var p2CellNumberX = parseInt(p2CellNumber.substr(1, 1))
-    }
-
-    var tile1 = {
-        x: p1CellNumberX,
-        y: p1CellNumberY,
-        width: 50,
-        height: 50
-    }
-    var tile2 = {
-        x: p2CellNumberX,
-        y: p2CellNumberY,
-        width: 50,
-        height: 50
-    }
-    if (tile1.x < tile2.x + tile2.width &&
-        tile1.x + tile1.width > tile2.x &&
-        tile1.y < tile2.y + tile2.height &&
-        tile1.height + tile1.y > tile2.y) {
-        return "collision";
-        // collision détectée !
-    } else {
-        return "safePlace";
-        // pas de collision détectée !
-    }
-}*/
