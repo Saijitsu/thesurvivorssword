@@ -19,7 +19,7 @@ var ts = new Tileset("basicImage.png");
                 case 0: // Empty Case (like grass)
                     ts.drawTile(1, ctx, dx, dy);
                     if (board[i][j].highLightning == true) {
-                        ctx.fillStyle = "rgba(255, 255, 0, 0.5)";
+                        ctx.fillStyle = "rgba(233, 56, 63, 0.3)";
                         ctx.fillRect(dx, dy, Tilewidth, Tilewidth);
                     } else {}
                     break;
@@ -29,7 +29,7 @@ var ts = new Tileset("basicImage.png");
                 case 2: // Chest
                     ts.drawTile(3, ctx, dx, dy);
                     if (board[i][j].highLightning == true) {
-                        ctx.fillStyle = "rgba(255, 255, 0, 0.5)";
+                        ctx.fillStyle = "rgba(233, 56, 63, 0.3)";
                         ctx.fillRect(dx, dy, Tilewidth, Tilewidth);
                     } else {}
                     break;
@@ -43,5 +43,3 @@ var ts = new Tileset("basicImage.png");
         }
     }
 }
-
-console.log("Starting game, use: draw()")

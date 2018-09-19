@@ -58,7 +58,7 @@ Character.prototype.equipedWeapons = function () {
 };
 
 // methode in progress =>
-Character.prototype.playerMove = function () {
+Character.prototype.tripArea = function () {
     var startingCell = this.position
     var highLightning = [] // A alimenter avec les cellules a mettre en surbrillance.
     leftDirection = [-1, -2, -3]
@@ -182,7 +182,7 @@ var players = [player1, player2];
 
 /*
 // Character move methode with:
-Character.prototype.playerMove = function (e) {
+Character.prototype.tripArea = function (e) {
     e.preventDefault(); // No scrolling with keyboard.
     // The function will check if key is push or not.
     if (e.keyCode == "37") {
