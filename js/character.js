@@ -57,7 +57,6 @@ Character.prototype.equipedWeapons = function () {
     return this.weapons.name
 };
 
-
 // methode in progress =>
 Character.prototype.tripArea = function () {
     var startingCell = this.position
@@ -66,104 +65,35 @@ Character.prototype.tripArea = function () {
     downDirection = [10, 20, 30]
     rightDirection = [1, 2, 3]
     upDirection = [-10, -20, -30]
-    for (var i = 0; i < 3; i++) {
-        var valueToAdd = leftDirection[i];
-        var cellWhereToDrop = (startingCell + valueToAdd);
-        if (cellWhereToDrop >= 0 && cellWhereToDrop <= 99) {
-            var chaineTransform = cellWhereToDrop.toString() //chn.substr(début[, longueur])
-            //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
-            if (cellWhereToDrop <= 9) {
-                numberTodeduceYX = "0" + chaineTransform
-                var dropY = parseInt(numberTodeduceYX.substr(0, 1))
-                var dropX = parseInt(numberTodeduceYX.substr(1, 1))
-            } else if (cellWhereToDrop >= 10) {
-                var dropY = parseInt(chaineTransform.substr(0, 1))
-                var dropX = parseInt(chaineTransform.substr(1, 1))
-            }
-            if (board[dropY][dropX].freeCell == true) {
-                var line = this.y;
-                if (dropY == line) {
-                    highLightning.push(cellWhereToDrop);
-                    board[dropY][dropX].highLightning = true;
-                }
-            } else {
-                i = 3
-            }
-        }
-    }
-    for (var i = 0; i < 3; i++) {
-        var valueToAdd = downDirection[i];
-        var cellWhereToDrop = (startingCell + valueToAdd);
-        if (cellWhereToDrop >= 0 && cellWhereToDrop <= 99) {
-            var chaineTransform = cellWhereToDrop.toString() //chn.substr(début[, longueur])
-            //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
-            if (cellWhereToDrop <= 9) {
-                numberTodeduceYX = "0" + chaineTransform
-                var dropY = parseInt(numberTodeduceYX.substr(0, 1))
-                var dropX = parseInt(numberTodeduceYX.substr(1, 1))
-            } else if (cellWhereToDrop >= 10) {
-                var dropY = parseInt(chaineTransform.substr(0, 1))
-                var dropX = parseInt(chaineTransform.substr(1, 1))
-            }
-            if (board[dropY][dropX].freeCell == true) {
-                var line = this.y;
-                if (dropY !== line) {
-                    highLightning.push(cellWhereToDrop);
-                    board[dropY][dropX].highLightning = true;
-                }
-            } else {
-                i = 3
-            }
+    directionToTest = [leftDirection, downDirection, rightDirection, upDirection]
 
-        }
-    }
-    for (var i = 0; i < 3; i++) {
-        var valueToAdd = rightDirection[i];
-        var cellWhereToDrop = (startingCell + valueToAdd);
-        if (cellWhereToDrop >= 0 && cellWhereToDrop <= 99) {
-            var chaineTransform = cellWhereToDrop.toString() //chn.substr(début[, longueur])
-            //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
-            if (cellWhereToDrop <= 9) {
-                numberTodeduceYX = "0" + chaineTransform
-                var dropY = parseInt(numberTodeduceYX.substr(0, 1))
-                var dropX = parseInt(numberTodeduceYX.substr(1, 1))
-            } else if (cellWhereToDrop >= 10) {
-                var dropY = parseInt(chaineTransform.substr(0, 1))
-                var dropX = parseInt(chaineTransform.substr(1, 1))
-            }
-            if (board[dropY][dropX].freeCell == true) {
-                var line = this.y;
-                if (dropY == line) {
-                    highLightning.push(cellWhereToDrop);
-                    board[dropY][dropX].highLightning = true;
+    for (var j = 0; j < 4; j++) {
+        for (var i = 0; i < 3; i++) {
+            var valueToAdd = directionToTest[j][i];
+            var tryIfFreeCell = (startingCell + valueToAdd);
+            if (tryIfFreeCell >= 0 && tryIfFreeCell <= 99) {
+                var chaineTransform = tryIfFreeCell.toString() //chn.substr(début[, longueur])
+                //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
+                if (tryIfFreeCell <= 9) {
+                    numberTodeduceYX = "0" + chaineTransform
+                    var dropY = parseInt(numberTodeduceYX.substr(0, 1))
+                    var dropX = parseInt(numberTodeduceYX.substr(1, 1))
+                } else if (tryIfFreeCell >= 10) {
+                    var dropY = parseInt(chaineTransform.substr(0, 1))
+                    var dropX = parseInt(chaineTransform.substr(1, 1))
                 }
-            } else {
-                i = 3
-            }
-        }
-    }
-    for (var i = 0; i < 3; i++) {
-        var valueToAdd = upDirection[i];
-        var cellWhereToDrop = (startingCell + valueToAdd);
-        if (cellWhereToDrop >= 0 && cellWhereToDrop <= 99) {
-            var chaineTransform = cellWhereToDrop.toString() //chn.substr(début[, longueur])
-            //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
-            if (cellWhereToDrop <= 9) {
-                numberTodeduceYX = "0" + chaineTransform
-                var dropY = parseInt(numberTodeduceYX.substr(0, 1))
-                var dropX = parseInt(numberTodeduceYX.substr(1, 1))
-            } else if (cellWhereToDrop >= 10) {
-                var dropY = parseInt(chaineTransform.substr(0, 1))
-                var dropX = parseInt(chaineTransform.substr(1, 1))
-            }
-            if (board[dropY][dropX].freeCell == true) {
-                var line = this.y;
-                if (dropY !== line) {
-                    highLightning.push(cellWhereToDrop);
-                    board[dropY][dropX].highLightning = true;
+                if (board[dropY][dropX].freeCell == true) {
+                    var line = this.y;
+                    if (dropY == line) {
+                        highLightning.push(tryIfFreeCell);
+                        board[dropY][dropX].highLightning = true;
+                    } else {
+                        highLightning.push(tryIfFreeCell);
+                        board[dropY][dropX].highLightning = true;
+                    }
+                } else {
+                    i = 3
                 }
-            } else {
-                i = 3
             }
         }
     }
@@ -194,8 +124,8 @@ Character.prototype.tripArea = function (e) {
     // The function will check if key is push or not.
     if (e.keyCode == "37") {
         if (this.remainingMove > 0) {
-            cellWhereToDrop = (this.position - 1);
-            var result = testNearlyCell(cellWhereToDrop, board, this);
+            tryIfFreeCell = (this.position - 1);
+            var result = testNearlyCell(tryIfFreeCell, board, this);
             if (result == true) {
                 return this.remainingMove - 1
             }
@@ -203,8 +133,8 @@ Character.prototype.tripArea = function (e) {
     } // Right
     else if (e.keyCode == "38") {
         if (this.remainingMove > 0) {
-            cellWhereToDrop = (this.position - 10);
-            var result = testNearlyCell(cellWhereToDrop, board, this);
+            tryIfFreeCell = (this.position - 10);
+            var result = testNearlyCell(tryIfFreeCell, board, this);
             if (result == true) {
                 return this.remainingMove - 1
             }
@@ -212,8 +142,8 @@ Character.prototype.tripArea = function (e) {
     } // Upper
     else if (e.keyCode == "39") {
         if (this.remainingMove > 0) {
-            cellWhereToDrop = (this.position + 1);
-            var result = testNearlyCell(cellWhereToDrop, board, this);
+            tryIfFreeCell = (this.position + 1);
+            var result = testNearlyCell(tryIfFreeCell, board, this);
             if (result == true) {
                 return this.remainingMove - 1
             }
@@ -221,8 +151,8 @@ Character.prototype.tripArea = function (e) {
     } // Left
     else if (e.keyCode == "40") {
         if (this.remainingMove > 0) {
-            cellWhereToDrop = (this.position + 10);
-            var result = testNearlyCell(cellWhereToDrop, board, this);
+            tryIfFreeCell = (this.position + 10);
+            var result = testNearlyCell(tryIfFreeCell, board, this);
             if (result == true) {
                 return this.remainingMove - 1
             }

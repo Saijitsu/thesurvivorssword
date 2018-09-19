@@ -3,7 +3,7 @@
 var Tilewidth = 50;
 var ts = new Tileset("basicImage.png");
 
-/*window.onload =*/ function draw() {
+function draw() {
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);

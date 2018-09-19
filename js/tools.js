@@ -138,6 +138,8 @@ canvas.addEventListener("click", function (e) {
     var mousePosition = getMousePosition(canvas, e);
     var message = 'Mouse click position is: ' + (Math.floor(mousePosition.y / 50)) + ',' + (Math.floor(mousePosition.x / 50));
     writeMessage(message);
+    // this = 
+    // this.changeOfPosition(x, y);
 }, false);
 
 function getMousePosition(canvas, e) {
