@@ -170,6 +170,12 @@ Character.prototype.tripArea = function () {
     return highLightning
 }
 
+// changement de position du joueur sur la carte
+Character.prototype.changeOfPosition = function (){
+
+
+}
+
 // Objet joueur premier
 var player1 = new Character("Joueur 1", 100, weapons[0]);
 
