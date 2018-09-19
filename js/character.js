@@ -57,6 +57,7 @@ Character.prototype.equipedWeapons = function () {
     return this.weapons.name
 };
 
+
 // methode in progress =>
 Character.prototype.tripArea = function () {
     var startingCell = this.position
