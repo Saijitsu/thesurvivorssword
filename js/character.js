@@ -159,7 +159,6 @@ Character.prototype.playerMove = function () {
                 var line = this.y;
                 if (dropY !== line) {
                     highLightning.push(cellWhereToDrop)
-
                 }
             } else {
                 i = 3
