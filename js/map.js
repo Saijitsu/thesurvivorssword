@@ -17,12 +17,13 @@ function Map(rows, columns, width, height) {
     this.totalCells = this.rows * this.columns;
 }
 
-function Cell(contain, numberCell, y, x, freeCell) {
+function Cell(contain, numberCell, y, x, freeCell, highLightning ) {
     this.contain = contain;
     this.numberCell = numberCell;
     this.y = y;
     this.x = x;
-    this.freeCell = freeCell; // Cell free by defaut
+    this.freeCell = freeCell; // true by defaut
+    this.highLightning = false; // false by defaut
 }
 
 // Les caractéristiques de la Map

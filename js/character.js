@@ -82,8 +82,8 @@ Character.prototype.playerMove = function () {
             if (board[dropY][dropX].freeCell == true) {
                 var line = this.y;
                 if (dropY == line) {
-                    highLightning.push(cellWhereToDrop)
-
+                    highLightning.push(cellWhereToDrop);
+                    board[dropY][dropX].highLightning = true;
                 }
             } else {
                 i = 3
@@ -107,8 +107,8 @@ Character.prototype.playerMove = function () {
             if (board[dropY][dropX].freeCell == true) {
                 var line = this.y;
                 if (dropY !== line) {
-                    highLightning.push(cellWhereToDrop)
-
+                    highLightning.push(cellWhereToDrop);
+                    board[dropY][dropX].highLightning = true;
                 }
             } else {
                 i = 3
@@ -133,8 +133,8 @@ Character.prototype.playerMove = function () {
             if (board[dropY][dropX].freeCell == true) {
                 var line = this.y;
                 if (dropY == line) {
-                    highLightning.push(cellWhereToDrop)
-
+                    highLightning.push(cellWhereToDrop);
+                    board[dropY][dropX].highLightning = true;
                 }
             } else {
                 i = 3
@@ -158,7 +158,8 @@ Character.prototype.playerMove = function () {
             if (board[dropY][dropX].freeCell == true) {
                 var line = this.y;
                 if (dropY !== line) {
-                    highLightning.push(cellWhereToDrop)
+                    highLightning.push(cellWhereToDrop);
+                    board[dropY][dropX].highLightning = true;
                 }
             } else {
                 i = 3

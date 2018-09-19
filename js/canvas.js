@@ -3,9 +3,10 @@
 var Tilewidth = 50;
 var ts = new Tileset("basicImage.png");
 
-window.onload = function draw() {
+/*window.onload =*/ function draw() {
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     // Variables utiles au canvas
     // vérifier la présence du canvas:
     console.log(canvas);
@@ -17,12 +18,20 @@ window.onload = function draw() {
             switch (board[i][j].contain) {
                 case 0: // Empty Case (like grass)
                     ts.drawTile(1, ctx, dx, dy);
+                    if (board[i][j].highLightning == true) {
+                        ctx.fillStyle = "rgba(255, 255, 0, 0.5)";
+                        ctx.fillRect(dx, dy, Tilewidth, Tilewidth);
+                    } else {}
                     break;
                 case 1: // Obstacle Case
                     ts.drawTile(2, ctx, dx, dy);
                     break;
                 case 2: // Chest
                     ts.drawTile(3, ctx, dx, dy);
+                    if (board[i][j].highLightning == true) {
+                        ctx.fillStyle = "rgba(255, 255, 0, 0.5)";
+                        ctx.fillRect(dx, dy, Tilewidth, Tilewidth);
+                    } else {}
                     break;
                 case players[0]: // Player 1
                     ts.drawTile(4, ctx, dx, dy);
@@ -34,3 +43,5 @@ window.onload = function draw() {
         }
     }
 }
+
+console.log("Starting game, use: draw()")
