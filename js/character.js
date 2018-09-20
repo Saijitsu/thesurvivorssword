@@ -100,10 +100,10 @@ Character.prototype.tripArea = function () {
     console.log(this.name + " can move to this places: " + highLightning)
     return highLightning
 }
-
+  
 // changement de position du joueur sur la carte
 Character.prototype.changeOfPosition = function (){
-
+var highLightningArray = highLightning
 
 }
 
@@ -115,7 +115,6 @@ var player2 = new Character("Joueur 2", 100, weapons[0]);
 
 // Character Array!
 var players = [player1, player2];
-
 
 /*
 // Character move methode with:
