@@ -40,7 +40,8 @@ function containType() {
     } else if ((x + y * board.length) == randomList[10] || (x + y * board.length) == randomList[11] || (x + y * board.length) == randomList[12] ||
         (x + y * board.length) == randomList[13]) {
         var nbCell = x + y * board.length
-        var cell = new Cell(2, nbCell, y, x, true);
+        var weaponId = Math.floor(Math.random() * (weapons.length - 1)) + 1;;
+        var cell = new Cell(weapons[weaponId], nbCell, y, x, true);
         return cell; // Affectation des coffres
     } else if ((x + y * board.length) == randomList[14]) {
         var nbCell = x + y * board.length
@@ -178,18 +179,5 @@ function testContainType() {
     } else {
         console.log("Ceci est un terrain vide");
         return true
-    }
-}
-
-// place were selected player can move: //brouillon
-function testNearlyCell() {
-    var valueToTest = cellWhereToMove;
-    if (valueToTest >= 0 && valueToTest <= 99) {
-        deduceYX(valueToTest);
-        if (board[dropY][dropX].freeCell == true) {
-            return true
-        }
-    } else {
-        return false
     }
 }

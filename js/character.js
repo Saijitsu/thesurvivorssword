@@ -97,13 +97,76 @@ Character.prototype.tripArea = function () {
             }
         }
     }
+    draw();
     console.log(this.name + " can move to this places: " + highLightning)
     return highLightning
 }
   
 // changement de position du joueur sur la carte
 Character.prototype.changeOfPosition = function (){
-var highLightningArray = highLightning
+var highLightningArray = this.tripArea();
+
+//////////////////////////////////////////////////////test a transferer
+// Return where user click on canvas.
+canvas.addEventListener("click", function (e) {
+    var mousePosition = getMousePosition(canvas, e);
+    var deduceY = (Math.floor(mousePosition.y / 50));
+    var deduceX = (Math.floor(mousePosition.x / 50));
+    var message = 'Mouse click position is: ' + deduceY + ',' + deduceX;
+    writeMessage(message);
+    if (board[deduceY][deduceX].highLightning == true){
+        var position = String(deduceY)+ String(deduceX);
+        parseInt(position)
+
+        if(board[deduceY][deduceX].contain == 0){
+            board[deduceY][deduceX].contain = currentPlayer;
+            board[deduceY][deduceX].freeCell = false;
+
+            board[currentPlayer.y][currentPlayer.x].contain == 0;
+            board[currentPlayer.y][currentPlayer.x].freeCell = true;
+             currentPlayer.position = parseInt(position);
+             currentPlayer.y = deduceX
+             currentPlayer.x = deduceY
+        }
+        if(board[deduceY][deduceX].contain == 2){
+            board[deduceY][deduceX].contain = currentPlayer;
+            board[deduceY][deduceX].freeCell = false;
+
+            board[currentPlayer.y][currentPlayer.x].contain == 0;
+            board[currentPlayer.y][currentPlayer.x].freeCell = true;
+             currentPlayer.position = parseInt(position);
+             currentPlayer.y = deduceX
+             currentPlayer.x = deduceY
+        }
+        
+
+         currentPlayer.changeOfPlayerSTour()
+
+    }
+    // this = 
+    // this.changeOfPosition(x, y);
+}, false);
+
+function getMousePosition(canvas, e) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+    };
+}
+/*method which returns the mouse coordinates based on the position 
+ of the client mouse and the position of the canvas obtained from 
+ the getBoundingClientRect() method of the window object:
+ The Element.getBoundingClientRect() method returns 
+ the size of an element and its position relative to the viewport*/
+
+function writeMessage(message) {
+    console.log(message)
+}
+/////////////////////////////////////////////////////////////test a transferer
+}
+
+Character.prototype.changeOfPlayerSTour = function () {
 
 }
 
@@ -115,46 +178,3 @@ var player2 = new Character("Joueur 2", 100, weapons[0]);
 
 // Character Array!
 var players = [player1, player2];
-
-/*
-// Character move methode with:
-Character.prototype.tripArea = function (e) {
-    e.preventDefault(); // No scrolling with keyboard.
-    // The function will check if key is push or not.
-    if (e.keyCode == "37") {
-        if (this.remainingMove > 0) {
-            tryIfFreeCell = (this.position - 1);
-            var result = testNearlyCell(tryIfFreeCell, board, this);
-            if (result == true) {
-                return this.remainingMove - 1
-            }
-        }
-    } // Right
-    else if (e.keyCode == "38") {
-        if (this.remainingMove > 0) {
-            tryIfFreeCell = (this.position - 10);
-            var result = testNearlyCell(tryIfFreeCell, board, this);
-            if (result == true) {
-                return this.remainingMove - 1
-            }
-        }
-    } // Upper
-    else if (e.keyCode == "39") {
-        if (this.remainingMove > 0) {
-            tryIfFreeCell = (this.position + 1);
-            var result = testNearlyCell(tryIfFreeCell, board, this);
-            if (result == true) {
-                return this.remainingMove - 1
-            }
-        }
-    } // Left
-    else if (e.keyCode == "40") {
-        if (this.remainingMove > 0) {
-            tryIfFreeCell = (this.position + 10);
-            var result = testNearlyCell(tryIfFreeCell, board, this);
-            if (result == true) {
-                return this.remainingMove - 1
-            }
-        }
-    } // Lower 
-}*/
