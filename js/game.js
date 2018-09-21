@@ -7,5 +7,5 @@ function start() {
     // the selected player can move
     currentPlayer = players[playerNumber];
     console.log("The player "+ players[playerNumber].name +" can start the game. Good luck!")
-    currentPlayer.changeOfPosition()
+    currentPlayer.tripArea();
 }

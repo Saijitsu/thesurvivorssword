@@ -109,8 +109,10 @@ function DropPlayer2() {
         }
         var cell = new Cell(players[1], cellWhereToDrop, dropY, dropX, false);
         // build list of references
-        board[dropY][dropX] = cell
-        player2.position = cell.numberCell
+        board[dropY][dropX] = cell;
+        player2.position = cell.numberCell;
+        player2.y = dropY;
+        player2.x = dropX;
         console.log("Le Joueur 2 à trouvé ou attérir!")
         return cell
     } else {
@@ -134,74 +136,87 @@ function characterNear() {
     return false;
 }
 
-    // Return where user click on canvas.
-    canvas.addEventListener("click", function (e) {
-        var mousePosition = getMousePosition(canvas, e);
-        var deduceY = (Math.floor(mousePosition.y / 50));
-        var deduceX = (Math.floor(mousePosition.x / 50));
-        var message = 'Mouse click position is: ' + deduceY + ',' + deduceX;
-        writeMessage(message);
-        if (board[deduceY][deduceX].highLightning == true) {
-            var position = String(deduceY) + String(deduceX);
-            parseInt(position)
+// Return where user click on canvas.
+canvas.addEventListener("click", function (e) {
+    var mousePosition = getMousePosition(canvas, e);
+    var deduceY = (Math.floor(mousePosition.y / 50));
+    var deduceX = (Math.floor(mousePosition.x / 50));
+    var message = 'Mouse click position is: ' + deduceY + ',' + deduceX;
+    writeMessage(message);
+    if (board[deduceY][deduceX].highLightning == true) {
+        var position = String(deduceY) + String(deduceX);
+        parseInt(position)
 
-            if (board[deduceY][deduceX].contain == 0) { // Empty Cell
-                board[deduceY][deduceX].contain = currentPlayer;
-                board[deduceY][deduceX].freeCell = false;
+        if (board[deduceY][deduceX].contain == 0) { // Empty Cell
+            board[deduceY][deduceX].contain = currentPlayer;
+            board[deduceY][deduceX].freeCell = false;
 
-                if (currentPlayer.weaponToDeposited == undefined) { // If no weapon to drop
-                    board[currentPlayer.y][currentPlayer.x].contain = 0;
-                    board[currentPlayer.y][currentPlayer.x].freeCell = true;
-                } else { // If weapon to drop
-                    board[currentPlayer.y][currentPlayer.x].contain = currentPlayer.weaponToDeposited;
-                    currentPlayer.weaponToDeposited = undefined;
-                    board[currentPlayer.y][currentPlayer.x].freeCell = true;
-                }
-                board[currentPlayer.y][currentPlayer.x].contain == 0;
+            if (currentPlayer.weaponToDeposited == undefined) { // If no weapon to drop
+                board[currentPlayer.y][currentPlayer.x].contain = 0;
                 board[currentPlayer.y][currentPlayer.x].freeCell = true;
-            } else { // Chest Cell
-                for (var weaponId = 0; weaponId < weapons.length; weaponId++) {
-                    if (board[deduceY][deduceX].contain == weapons[weaponId]) {
-                        board[deduceY][deduceX].contain = currentPlayer;
-                        board[deduceY][deduceX].freeCell = false;
+            } else { // If weapon to drop
+                board[currentPlayer.y][currentPlayer.x].contain = currentPlayer.weaponToDeposited;
+                currentPlayer.weaponToDeposited = undefined;
+                board[currentPlayer.y][currentPlayer.x].freeCell = true;
+            }
+            board[currentPlayer.y][currentPlayer.x].contain == 0;
+            board[currentPlayer.y][currentPlayer.x].freeCell = true;
+        } else { // Chest Cell
+            for (var weaponId = 0; weaponId < weapons.length; weaponId++) {
+                if (board[deduceY][deduceX].contain == weapons[weaponId]) {
+                    board[deduceY][deduceX].contain = currentPlayer;
+                    board[deduceY][deduceX].freeCell = false;
 
-                        if (currentPlayer.weaponToDeposited == undefined) { // If no weapon to drop
-                            board[currentPlayer.y][currentPlayer.x].contain = 0;
-                            board[currentPlayer.y][currentPlayer.x].freeCell = true;
-                            currentPlayer.weaponToDeposited = currentPlayer.weapon;
-                        } else { // If already a weapon to drop
-                            board[currentPlayer.y][currentPlayer.x].contain = currentPlayer.weaponToDeposited;
-                            currentPlayer.weaponToDeposited = currentPlayer.weapon;
-                            board[currentPlayer.y][currentPlayer.x].freeCell = true;
-                        }
-                        currentPlayer.weapon = weapons[weaponId]; // New weapon equiped
-                        currentPlayer.weapon.worn = true;
+                    if (currentPlayer.weaponToDeposited == undefined) { // If no weapon to drop
+                        board[currentPlayer.y][currentPlayer.x].contain = 0;
+                        board[currentPlayer.y][currentPlayer.x].freeCell = true;
+                        currentPlayer.weaponToDeposited = currentPlayer.weapon;
+                    } else { // If already a weapon to drop
+                        board[currentPlayer.y][currentPlayer.x].contain = currentPlayer.weaponToDeposited;
+                        currentPlayer.weaponToDeposited = currentPlayer.weapon;
+                        board[currentPlayer.y][currentPlayer.x].freeCell = true;
                     }
+                    currentPlayer.weapon = weapons[weaponId]; // New weapon equiped
+                    currentPlayer.weapon.worn = true;
                 }
             }
-            currentPlayer.position = parseInt(position);
-            currentPlayer.y = deduceX;
-            currentPlayer.x = deduceY;
-            currentPlayer.changeOfPlayerSTour()
         }
-    }, false);
-
-    function getMousePosition(canvas, e) {
-        var rect = canvas.getBoundingClientRect();
-        return {
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top
-        };
+        currentPlayer.position = parseInt(position);
+        currentPlayer.y = deduceY;
+        currentPlayer.x = deduceX;
+        for (var checkElement = 0; checkElement < highLightning.length; checkElement++) {
+            chaineTransform = highLightning[checkElement].toString() //chn.substr(début[, longueur])
+            //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
+            if (highLightning[checkElement] < 10) {
+                var highLightningY = 0
+                var highLightningX = highLightning[checkElement];
+            } else if (highLightning[checkElement] > 10) {
+                var highLightningY = parseInt(chaineTransform.substr(0, 1))
+                var highLightningX = parseInt(chaineTransform.substr(1, 1))
+            }
+            board[highLightningY][highLightningX].highLightning = false;
+        }
+        draw()// Update canvas
+        currentPlayer.changeOfPlayerSTour()
     }
-    /*method which returns the mouse coordinates based on the position 
-     of the client mouse and the position of the canvas obtained from 
-     the getBoundingClientRect() method of the window object:
-     The Element.getBoundingClientRect() method returns 
-     the size of an element and its position relative to the viewport*/
+}, false);
 
-    function writeMessage(message) {
-        console.log(message)
-    }
+function getMousePosition(canvas, e) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+    };
+}
+/*method which returns the mouse coordinates based on the position 
+ of the client mouse and the position of the canvas obtained from 
+ the getBoundingClientRect() method of the window object:
+ The Element.getBoundingClientRect() method returns 
+ the size of an element and its position relative to the viewport*/
+
+function writeMessage(message) {
+    console.log(message)
+}
 
 //////////////////////////// test: brouillon, non efficiant, devenu obsolète ///////////////////////////////////////
 // test le contenu des cases.

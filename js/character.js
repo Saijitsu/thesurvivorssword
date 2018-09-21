@@ -61,7 +61,6 @@ Character.prototype.equipedWeapon = function () {
 // methode in progress =>
 Character.prototype.tripArea = function () {
     var startingCell = this.position
-    var highLightning = [] // A alimenter avec les cellules a mettre en surbrillance.
     leftDirection = [-1, -2, -3]
     downDirection = [10, 20, 30]
     rightDirection = [1, 2, 3]
@@ -105,13 +104,12 @@ Character.prototype.tripArea = function () {
     }
     draw();
     console.log(this.name + " can move to this places: " + highLightning)
-    return highLightning
 }
 
 // changement de position du joueur sur la carte
-Character.prototype.changeOfPosition = function () {
-    var highLightningArray = this.tripArea();
-}
+//Character.prototype.changeOfPosition = function () {
+//    var highLightningArray = this.tripArea();
+//}
 
 Character.prototype.changeOfPlayerSTour = function () {
     if (currentPlayer == players[0]) {
@@ -119,6 +117,8 @@ Character.prototype.changeOfPlayerSTour = function () {
     } else {
         currentPlayer = players[0]
     }
+    highLightning = []
+    currentPlayer.tripArea() // Trip Area of current player.
 }
 
 // Objet joueur premier
