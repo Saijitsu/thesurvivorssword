@@ -134,31 +134,74 @@ function characterNear() {
     return false;
 }
 
-// Return where user click on canvas.
-canvas.addEventListener("click", function (e) {
-    var mousePosition = getMousePosition(canvas, e);
-    var message = 'Mouse click position is: ' + (Math.floor(mousePosition.y / 50)) + ',' + (Math.floor(mousePosition.x / 50));
-    writeMessage(message);
-    // this = 
-    // this.changeOfPosition(x, y);
-}, false);
+    // Return where user click on canvas.
+    canvas.addEventListener("click", function (e) {
+        var mousePosition = getMousePosition(canvas, e);
+        var deduceY = (Math.floor(mousePosition.y / 50));
+        var deduceX = (Math.floor(mousePosition.x / 50));
+        var message = 'Mouse click position is: ' + deduceY + ',' + deduceX;
+        writeMessage(message);
+        if (board[deduceY][deduceX].highLightning == true) {
+            var position = String(deduceY) + String(deduceX);
+            parseInt(position)
 
-function getMousePosition(canvas, e) {
-    var rect = canvas.getBoundingClientRect();
-    return {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top
-    };
-}
-/*method which returns the mouse coordinates based on the position 
- of the client mouse and the position of the canvas obtained from 
- the getBoundingClientRect() method of the window object:
- The Element.getBoundingClientRect() method returns 
- the size of an element and its position relative to the viewport*/
+            if (board[deduceY][deduceX].contain == 0) { // Empty Cell
+                board[deduceY][deduceX].contain = currentPlayer;
+                board[deduceY][deduceX].freeCell = false;
 
-function writeMessage(message) {
-    console.log(message)
-}
+                if (currentPlayer.weaponToDeposited == undefined) { // If no weapon to drop
+                    board[currentPlayer.y][currentPlayer.x].contain = 0;
+                    board[currentPlayer.y][currentPlayer.x].freeCell = true;
+                } else { // If weapon to drop
+                    board[currentPlayer.y][currentPlayer.x].contain = currentPlayer.weaponToDeposited;
+                    currentPlayer.weaponToDeposited = undefined;
+                    board[currentPlayer.y][currentPlayer.x].freeCell = true;
+                }
+                board[currentPlayer.y][currentPlayer.x].contain == 0;
+                board[currentPlayer.y][currentPlayer.x].freeCell = true;
+            } else { // Chest Cell
+                for (var weaponId = 0; weaponId < weapons.length; weaponId++) {
+                    if (board[deduceY][deduceX].contain == weapons[weaponId]) {
+                        board[deduceY][deduceX].contain = currentPlayer;
+                        board[deduceY][deduceX].freeCell = false;
+
+                        if (currentPlayer.weaponToDeposited == undefined) { // If no weapon to drop
+                            board[currentPlayer.y][currentPlayer.x].contain = 0;
+                            board[currentPlayer.y][currentPlayer.x].freeCell = true;
+                            currentPlayer.weaponToDeposited = currentPlayer.weapon;
+                        } else { // If already a weapon to drop
+                            board[currentPlayer.y][currentPlayer.x].contain = currentPlayer.weaponToDeposited;
+                            currentPlayer.weaponToDeposited = currentPlayer.weapon;
+                            board[currentPlayer.y][currentPlayer.x].freeCell = true;
+                        }
+                        currentPlayer.weapon = weapons[weaponId]; // New weapon equiped
+                        currentPlayer.weapon.worn = true;
+                    }
+                }
+            }
+            currentPlayer.position = parseInt(position);
+            currentPlayer.y = deduceX;
+            currentPlayer.x = deduceY;
+            currentPlayer.changeOfPlayerSTour()
+        }
+    }, false);
+
+    function getMousePosition(canvas, e) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
+        };
+    }
+    /*method which returns the mouse coordinates based on the position 
+     of the client mouse and the position of the canvas obtained from 
+     the getBoundingClientRect() method of the window object:
+     The Element.getBoundingClientRect() method returns 
+     the size of an element and its position relative to the viewport*/
+
+    function writeMessage(message) {
+        console.log(message)
+    }
 
 //////////////////////////// test: brouillon, non efficiant, devenu obsolète ///////////////////////////////////////
 // test le contenu des cases.
