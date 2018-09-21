@@ -17,9 +17,9 @@ var peasantSword = new Weapons("Peasant Sword", 10, true);
 // Objet Arme 1
 var swordOfWind = new Weapons("Sword Of Wind", 13, false);
 // Objet Arme 2
-var swordOfFire = new Weapons("Sword Of Wind", 15, false);
+var swordOfFire = new Weapons("Sword Of Fire", 15, false);
 // Objet Arme 3
-var swordOfThunder = new Weapons("Sword Of Wind", 17, false);
+var swordOfThunder = new Weapons("Sword Of Thunder", 17, false);
 // Objet Arme 4
 var magicWand = new Weapons("Magic Wand", 14, false);
 // Objet Arme 5
