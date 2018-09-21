@@ -84,11 +84,16 @@ Character.prototype.tripArea = function () {
                     var dropX = parseInt(chaineTransform.substr(1, 1))
                 }
                 if (board[dropY][dropX].freeCell == true) {
-                    var line = this.y;
-                    if (dropY == line) {
-                        highLightning.push(tryIfFreeCell);
-                        board[dropY][dropX].highLightning = true;
-                    } else {
+                    if (j == 0 || j == 2) {
+                        var line = this.y;
+                        if (dropY == line) {
+                            highLightning.push(tryIfFreeCell);
+                            board[dropY][dropX].highLightning = true;
+                        } else {
+                            i = 3
+                        }
+                    }
+                    if (j == 1 || j == 3) {
                         highLightning.push(tryIfFreeCell);
                         board[dropY][dropX].highLightning = true;
                     }
@@ -119,33 +124,45 @@ Character.prototype.changeOfPosition = function () {
             var position = String(deduceY) + String(deduceX);
             parseInt(position)
 
-            if (board[deduceY][deduceX].contain == 0) {
+            if (board[deduceY][deduceX].contain == 0) { // Empty Cell
                 board[deduceY][deduceX].contain = currentPlayer;
                 board[deduceY][deduceX].freeCell = false;
 
+                if (currentPlayer.weaponToDeposited == undefined) { // If no weapon to drop
+                    board[currentPlayer.y][currentPlayer.x].contain = 0;
+                    board[currentPlayer.y][currentPlayer.x].freeCell = true;
+                } else { // If weapon to drop
+                    board[currentPlayer.y][currentPlayer.x].contain = currentPlayer.weaponToDeposited;
+                    currentPlayer.weaponToDeposited = undefined;
+                    board[currentPlayer.y][currentPlayer.x].freeCell = true;
+                }
                 board[currentPlayer.y][currentPlayer.x].contain == 0;
                 board[currentPlayer.y][currentPlayer.x].freeCell = true;
-                currentPlayer.position = parseInt(position);
-                currentPlayer.y = deduceX
-                currentPlayer.x = deduceY
-            }
-            for (var weaponId = 0; weaponId < weapon.length; weaponId++) {
-                if (board[deduceY][deduceX].contain == weapon[weaponId]) {
-                    board[deduceY][deduceX].contain = currentPlayer;
-                    board[deduceY][deduceX].freeCell = false;
+            } else { // Chest Cell
+                for (var weaponId = 0; weaponId < weapon.length; weaponId++) {
+                    if (board[deduceY][deduceX].contain == weapon[weaponId]) {
+                        board[deduceY][deduceX].contain = currentPlayer;
+                        board[deduceY][deduceX].freeCell = false;
 
-                    board[currentPlayer.y][currentPlayer.x].contain == 0;
-                    board[currentPlayer.y][currentPlayer.x].freeCell = true;
-                    currentPlayer.position = parseInt(position);
-                    currentPlayer.weaponToDeposited = weapon[weaponId];
-                    currentPlayer.y = deduceX;
-                    currentPlayer.x = deduceY;
+                        if (currentPlayer.weaponToDeposited == undefined) { // If no weapon to drop
+                            board[currentPlayer.y][currentPlayer.x].contain = 0;
+                            board[currentPlayer.y][currentPlayer.x].freeCell = true;
+                            currentPlayer.weaponToDeposited = currentPlayer.weapon;
+                        } else { // If already a weapon to drop
+                            board[currentPlayer.y][currentPlayer.x].contain = currentPlayer.weaponToDeposited;
+                            currentPlayer.weaponToDeposited = currentPlayer.weapon;
+                            board[currentPlayer.y][currentPlayer.x].freeCell = true;
+                        }
+                        currentPlayer.weapon = weapon[weaponId]; // New weapon equiped
+                        currentPlayer.weapon.worn = true;
+                    }
                 }
             }
+            currentPlayer.position = parseInt(position);
+            currentPlayer.y = deduceX;
+            currentPlayer.x = deduceY;
             currentPlayer.changeOfPlayerSTour()
         }
-        // this = 
-        // this.changeOfPosition(x, y);
     }, false);
 
     function getMousePosition(canvas, e) {
@@ -168,18 +185,10 @@ Character.prototype.changeOfPosition = function () {
 }
 
 Character.prototype.changeOfPlayerSTour = function () {
-    if (currentPlayer.weaponToDeposited == undefined) {
-        if (currentPlayer == player[0]) {
-            currentPlayer = player[1]
-        } else {
-            currentPlayer = player[0]
-        }
+    if (currentPlayer == player[0]) {
+        currentPlayer = player[1]
     } else {
-        if (currentPlayer == player[0]) {
-            currentPlayer = player[1]
-        } else {
-            currentPlayer = player[0]
-        }
+        currentPlayer = player[0]
     }
 }
 
