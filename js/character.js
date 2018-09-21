@@ -1,10 +1,11 @@
 ////////////////////////////////////// CHARACTER AND WEAPONS //////////////////////////////////////////
 // Les Personnages-------------------------------------------------------------------------------------
 
-function Character(name, heal, weapons, position, remainingMove, y, x) { //Constructeur
+function Character(name, heal, weapon, weaponToDeposited, position, remainingMove, y, x) { //Constructeur
     this.name = name;
     this.heal = heal;
-    this.weapons = weapons;
+    this.weapon = weapon;
+    this.weaponToDeposited = weaponToDeposited;
     this.position = position;
     this.remainingMove = remainingMove;
     this.y = y;
@@ -14,7 +15,7 @@ function Character(name, heal, weapons, position, remainingMove, y, x) { //Const
 Character.prototype.describe = function () {
     var description = this.name + " est sur la case n°" + this.id().position + " et dispose de " +
         this.heal + " points de vie, il est équipé de l'arme : \"" +
-        this.equipedWeapons() + "\" et peut infliger " +
+        this.equipedWeapon() + "\" et peut infliger " +
         this.dommageDeal() + " dégâts à chaque attaque au " + this.opponent().name +
         " qui est installé sur la case n°" + this.opponent().position + ".";
     return description;
@@ -49,12 +50,12 @@ Character.prototype.opponent = function () {
 
 // Le joueur équipe une arme et profite d'un bonus de puissance en conséquence.
 Character.prototype.dommageDeal = function () {
-    return this.weapons.power
+    return this.weapon.power
 };
 
 // Le joueur équipe une arme du nom de:
-Character.prototype.equipedWeapons = function () {
-    return this.weapons.name
+Character.prototype.equipedWeapon = function () {
+    return this.weapon.name
 };
 
 // methode in progress =>
@@ -101,73 +102,85 @@ Character.prototype.tripArea = function () {
     console.log(this.name + " can move to this places: " + highLightning)
     return highLightning
 }
-  
+
 // changement de position du joueur sur la carte
-Character.prototype.changeOfPosition = function (){
-var highLightningArray = this.tripArea();
+Character.prototype.changeOfPosition = function () {
+    var highLightningArray = this.tripArea();
 
-//////////////////////////////////////////////////////test a transferer
-// Return where user click on canvas.
-canvas.addEventListener("click", function (e) {
-    var mousePosition = getMousePosition(canvas, e);
-    var deduceY = (Math.floor(mousePosition.y / 50));
-    var deduceX = (Math.floor(mousePosition.x / 50));
-    var message = 'Mouse click position is: ' + deduceY + ',' + deduceX;
-    writeMessage(message);
-    if (board[deduceY][deduceX].highLightning == true){
-        var position = String(deduceY)+ String(deduceX);
-        parseInt(position)
+    //////////////////////////////////////////////////////test a transferer
+    // Return where user click on canvas.
+    canvas.addEventListener("click", function (e) {
+        var mousePosition = getMousePosition(canvas, e);
+        var deduceY = (Math.floor(mousePosition.y / 50));
+        var deduceX = (Math.floor(mousePosition.x / 50));
+        var message = 'Mouse click position is: ' + deduceY + ',' + deduceX;
+        writeMessage(message);
+        if (board[deduceY][deduceX].highLightning == true) {
+            var position = String(deduceY) + String(deduceX);
+            parseInt(position)
 
-        if(board[deduceY][deduceX].contain == 0){
-            board[deduceY][deduceX].contain = currentPlayer;
-            board[deduceY][deduceX].freeCell = false;
+            if (board[deduceY][deduceX].contain == 0) {
+                board[deduceY][deduceX].contain = currentPlayer;
+                board[deduceY][deduceX].freeCell = false;
 
-            board[currentPlayer.y][currentPlayer.x].contain == 0;
-            board[currentPlayer.y][currentPlayer.x].freeCell = true;
-             currentPlayer.position = parseInt(position);
-             currentPlayer.y = deduceX
-             currentPlayer.x = deduceY
+                board[currentPlayer.y][currentPlayer.x].contain == 0;
+                board[currentPlayer.y][currentPlayer.x].freeCell = true;
+                currentPlayer.position = parseInt(position);
+                currentPlayer.y = deduceX
+                currentPlayer.x = deduceY
+            }
+            for (var weaponId = 0; weaponId < weapon.length; weaponId++) {
+                if (board[deduceY][deduceX].contain == weapon[weaponId]) {
+                    board[deduceY][deduceX].contain = currentPlayer;
+                    board[deduceY][deduceX].freeCell = false;
+
+                    board[currentPlayer.y][currentPlayer.x].contain == 0;
+                    board[currentPlayer.y][currentPlayer.x].freeCell = true;
+                    currentPlayer.position = parseInt(position);
+                    currentPlayer.weaponToDeposited = weapon[weaponId];
+                    currentPlayer.y = deduceX;
+                    currentPlayer.x = deduceY;
+                }
+            }
+            currentPlayer.changeOfPlayerSTour()
         }
-        if(board[deduceY][deduceX].contain == 2){
-            board[deduceY][deduceX].contain = currentPlayer;
-            board[deduceY][deduceX].freeCell = false;
+        // this = 
+        // this.changeOfPosition(x, y);
+    }, false);
 
-            board[currentPlayer.y][currentPlayer.x].contain == 0;
-            board[currentPlayer.y][currentPlayer.x].freeCell = true;
-             currentPlayer.position = parseInt(position);
-             currentPlayer.y = deduceX
-             currentPlayer.x = deduceY
-        }
-        
-
-         currentPlayer.changeOfPlayerSTour()
-
+    function getMousePosition(canvas, e) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
+        };
     }
-    // this = 
-    // this.changeOfPosition(x, y);
-}, false);
+    /*method which returns the mouse coordinates based on the position 
+     of the client mouse and the position of the canvas obtained from 
+     the getBoundingClientRect() method of the window object:
+     The Element.getBoundingClientRect() method returns 
+     the size of an element and its position relative to the viewport*/
 
-function getMousePosition(canvas, e) {
-    var rect = canvas.getBoundingClientRect();
-    return {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top
-    };
-}
-/*method which returns the mouse coordinates based on the position 
- of the client mouse and the position of the canvas obtained from 
- the getBoundingClientRect() method of the window object:
- The Element.getBoundingClientRect() method returns 
- the size of an element and its position relative to the viewport*/
-
-function writeMessage(message) {
-    console.log(message)
-}
-/////////////////////////////////////////////////////////////test a transferer
+    function writeMessage(message) {
+        console.log(message)
+    }
+    /////////////////////////////////////////////////////////////test a transferer
 }
 
 Character.prototype.changeOfPlayerSTour = function () {
-
+    if (currentPlayer.weaponToDeposited == undefined) {
+        if (currentPlayer == player[0]) {
+            currentPlayer = player[1]
+        } else {
+            currentPlayer = player[0]
+        }
+    } else {
+        if (currentPlayer == player[0]) {
+            currentPlayer = player[1]
+        } else {
+            currentPlayer = player[0]
+        }
+    }
 }
 
 // Objet joueur premier
