@@ -39,7 +39,7 @@ function containType() {
         return cell; // Affectation des cellules obstacles
     } else if ((x + y * board.length) == randomList[10] || (x + y * board.length) == randomList[11] || (x + y * board.length) == randomList[12] ||
         (x + y * board.length) == randomList[13]) {
-        var nbCell = x + y * board.length
+        var nbCell = x + y * board.length;
         var weaponId = Math.floor(Math.random() * (weapons.length - 1)) + 1;;
         var cell = new Cell(weapons[weaponId], nbCell, y, x, true);
         return cell; // Affectation des coffres

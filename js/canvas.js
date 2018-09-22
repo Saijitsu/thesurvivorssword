@@ -27,8 +27,7 @@ function draw() {
                     break;
 ////// Zone A réduire début /////////////
                 case weapons[0]: // Tresure Chest
-                    ctx.fillStyle = "red";
-                    ctx.fillRect(dx, dy, Tilewidth, Tilewidth);
+                     ts.drawTile(6, ctx, dx, dy);
                     if (board[i][j].highLightning == true) {
                         ctx.fillStyle = "rgba(233, 56, 63, 0.3)";
                         ctx.fillRect(dx, dy, Tilewidth, Tilewidth);
@@ -38,8 +37,7 @@ function draw() {
                     if (weapons[1].worn == false) {
                         ts.drawTile(3, ctx, dx, dy);
                     } else if (weapons[1].worn == true) {
-                        ctx.fillStyle = "red";
-                        ctx.fillRect(dx, dy, Tilewidth, Tilewidth);
+                         ts.drawTile(7, ctx, dx, dy);
                     }
                     if (board[i][j].highLightning == true) {
                         ctx.fillStyle = "rgba(233, 56, 63, 0.3)";
@@ -50,8 +48,7 @@ function draw() {
                     if (weapons[2].worn == false) {
                         ts.drawTile(3, ctx, dx, dy);
                     } else if (weapons[2].worn == true) {
-                        ctx.fillStyle = "red";
-                        ctx.fillRect(dx, dy, Tilewidth, Tilewidth);
+                         ts.drawTile(8, ctx, dx, dy);
                     }
                     if (board[i][j].highLightning == true) {
                         ctx.fillStyle = "rgba(233, 56, 63, 0.3)";
@@ -62,8 +59,7 @@ function draw() {
                     if (weapons[3].worn == false) {
                         ts.drawTile(3, ctx, dx, dy);
                     } else if (weapons[3].worn == true) {
-                        ctx.fillStyle = "red";
-                        ctx.fillRect(dx, dy, Tilewidth, Tilewidth);
+                         ts.drawTile(9, ctx, dx, dy);
                     }
                     if (board[i][j].highLightning == true) {
                         ctx.fillStyle = "rgba(233, 56, 63, 0.3)";
@@ -74,8 +70,7 @@ function draw() {
                     if (weapons[4].worn == false) {
                         ts.drawTile(3, ctx, dx, dy);
                     } else if (weapons[4].worn == true) {
-                        ctx.fillStyle = "red";
-                        ctx.fillRect(dx, dy, Tilewidth, Tilewidth);
+                         ts.drawTile(10, ctx, dx, dy);
                     }
                     if (board[i][j].highLightning == true) {
                         ctx.fillStyle = "rgba(233, 56, 63, 0.3)";
@@ -86,8 +81,7 @@ function draw() {
                     if (weapons[5].worn == false) {
                         ts.drawTile(3, ctx, dx, dy);
                     } else if (weapons[5].worn == true) {
-                        ctx.fillStyle = "red";
-                        ctx.fillRect(dx, dy, Tilewidth, Tilewidth);
+                         ts.drawTile(11, ctx, dx, dy);
                     }
                     if (board[i][j].highLightning == true) {
                         ctx.fillStyle = "rgba(233, 56, 63, 0.3)";
@@ -98,8 +92,7 @@ function draw() {
                     if (weapons[6].worn == false) {
                         ts.drawTile(3, ctx, dx, dy);
                     } else if (weapons[6].worn == true) {
-                        ctx.fillStyle = "red";
-                        ctx.fillRect(dx, dy, Tilewidth, Tilewidth);
+                         ts.drawTile(12, ctx, dx, dy);
                     }
                     if (board[i][j].highLightning == true) {
                         ctx.fillStyle = "rgba(233, 56, 63, 0.3)";
