@@ -33,18 +33,21 @@ function containType() {
         (x + y * board.length) == randomList[3] || (x + y * board.length) == randomList[4] || (x + y * board.length) == randomList[5] ||
         (x + y * board.length) == randomList[6] || (x + y * board.length) == randomList[7] || (x + y * board.length) == randomList[8] ||
         (x + y * board.length) == randomList[9]) {
-        var nbCell = x + y * board.length
-        var cell = new Cell(1, nbCell, y, x, false);
+        var nbCell = x + y * board.length;
+        var designIs = getRandomIntInclusive(1, 3);
+        var cell = new Cell(1, nbCell, y, x, false, designIs);
         // build list of references
         return cell; // Affectation des cellules obstacles
     } else if ((x + y * board.length) == randomList[10] || (x + y * board.length) == randomList[11] || (x + y * board.length) == randomList[12] ||
         (x + y * board.length) == randomList[13]) {
         var nbCell = x + y * board.length;
-        var weaponId = Math.floor(Math.random() * (weapons.length - 1)) + 1;;
-        var cell = new Cell(weapons[weaponId], nbCell, y, x, true);
+        var selectEntry = Math.floor(Math.random() * weaponsEntry.length);
+        weaponsId = weaponsEntry[selectEntry];
+        var cell = new Cell(weapons[weaponsId], nbCell, y, x, true);
+        weaponsEntry.splice(selectEntry, 1);
         return cell; // Affectation des coffres
     } else if ((x + y * board.length) == randomList[14]) {
-        var nbCell = x + y * board.length
+        var nbCell = x + y * board.length;
         var cell = new Cell(players[0], nbCell, y, x, false);
         player1.position = cell.numberCell;
         player1.y = y;
@@ -52,7 +55,7 @@ function containType() {
         return cell; // Affectation du Joueur 1
     } else if ((x + y * board.length) == randomList[15]) {
         if (characterNear(x, y, board.length, board, numberToTest = randomList[15]) == false) {
-            var nbCell = x + y * board.length
+            var nbCell = x + y * board.length;
             var cell = new Cell(players[1], nbCell, y, x, false);
             player2.position = cell.numberCell;
             player2.y = y;
@@ -60,21 +63,22 @@ function containType() {
             return cell; // Safe zone: Affectation du Joueur 2
         } else if (characterNear(x, y, board.length, board, numberToTest = randomList[15]) == true) {
             DropPlayer2() // Unsafe zone: Nouvelle Affectation du Joueur 2
-            var nbCell = x + y * board.length
+            var nbCell = x + y * board.length;
             var cell = new Cell(0, nbCell, y, x, true);
             return cell; // Joueur 1 proche: Affectation d'une cellule vide.
         }
     } else {
         if (board[y][x] !== undefined) {
-            var nbCell = x + y * board.length
+            var nbCell = x + y * board.length;
             var cell = new Cell(players[1], nbCell, y, x, false);
-            player2.position = cell.numberCell
+            player2.position = cell.numberCell;
             player2.y = y;
             player2.x = x;
             return cell; // Confirmation de la Cellule Joueur 2{
         } else {
-            var nbCell = x + y * board.length
-            var cell = new Cell(0, nbCell, y, x, true);
+            var nbCell = x + y * board.length;
+            var designIs = getRandomIntInclusive(1, 3);
+            var cell = new Cell(0, nbCell, y, x, true, designIs);
             return cell; // Affectation par défaut de cellules vides
         }
     }
@@ -196,7 +200,7 @@ canvas.addEventListener("click", function (e) {
             }
             board[highLightningY][highLightningX].highLightning = false;
         }
-        draw()// Update canvas
+        draw() // Update canvas
         currentPlayer.changeOfPlayerSTour()
     }
 }, false);

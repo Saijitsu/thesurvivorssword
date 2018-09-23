@@ -29,3 +29,10 @@ var ironHammer = new Weapons("Iron Hammer", 19, false);
 
 // Weapons Array!
 var weapons = [peasantSword, swordOfWind, swordOfFire, swordOfThunder, magicWand, bowOfLight, ironHammer]
+
+// Array of entry in weapons Array (less the first one):
+var weaponsEntry = []
+for (var entry = 1; entry < weapons.length; entry++) {
+    weaponsEntry.push(entry)
+}
+weaponsEntry.shuffle();

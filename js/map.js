@@ -17,13 +17,15 @@ function Map(rows, columns, width, height) {
     this.totalCells = this.rows * this.columns;
 }
 
-function Cell(contain, numberCell, y, x, freeCell, highLightning ) {
+function Cell(contain, numberCell, y, x, freeCell, design, highLightning) {
     this.contain = contain;
     this.numberCell = numberCell;
     this.y = y;
     this.x = x;
     this.freeCell = freeCell; // true by defaut
+    this.design = design;
     this.highLightning = false; // false by defaut
+    
 }
 
 // Les caractéristiques de la Map
@@ -38,7 +40,7 @@ for (var i = 0; i < myMap.rows; i++) {
 // définition du contenu du tableau
 for (var y = 0; y < (board.length); y++) {
     for (var x = 0; x < (board.length); x++) {
-       
+
         // create the object and store a reference to the cell object so you can do something with it later
         var containTypeCell = containType(x, y, board.length, board)
         board[y][x] = containTypeCell
