@@ -29,4 +29,3 @@ elmt.style.background = lineargradient;
 elmt.style.border = "1px solid #ccc";
 elmt.style.width = "\"" + width + "\"";
 elmt.style.height = "\"" + height + "\"";
-elmt.style.height = "\"" + width + "\"";
