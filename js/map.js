@@ -29,7 +29,7 @@ function Cell(contain, numberCell, y, x, freeCell, design, highLightning) {
 }
 
 // Les caractéristiques de la Map
-var myMap = new Map(10, 10, 500, 500);
+var myMap = new Map(rows, columns, width, height);
 
 // creation du tableau
 var board = new Array(myMap.columns);

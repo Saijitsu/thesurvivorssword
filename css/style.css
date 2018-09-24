@@ -1,17 +1,11 @@
-
-body
-{
-background-image: url("../image/backgroundLink.png");
-  background-size: cover; 
+body {
+  background-image: url("../image/backgroundLink.png");
+  background-size: cover;
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
 }
-#game
-{
-    margin-top: 10%;
-    margin-bottom: 10%;
-    margin-left: auto;
-    margin-right:auto;
-    width: 500px
+
+#game {
+  margin: 2%;
 }

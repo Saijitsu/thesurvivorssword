@@ -18,7 +18,7 @@ Array.prototype.shuffle = function (n) {
     }
 }
 var randomList = new Array();
-for (i = 0; i < 100 /*myMap.totalCells*/ ; i++) {
+for (i = 0; i < totalCells; i++) {
     randomList[i] = i;
 }
 
@@ -98,7 +98,7 @@ function getRandomIntInclusive(min, max) {
 function DropPlayer2() {
     console.log("Il n'y eu un contact entre les joueurs à la création du terrain! \nL'emplacement Joueur 2 a été réinitialisé")
     var min = 16;
-    var max = 99;
+    var max = totalCells - 1
     var numberDropTry = getRandomIntInclusive(min, max);
     if (characterNear(x, y, board.length, board, numberToTest = randomList[numberDropTry]) == false) {
         var cellWhereToDrop = randomList[numberDropTry]
@@ -143,8 +143,8 @@ function characterNear() {
 // Return where user click on canvas.
 canvas.addEventListener("click", function (e) {
     var mousePosition = getMousePosition(canvas, e);
-    var deduceY = (Math.floor(mousePosition.y / 50));
-    var deduceX = (Math.floor(mousePosition.x / 50));
+    var deduceY = (Math.floor(mousePosition.y / tilePixelCut));
+    var deduceX = (Math.floor(mousePosition.x / tilePixelCut));
     var message = 'Mouse click position is: ' + deduceY + ',' + deduceX;
     writeMessage(message);
     if (board[deduceY][deduceX].highLightning == true) {

@@ -71,7 +71,7 @@ Character.prototype.tripArea = function () {
         for (var i = 0; i < 3; i++) {
             var valueToAdd = directionToTest[j][i];
             var tryIfFreeCell = (startingCell + valueToAdd);
-            if (tryIfFreeCell >= 0 && tryIfFreeCell <= 99) {
+            if (tryIfFreeCell >= 0 && tryIfFreeCell <= totalCells-1) {
                 var chaineTransform = tryIfFreeCell.toString() //chn.substr(début[, longueur])
                 //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
                 if (tryIfFreeCell <= 9) {
