@@ -107,7 +107,7 @@ function DropPlayer2() {
         if (cellWhereToDrop < 10) {
             var dropY = 0
             var dropX = cellWhereToDrop;
-        } else if (cellWhereToDrop > 10) {
+        } else if (cellWhereToDrop >= 10) {
             var dropY = parseInt(chaineTransform.substr(0, 1))
             var dropX = parseInt(chaineTransform.substr(1, 1))
         }
@@ -194,7 +194,7 @@ canvas.addEventListener("click", function (e) {
             if (highLightning[checkElement] < 10) {
                 var highLightningY = 0
                 var highLightningX = highLightning[checkElement];
-            } else if (highLightning[checkElement] > 10) {
+            } else if (highLightning[checkElement] >= 10) {
                 var highLightningY = parseInt(chaineTransform.substr(0, 1))
                 var highLightningX = parseInt(chaineTransform.substr(1, 1))
             }
