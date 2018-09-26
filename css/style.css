@@ -7,10 +7,6 @@ body {
   padding: 0;
 }
 
-#game {
-  margin: 2%;
-}
-
 #canvas{
 background: #567d46;
 display: inline-block;
