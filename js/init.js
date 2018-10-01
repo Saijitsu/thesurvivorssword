@@ -1,5 +1,7 @@
 // Variables gobales et variables définies par l'utilisateur
 var numbersOfPlayers = 2;
+var obstacleCell = 10;
+var chestCell = 4;
 var currentPlayer = null;
 var highLightning = [] // A alimenter avec les cellules a mettre en surbrillance.
 var rows = 10;

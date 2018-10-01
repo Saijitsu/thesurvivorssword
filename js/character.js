@@ -1,13 +1,12 @@
 ////////////////////////////////////// CHARACTER AND WEAPONS //////////////////////////////////////////
 // Les Personnages-------------------------------------------------------------------------------------
 
-function Character(name, heal, weapon, weaponToDeposited, position, remainingMove, y, x) { //Constructeur
+function Character(name, heal, weapon, weaponToDeposited, position, y, x) { //Constructeur
     this.name = name;
     this.heal = heal;
     this.weapon = weapon;
     this.weaponToDeposited = weaponToDeposited;
     this.position = position;
-    this.remainingMove = remainingMove;
     this.y = y;
     this.x = x;
 };
@@ -119,6 +118,12 @@ Character.prototype.changeOfPlayerSTour = function () {
     }
     highLightning = []
     currentPlayer.tripArea() // Trip Area of current player.
+}
+
+Character.prototype.registrationOfCoordinates = function () {
+    this.position = cell.numberCell;
+    this.y = y;
+    this.x = x;  
 }
 
 // Objet joueur premier
