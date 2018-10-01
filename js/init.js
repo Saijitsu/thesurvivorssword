@@ -8,6 +8,8 @@ var width = columns * 50;
 var height = rows * 50;
 var totalCells = rows * columns;
 var tilePixelCut = 50;
+var yOnClick = null;
+var xOnClick = null;
 
 function getGradiantBackground() {
     var valuesOfHex = ["#9dc183", "#708238", "#00A86B", "#00A572", "#66FF66", "#B4D7BF", "#66CDAA", "#36DBCA", "#0AC92B", "#BCED91", "#8CDD81", "#90FEFB"];

@@ -42,7 +42,8 @@ for (var y = 0; y < (board.length); y++) {
     for (var x = 0; x < (board.length); x++) {
 
         // create the object and store a reference to the cell object so you can do something with it later
-        var containTypeCell = containType(x, y, board.length, board)
+        var currentCellPosition = x + y * board.length;
+        var containTypeCell = containType(x, y, board.length, board, currentCellPosition)
         board[y][x] = containTypeCell
     }
 }
