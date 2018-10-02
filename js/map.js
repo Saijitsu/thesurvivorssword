@@ -40,10 +40,11 @@ for (var i = 0; i < myMap.rows; i++) {
 // définition du contenu du tableau
 for (var y = 0; y < (board.length); y++) {
     for (var x = 0; x < (board.length); x++) {
-var currentCellPosition = x + y * board.length
+var currentCellPosition = x + y * board.length;
         // create the object and store a reference to the cell object so you can do something with it later
-        var containTypeCell = containType(x, y, board.length, board, currentCellPosition)
-        board[y][x] = containTypeCell
+        var containTypeCell = containType(x, y, board.length, board, currentCellPosition);
+        board[y][x] = containTypeCell;
+        cellList.push(containTypeCell);
     }
 }
 console.log(board);

@@ -57,12 +57,14 @@ Character.prototype.equipedWeapon = function () {
     return this.weapon.name
 };
 
-Character.prototype.characterNear = function() {
+Character.prototype.characterNear = function () {
     var firstCellNumber = randomList[obstacleCell + chestCell]
     var secondCellNumber = numberToTest
 
-    var valueToTest = [1, 2, 3, 4, 7, 8, 9, 11, 12, 13, 21, 31, 7, 8, 9, 10,
-        19, 20, 29, 30, 40, -1, -2, -3, -4, -7, -8, -9, -10, -11, -12, -13, -19, -20, -21, -31, -29, -30, -40
+    var valueToTest = [-rows * 4, -(rows * 3 - 1), -rows * 3, -(rows * 3 + 1), -(rows * 2 - 1), -rows * 2,
+        -(rows * 2 + 1), -(rows - 3), -(rows - 2), -(rows - 1), -rows, -(rows * 3 + 1), -(rows + 1), -(rows + 2), -(rows + 3),
+        -1, -2, -3, -4, 1, 2, 3, 4, rows * 4, (rows * 3 - 1), rows * 3, (rows * 3 + 1), (rows * 2 - 1), rows * 2, (rows * 2 + 1),
+        (rows - 3), (rows - 2), (rows - 1), rows, (rows * 3 + 1), (rows + 1), (rows + 2), (rows + 3)
     ]
     for (var i = 0; i < valueToTest.length; i++) {
         var valueToAdd = valueToTest[i]
@@ -106,9 +108,9 @@ Character.prototype.changeDropArea = function () {
 Character.prototype.tripArea = function () {
     var startingCell = this.position
     leftDirection = [-1, -2, -3]
-    downDirection = [10, 20, 30]
+    downDirection = [rows, (rows * 2), (rows * 3)]
     rightDirection = [1, 2, 3]
-    upDirection = [-10, -20, -30]
+    upDirection = [-rows, -(rows * 2), -(rows * 3)]
     directionToTest = [leftDirection, downDirection, rightDirection, upDirection]
 
     for (var j = 0; j < 4; j++) {
