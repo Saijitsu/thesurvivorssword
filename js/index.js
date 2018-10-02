@@ -1,5 +1,38 @@
-// TOOLS SECTION : OUTILS POUR CREER L'ALEA DU BOARD
+// Variables gobales et variables définies par l'utilisateur
+var numbersOfPlayers = 2;
+var obstacleCell = 10;
+var chestCell = 4;
+var currentPlayer = null;
+var highLightning = [];
+var rows = 10;
+var columns = 10;
+var width = columns * 50;
+var height = rows * 50;
+var totalCells = rows * columns;
+var tilePixelCut = 50;
+var yOnClick = null;
+var xOnClick = null;
 
+// modify CSS elements
+var elmt = document.getElementById("canvas");
+
+// modify style
+elmt.style.background = getGradiantBackground();
+elmt.style.border = "1px solid white";
+elmt.style.width = width;
+elmt.style.height = height;
+
+function getGradiantBackground() {
+    var valuesOfHex = ["#9dc183", "#708238", "#00A86B", "#00A572", "#66FF66", "#B4D7BF", "#66CDAA", "#36DBCA", "#0AC92B", "#BCED91", "#8CDD81", "#90FEFB"];
+    var firstColor = valuesOfHex[Math.floor(Math.random() * valuesOfHex.length)];
+    var secondColor = valuesOfHex[Math.floor(Math.random() * valuesOfHex.length)];
+    var angle = Math.round(Math.random() * 360);
+
+    var value = "linear-gradient(" + angle + "deg, " + firstColor + ", " + secondColor + ")";
+    return value
+}
+
+// TOOLS SECTION : OUTILS POUR CREER L'ALEA DU BOARD
 // Board de 100 Cellules rangées dans un ordre aléatoire (entre 0 et 99).
 function randomInt(mini, maxi) {
     var nb = mini + (maxi + 1 - mini) * Math.random();
