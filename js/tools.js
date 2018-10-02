@@ -44,28 +44,28 @@ function containType() { // Contain of the board!
     }
     if (currentCellPosition == randomList[obstacleCell + chestCell]) {
         var cell = new Cell(players[0], currentCellPosition, y, x, false);
-        player1.position = cell.numberCell;
-        player1.y = y;
-        player1.x = x;
+        players[0].position = cell.numberCell;
+        players[0].y = y;
+        players[0].x = x;
         return cell; // Affectation du Joueur 1
     } else if (currentCellPosition == randomList[obstacleCell + chestCell + 1]) {
-        if (characterNear(x, y, board.length, board, numberToTest = randomList[obstacleCell + chestCell + 1]) == false) {
+        if (players[1].characterNear(x, y, board.length, board, numberToTest = randomList[obstacleCell + chestCell + 1]) == false) {
             var cell = new Cell(players[1], currentCellPosition, y, x, false);
-            player2.position = cell.numberCell;
-            player2.y = y;
-            player2.x = x;
+            players[1].position = cell.numberCell;
+            players[1].y = y;
+            players[1].x = x;
             return cell; // Safe zone: Affectation du Joueur 2
-        } else if (characterNear(x, y, board.length, board, numberToTest = randomList[obstacleCell + chestCell + 1]) == true) {
-            DropPlayer2() // Unsafe zone: Nouvelle Affectation du Joueur 2
+        } else if (players[1].characterNear(x, y, board.length, board, numberToTest = randomList[obstacleCell + chestCell + 1]) == true) {
+            players[1].changeDropArea() // Unsafe zone: Nouvelle Affectation du Joueur 2
             var cell = new Cell(0, currentCellPosition, y, x, true);
             return cell; // Joueur 1 proche: Affectation d'une cellule vide.
         }
     } else {
         if (board[y][x] !== undefined) {
             var cell = new Cell(players[1], currentCellPosition, y, x, false);
-            player2.position = cell.numberCell;
-            player2.y = y;
-            player2.x = x;
+            players[1].position = cell.numberCell;
+            players[1].y = y;
+            players[1].x = x;
             return cell; // Confirmation de la Cellule Joueur 2{
         } else {
             var designIs = getRandomIntInclusive(1, 3);
@@ -83,52 +83,6 @@ function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-// Appel le joueur 2 sur la carte s'il n'a pas pu être placé à la création de la carte.
-function DropPlayer2() {
-    console.log("Il n'y eu un contact entre les joueurs à la création du terrain! \nL'emplacement Joueur 2 a été réinitialisé")
-    var min = 16;
-    var max = totalCells - 1
-    var numberDropTry = getRandomIntInclusive(min, max);
-    if (characterNear(x, y, board.length, board, numberToTest = randomList[numberDropTry]) == false) {
-        var cellWhereToDrop = randomList[numberDropTry]
-        chaineTransform = cellWhereToDrop.toString() //chn.substr(début[, longueur])
-        //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
-        if (cellWhereToDrop < 10) {
-            var dropY = 0
-            var dropX = cellWhereToDrop;
-        } else if (cellWhereToDrop >= 10) {
-            var dropY = parseInt(chaineTransform.substr(0, 1))
-            var dropX = parseInt(chaineTransform.substr(1, 1))
-        }
-        var cell = new Cell(players[1], cellWhereToDrop, dropY, dropX, false);
-        // build list of references
-        board[dropY][dropX] = cell;
-        player2.position = cell.numberCell;
-        player2.y = dropY;
-        player2.x = dropX;
-        console.log("Le Joueur 2 à trouvé ou attérir!")
-        return cell
-    } else {
-        DropPlayer2()
-    }
-}
-
-function characterNear() {
-    var p1CellNumber = randomList[14]
-    var p2CellNumber = numberToTest
-
-    var valueToTest = [1, 2, 3, 4, 7, 8, 9, 11, 12, 13, 21, 31, 7, 8, 9, 10,
-        19, 20, 29, 30, 40, -1, -2, -3, -4, -7, -8, -9, -10, -11, -12, -13, -19, -20, -21, -31, -29, -30, -40
-    ]
-    for (var i = 0; i < valueToTest.length; i++) {
-        var valueToAdd = valueToTest[i]
-        if (p2CellNumber != (p1CellNumber + valueToAdd)) {} else if (p2CellNumber = (p1CellNumber + valueToAdd)) {
-            return true;
-        }
-    }
-    return false;
 }
 
 // Return where user click on canvas.*
