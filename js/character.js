@@ -78,20 +78,20 @@ Character.prototype.characterNear = function () {
 // Appel le joueur 2 sur la carte s'il n'a pas pu être placé à la création de la carte.
 Character.prototype.changeDropArea = function () {
     console.log("Il n'y eu un contact entre les joueurs à la création du terrain! \nL'emplacement Joueur 2 a été réinitialisé")
-    var min = obstacleCell + chestCell + numbersOfPlayers;
-    var max = totalCells - 1
-    var numberDropTry = getRandomIntInclusive(min, max);
-    if (players[1].characterNear(x, y, board.length, board, numberToTest = randomList[numberDropTry]) == false) {
-        var cellWhereToDrop = randomList[numberDropTry]
-        chaineTransform = cellWhereToDrop.toString() //chn.substr(début[, longueur])
-        //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
-        if (cellWhereToDrop < 10) {
-            var deduceY = 0
-            var deduceX = cellWhereToDrop;
-        } else if (cellWhereToDrop >= 10) {
-            var deduceY = parseInt(chaineTransform.substr(0, 1))
-            var deduceX = parseInt(chaineTransform.substr(1, 1))
-        }
+        var min = obstacleCell + chestCell + numbersOfPlayers;
+        var max = totalCells - 1
+        var numberDropTry = getRandomIntInclusive(min, max);
+        if (players[1].characterNear(x, y, board.length, board, numberToTest = randomList[numberDropTry]) == false) {
+            var cellWhereToDrop = randomList[numberDropTry]
+            chaineTransform = cellWhereToDrop.toString() //chn.substr(début[, longueur])
+            //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
+            if (cellWhereToDrop < 10) {
+                var deduceY = 0
+                var deduceX = cellWhereToDrop;
+            } else if (cellWhereToDrop >= 10) {
+                var deduceY = parseInt(chaineTransform.substr(0, 1))
+                var deduceX = parseInt(chaineTransform.substr(1, 1))
+            }
         var cell = new Cell(this, cellWhereToDrop, deduceY, deduceX, false);
         // build list of references
         board[deduceY][deduceX] = cell;
@@ -106,7 +106,7 @@ Character.prototype.changeDropArea = function () {
 }
 
 Character.prototype.tripArea = function () {
-    var startingCell = this.position
+    var startingCell = board[this.y][this.x].numberCell
     leftDirection = [-1, -2, -3]
     downDirection = [rows, (rows * 2), (rows * 3)]
     rightDirection = [1, 2, 3]
@@ -118,29 +118,21 @@ Character.prototype.tripArea = function () {
             var valueToAdd = directionToTest[j][i];
             var tryIfFreeCell = (startingCell + valueToAdd);
             if (tryIfFreeCell >= 0 && tryIfFreeCell <= totalCells - 1) {
-                var chaineTransform = tryIfFreeCell.toString() //chn.substr(début[, longueur])
-                //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
-                if (tryIfFreeCell <= 9) {
-                    numberTodeduceYX = "0" + chaineTransform
-                    var dropY = parseInt(numberTodeduceYX.substr(0, 1))
-                    var dropX = parseInt(numberTodeduceYX.substr(1, 1))
-                } else if (tryIfFreeCell >= 10) {
-                    var dropY = parseInt(chaineTransform.substr(0, 1))
-                    var dropX = parseInt(chaineTransform.substr(1, 1))
-                }
-                if (board[dropY][dropX].freeCell == true) {
+                var deduceY = cellList[tryIfFreeCell].y
+                var deduceX = cellList[tryIfFreeCell].x
+                if (board[deduceY][deduceX].freeCell == true) {
                     if (j == 0 || j == 2) {
                         var line = this.y;
-                        if (dropY == line) {
+                        if (deduceY == line) {
                             highLightning.push(tryIfFreeCell);
-                            board[dropY][dropX].highLightning = true;
+                            board[deduceY][deduceX].highLightning = true;
                         } else {
                             i = 3
                         }
                     }
                     if (j == 1 || j == 3) {
                         highLightning.push(tryIfFreeCell);
-                        board[dropY][dropX].highLightning = true;
+                        board[deduceY][deduceX].highLightning = true;
                     }
                 } else {
                     i = 3

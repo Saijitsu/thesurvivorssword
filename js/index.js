@@ -194,16 +194,10 @@ function clickChestCell() {
 
 function clearCurrentPlayerHighLightning() {
     for (var checkElement = 0; checkElement < highLightning.length; checkElement++) {
-        chaineTransform = highLightning[checkElement].toString() //chn.substr(début[, longueur])
-        //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
-        if (highLightning[checkElement] < 10) {
-            var highLightningY = 0
-            var highLightningX = highLightning[checkElement];
-        } else if (highLightning[checkElement] >= 10) {
-            var highLightningY = parseInt(chaineTransform.substr(0, 1))
-            var highLightningX = parseInt(chaineTransform.substr(1, 1))
-        }
-        board[highLightningY][highLightningX].highLightning = false;
+        deduceYX = highLightning[checkElement]
+        var deduceY = cellList[deduceYX].y
+        var deduceX = cellList[deduceYX].x
+        board[deduceY][deduceX].highLightning = false;
     }
 }
 /*method which returns the mouse coordinates based on the position 
