@@ -1,25 +1,23 @@
-//////////////// TILES MAPPING ///////////////////////////////////////////////
-
 function Tileset(url) {
-    // Chargement de l'image dans l'attribut image
+    // Loading the image in the image attribute
     this.image = new Image();
 
     this.image.referenceOfTileset = this; 
-    //on applique referenceOfTileset sur this.image
+    //we apply referenceOfTileset on this.image
 
     this.image.onload = function () {
 
         if (!this.complete)
             throw new Error("Erreur de chargement du tileset nommé \"" + url + "\".");
-        // Largeur du tileset en tiles
+        // Width of tileset tiles
         this.referenceOfTileset.width = this.width / Tilewidth;
     }
     this.image.src = "../image/tilesets/" + url;
 }
 
-// Méthode dessin du tile numéro "number" dans le contexte 2D "context" aux coordonnées x et y
+// Drawing method of tile number in 2D context at x and y location
 Tileset.prototype.drawTile = function (number, context, xDestination, yDestination) {
-    // pour X et Y
+    // x and y
     var xSourceTiles = number % this.width;
 
     if (xSourceTiles == 0) xSourceTiles = this.width;
@@ -27,6 +25,6 @@ Tileset.prototype.drawTile = function (number, context, xDestination, yDestinati
 
     var xSource = (xSourceTiles - 1) * Tilewidth;
     var ySource = (ySourceTiles - 1) * Tilewidth;
-    // pourquoi le -1 :le tile numéro 1 est situé aux coordonnées (0, 0), pas (50, 50).
+    // why the -1: tile number 1 is located at coordinates (0, 0), not (50, 50).
     context.drawImage(this.image, xSource, ySource, Tilewidth, Tilewidth, xDestination, yDestination, Tilewidth, Tilewidth);
 }
