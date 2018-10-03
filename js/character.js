@@ -1,4 +1,4 @@
-function Character(name, heal, weapon, weaponToDeposited, position, y, x) { 
+function Character(name, heal, weapon, weaponToDeposited, position, y, x) {
     this.name = name;
     this.heal = heal;
     this.weapon = weapon;
@@ -103,11 +103,11 @@ Character.prototype.changeDropArea = function () {
 
 Character.prototype.tripArea = function () {
     var startingCell = board[this.y][this.x].numberCell
-    leftDirection = [-1, -2, -3]
-    downDirection = [rows, (rows * 2), (rows * 3)]
-    rightDirection = [1, 2, 3]
-    upDirection = [-rows, -(rows * 2), -(rows * 3)]
-    directionToTest = [leftDirection, downDirection, rightDirection, upDirection]
+    var leftDirection = [-1, -2, -3]
+    var downDirection = [rows, (rows * 2), (rows * 3)]
+    var rightDirection = [1, 2, 3]
+    var upDirection = [-rows, -(rows * 2), -(rows * 3)]
+    var directionToTest = [leftDirection, downDirection, rightDirection, upDirection]
 
     for (var j = 0; j < 4; j++) {
         for (var i = 0; i < 3; i++) {
@@ -146,13 +146,62 @@ Character.prototype.tripArea = function () {
 //}
 
 Character.prototype.changeOfPlayerSTour = function () {
-    if (currentPlayer == players[0]) {
-        currentPlayer = players[1]
+    if (this.playersCollision() == false) {
+        console.log("No fight this turn!");
+        if (currentPlayer == players[0]) {
+            currentPlayer = players[1]
+        } else {
+            currentPlayer = players[0]
+        }
+        highLightning = [];
+        currentPlayer.tripArea() // Trip Area of current player.
     } else {
-        currentPlayer = players[0]
+        currentPlayer.duel()
     }
-    highLightning = []
-    currentPlayer.tripArea() // Trip Area of current player.
+}
+
+Character.prototype.playersCollision = function () {
+    if (this.opponent().position == this.position - 1 || this.opponent().position == this.position + 1 ||
+        this.opponent().position == this.position - rows || this.opponent().position == this.position + rows) {
+        return true; // Vertical or horizontal collision détected  
+    } else {
+        return false;
+    }
+}
+
+Character.prototype.duel = function () {
+    console.log("Fight this turn!");
+    var opponentPlayer = currentPlayer.opponent();
+    var duelIsEnd = false;
+    while (duelIsEnd == false) {
+        if (opponentPlayer.heal > 0) {
+            opponentPlayer.heal = opponentPlayer.heal - currentPlayer.dommageDeal();
+            if (opponentPlayer.heal > 0) {
+                console.log(opponentPlayer.name + " has " + opponentPlayer.heal + " heal points!")
+            } else {
+                console.log(opponentPlayer.name + " was overhit!");
+            }
+        }
+        if (opponentPlayer.heal <= 0) {
+            console.log(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!");
+            duelIsEnd = true;
+            break;
+        }
+        if (currentPlayer.heal > 0 && opponentPlayer.heal > 0) {
+            currentPlayer.heal = currentPlayer.heal - opponentPlayer.dommageDeal();
+            if (currentPlayer.heal > 0) {
+                console.log(currentPlayer.name + " has " + currentPlayer.heal + " heal points!")
+            } else {
+                console.log(currentPlayer.name + " was overhit!");
+            }
+        }
+        if (currentPlayer.heal <= 0) {
+            console.log(currentPlayer.name + " is unconscious! " + opponentPlayer.name + " is the winner!");
+            duelIsEnd = true;
+            break;
+        }
+
+    }
 }
 
 // Objet joueur premier
