@@ -17,3 +17,16 @@ display: inline-block;
     right: 0;
     margin: auto;
 }
+
+button {
+  margin-top: 20px;
+  line-height: 60px;
+  font-weight: bold;
+  padding: 0 40px;
+  background: #67E6EC	;
+  border: 1px solid black;
+}
+
+button:hover {
+  background: #38B0DE	;
+}

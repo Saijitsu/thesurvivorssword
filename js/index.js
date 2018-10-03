@@ -14,6 +14,8 @@ var cellList = [];
 var tilePixelCut = 50;
 var yOnClick = null;
 var xOnClick = null;
+var oneHundredDeduceY = null;
+var oneHundredDeduceX = null;
 
 // Modify CSS elements
 var elmt = document.getElementById("canvas");
@@ -25,8 +27,9 @@ elmt.width = width;
 elmt.height = height;
 
 function getGradiantBackground() {
-    var valuesOfHex = ["#9dc183", "#708238", "#00A86B", "#00A572", "#66FF66", 
-    "#B4D7BF", "#66CDAA", "#36DBCA", "#0AC92B", "#BCED91", "#8CDD81", "#90FEFB"];
+    var valuesOfHex = ["#9dc183", "#708238", "#00A86B", "#00A572", "#66FF66",
+        "#B4D7BF", "#66CDAA", "#36DBCA", "#0AC92B", "#BCED91", "#8CDD81", "#90FEFB"
+    ];
     var firstColor = valuesOfHex[Math.floor(Math.random() * valuesOfHex.length)];
     var secondColor = valuesOfHex[Math.floor(Math.random() * valuesOfHex.length)];
     var angle = Math.round(Math.random() * 360);
@@ -56,7 +59,7 @@ for (i = 0; i < totalCells; i++) {
     randomList[i] = i;
 }
 
-randomList.shuffle(); 
+randomList.shuffle();
 console.log(randomList.join());
 
 function containType() { // Contain of the board!
@@ -83,15 +86,15 @@ function containType() { // Contain of the board!
         players[0].x = x;
         return cell; // player 1 confirmed
     } else if (currentCellPosition == randomList[obstacleCell + chestCell + 1]) {
-        if (players[1].characterNear(x, y, board.length, board, 
-            numberToTest = randomList[obstacleCell + chestCell + 1]) == false) {
+        if (players[1].characterNear(x, y, board.length, board,
+                numberToTest = randomList[obstacleCell + chestCell + 1]) == false) {
             var cell = new Cell(players[1], currentCellPosition, y, x, false);
             players[1].position = cell.numberCell;
             players[1].y = y;
             players[1].x = x;
             return cell; // Safe zone: player 2 confirmed
-        } else if (players[1].characterNear(x, y, board.length, board, 
-            numberToTest = randomList[obstacleCell + chestCell + 1]) == true) {
+        } else if (players[1].characterNear(x, y, board.length, board,
+                numberToTest = randomList[obstacleCell + chestCell + 1]) == true) {
             players[1].changeDropArea() // Unsafe zone: Player 2 need new location.
             var cell = new Cell(0, currentCellPosition, y, x, true);
             return cell; // Player 1 near, Empty cell dropped.
@@ -137,7 +140,7 @@ canvas.addEventListener("click", function (e) {
         } else { // Chest Cell
             clickChestCell(yOnClick, xOnClick)
         }
-        currentPlayer.position = parseInt(String(yOnClick) + String(xOnClick));
+        currentPlayer.position = xOnClick + yOnClick * board.length;
         currentPlayer.y = yOnClick;
         currentPlayer.x = xOnClick;
 
@@ -204,4 +207,22 @@ function clearCurrentPlayerHighLightning() {
 
 function writeMessage(message) {
     console.log(message)
+}
+
+function moreThanOneHundredCells() {
+    var min = obstacleCell + chestCell + 1;
+    oneHundredDeduceY = getRandomIntInclusive(0, boardSize - 1);
+    oneHundredDeduceX = getRandomIntInclusive(0, boardSize - 1);
+    var cellWhereToDrop = oneHundredDeduceX + oneHundredDeduceY * board.length;
+    for (i = 0; i < min; i++) {
+        if (randomList[i] == randomList[cellWhereToDrop]) {
+            return moreThanOneHundredCells();
+        }
+    }
+
+    if (players[1].characterNear(oneHundredDeduceX, oneHundredDeduceY, board.length, board, numberToTest = randomList[cellWhereToDrop]) == false) {
+        return [oneHundredDeduceY, oneHundredDeduceX, cellWhereToDrop]
+    } else {
+        return moreThanOneHundredCells();
+    }
 }

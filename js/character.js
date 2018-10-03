@@ -27,7 +27,7 @@ Character.prototype.id = function () {
             id = players[1]
             break;
     }
-    return id
+    return id;
 };
 
 Character.prototype.opponent = function () {
@@ -40,20 +40,20 @@ Character.prototype.opponent = function () {
             opponentIs = players[0]
             break;
     }
-    return opponentIs
+    return opponentIs;
 };
 
 Character.prototype.dommageDeal = function () {
-    return this.weapon.power
+    return this.weapon.power;
 };
 
 Character.prototype.equipedWeapon = function () {
-    return this.weapon.name
+    return this.weapon.name;
 };
 
 Character.prototype.characterNear = function () {
-    var firstCellNumber = randomList[obstacleCell + chestCell]
-    var secondCellNumber = numberToTest
+    var firstCellNumber = randomList[obstacleCell + chestCell];
+    var secondCellNumber = numberToTest;
 
     var valueToTest = [-rows * 4, -(rows * 3 - 1), -rows * 3, -(rows * 3 + 1), -(rows * 2 - 1),
         -rows * 2, -(rows * 2 + 1), -(rows - 3), -(rows - 2), -(rows - 1), -rows, -(rows * 3 + 1),
@@ -62,7 +62,7 @@ Character.prototype.characterNear = function () {
         (rows - 1), rows, (rows * 3 + 1), (rows + 1), (rows + 2), (rows + 3)
     ]
     for (var i = 0; i < valueToTest.length; i++) {
-        var valueToAdd = valueToTest[i]
+        var valueToAdd = valueToTest[i];
         if (secondCellNumber != (firstCellNumber + valueToAdd)) {} else if (secondCellNumber = (firstCellNumber + valueToAdd)) {
             return true;
         }
@@ -73,32 +73,40 @@ Character.prototype.characterNear = function () {
 // New player 2 location
 Character.prototype.changeDropArea = function () {
     console.log("There was a contact between the players at the creation of the field! Player 2 location has been reset.")
-    var min = obstacleCell + chestCell + numbersOfPlayers;
-    var max = totalCells - 1
-    var numberDropTry = getRandomIntInclusive(min, max);
-    if (players[1].characterNear(x, y, board.length, board, numberToTest = randomList[numberDropTry]) == false) {
-        var cellWhereToDrop = randomList[numberDropTry]
-        chaineTransform = cellWhereToDrop.toString() //chn.substr(early[, length])
-        /*The substr() method extracts parts of a string, beginning at the character 
-        at the specified position, and returns the specified number of characters. */
 
-        if (cellWhereToDrop < 10) {
-            var deduceY = 0
-            var deduceX = cellWhereToDrop;
-        } else if (cellWhereToDrop >= 10) {
-            var deduceY = parseInt(chaineTransform.substr(0, 1))
-            var deduceX = parseInt(chaineTransform.substr(1, 1))
+    if (totalCells <= 100) {
+        var min = obstacleCell + chestCell + numbersOfPlayers;
+        var max = totalCells - 1;
+        var numberDropTry = getRandomIntInclusive(min, max);
+        if (players[1].characterNear(x, y, board.length, board, numberToTest = randomList[numberDropTry]) == false) {
+            var cellWhereToDrop = randomList[numberDropTry];
+            chaineTransform = cellWhereToDrop.toString() //chn.substr(early[, length])
+            /*The substr() method extracts parts of a string, beginning at the character 
+            at the specified position, and returns the specified number of characters. */
+            if (cellWhereToDrop < 10) {
+                var deduceY = 0;
+                var deduceX = cellWhereToDrop;
+            } else if (cellWhereToDrop >= 10) {
+                var deduceY = parseInt(chaineTransform.substr(0, 1));
+                var deduceX = parseInt(chaineTransform.substr(1, 1));
+            }
+        } else {
+            players[1].changeDropArea();
         }
-        var cell = new Cell(this, cellWhereToDrop, deduceY, deduceX, false);
-        board[deduceY][deduceX] = cell;
-        this.position = cell.numberCell;
-        this.y = deduceY;
-        this.x = deduceX;
-        console.log("Player 2 found his land!")
-        return cell
-    } else {
-        players[1].changeDropArea()
     }
+    else if (totalCells > 100) {
+        var deduceYXandCell = moreThanOneHundredCells();
+        var deduceY = deduceYXandCell[0];
+        var deduceX = deduceYXandCell[1];
+        var cellWhereToDrop = deduceYXandCell[2]
+    }
+    var cell = new Cell(this, cellWhereToDrop, deduceY, deduceX, false);
+    board[deduceY][deduceX] = cell;
+    this.position = cell.numberCell;
+    this.y = deduceY;
+    this.x = deduceX;
+    console.log("Player 2 found his land!");
+    return cell;
 }
 
 Character.prototype.tripArea = function () {
