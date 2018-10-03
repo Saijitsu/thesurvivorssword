@@ -1,7 +1,4 @@
-////////////////////////////////////// CHARACTER AND WEAPONS //////////////////////////////////////////
-// Les Personnages-------------------------------------------------------------------------------------
-
-function Character(name, heal, weapon, weaponToDeposited, position, y, x) { //Constructeur
+function Character(name, heal, weapon, weaponToDeposited, position, y, x) { 
     this.name = name;
     this.heal = heal;
     this.weapon = weapon;
@@ -10,18 +7,18 @@ function Character(name, heal, weapon, weaponToDeposited, position, y, x) { //Co
     this.y = y;
     this.x = x;
 };
-// Les fonctions applicables à l'ensemble des Character 
+
 Character.prototype.describe = function () {
-    var description = this.name + " est sur la case n°" + this.id().position + " et dispose de " +
-        this.heal + " points de vie, il est équipé de l'arme : \"" +
-        this.equipedWeapon() + "\" et peut infliger " +
-        this.dommageDeal() + " dégâts à chaque attaque au " + this.opponent().name +
-        " qui est installé sur la case n°" + this.opponent().position + ".";
+    var description = this.name + " is on cell n°" + this.id().position + " has " +
+        this.heal + " points of life, it is equipped with the weapon : \"" +
+        this.equipedWeapon() + "\" he can inflict " +
+        this.dommageDeal() + " damage per hit to " + this.opponent().name +
+        " locate on cell n°" + this.opponent().position + ".";
     return description;
 }
-// Identification du personnage.
+
 Character.prototype.id = function () {
-    var id = this.name; // a modifier
+    var id = this.name;
     switch (this.name) {
         case player1.name:
             id = players[0]
@@ -33,9 +30,8 @@ Character.prototype.id = function () {
     return id
 };
 
-// Identification de l'adversaire.
 Character.prototype.opponent = function () {
-    var opponentIs = this.name; // a modifier
+    var opponentIs = this.name;
     switch (this.name) {
         case player1.name:
             opponentIs = players[1]
@@ -47,12 +43,10 @@ Character.prototype.opponent = function () {
     return opponentIs
 };
 
-// Le joueur équipe une arme et profite d'un bonus de puissance en conséquence.
 Character.prototype.dommageDeal = function () {
     return this.weapon.power
 };
 
-// Le joueur équipe une arme du nom de:
 Character.prototype.equipedWeapon = function () {
     return this.weapon.name
 };
@@ -61,10 +55,11 @@ Character.prototype.characterNear = function () {
     var firstCellNumber = randomList[obstacleCell + chestCell]
     var secondCellNumber = numberToTest
 
-    var valueToTest = [-rows * 4, -(rows * 3 - 1), -rows * 3, -(rows * 3 + 1), -(rows * 2 - 1), -rows * 2,
-        -(rows * 2 + 1), -(rows - 3), -(rows - 2), -(rows - 1), -rows, -(rows * 3 + 1), -(rows + 1), -(rows + 2), -(rows + 3),
-        -1, -2, -3, -4, 1, 2, 3, 4, rows * 4, (rows * 3 - 1), rows * 3, (rows * 3 + 1), (rows * 2 - 1), rows * 2, (rows * 2 + 1),
-        (rows - 3), (rows - 2), (rows - 1), rows, (rows * 3 + 1), (rows + 1), (rows + 2), (rows + 3)
+    var valueToTest = [-rows * 4, -(rows * 3 - 1), -rows * 3, -(rows * 3 + 1), -(rows * 2 - 1),
+        -rows * 2, -(rows * 2 + 1), -(rows - 3), -(rows - 2), -(rows - 1), -rows, -(rows * 3 + 1),
+        -(rows + 1), -(rows + 2), -(rows + 3), -1, -2, -3, -4, 1, 2, 3, 4, rows * 4, (rows * 3 - 1),
+        rows * 3, (rows * 3 + 1), (rows * 2 - 1), rows * 2, (rows * 2 + 1), (rows - 3), (rows - 2),
+        (rows - 1), rows, (rows * 3 + 1), (rows + 1), (rows + 2), (rows + 3)
     ]
     for (var i = 0; i < valueToTest.length; i++) {
         var valueToAdd = valueToTest[i]
@@ -75,30 +70,31 @@ Character.prototype.characterNear = function () {
     return false;
 }
 
-// Appel le joueur 2 sur la carte s'il n'a pas pu être placé à la création de la carte.
+// New player 2 location
 Character.prototype.changeDropArea = function () {
-    console.log("Il n'y eu un contact entre les joueurs à la création du terrain! \nL'emplacement Joueur 2 a été réinitialisé")
-        var min = obstacleCell + chestCell + numbersOfPlayers;
-        var max = totalCells - 1
-        var numberDropTry = getRandomIntInclusive(min, max);
-        if (players[1].characterNear(x, y, board.length, board, numberToTest = randomList[numberDropTry]) == false) {
-            var cellWhereToDrop = randomList[numberDropTry]
-            chaineTransform = cellWhereToDrop.toString() //chn.substr(début[, longueur])
-            //La méthode substr() retourne la partie d'une chaîne de caractères comprise entre l'indice de départ et un certain nombre de caractères après celui-ci.
-            if (cellWhereToDrop < 10) {
-                var deduceY = 0
-                var deduceX = cellWhereToDrop;
-            } else if (cellWhereToDrop >= 10) {
-                var deduceY = parseInt(chaineTransform.substr(0, 1))
-                var deduceX = parseInt(chaineTransform.substr(1, 1))
-            }
+    console.log("There was a contact between the players at the creation of the field! Player 2 location has been reset.")
+    var min = obstacleCell + chestCell + numbersOfPlayers;
+    var max = totalCells - 1
+    var numberDropTry = getRandomIntInclusive(min, max);
+    if (players[1].characterNear(x, y, board.length, board, numberToTest = randomList[numberDropTry]) == false) {
+        var cellWhereToDrop = randomList[numberDropTry]
+        chaineTransform = cellWhereToDrop.toString() //chn.substr(early[, length])
+        /*The substr() method extracts parts of a string, beginning at the character 
+        at the specified position, and returns the specified number of characters. */
+
+        if (cellWhereToDrop < 10) {
+            var deduceY = 0
+            var deduceX = cellWhereToDrop;
+        } else if (cellWhereToDrop >= 10) {
+            var deduceY = parseInt(chaineTransform.substr(0, 1))
+            var deduceX = parseInt(chaineTransform.substr(1, 1))
+        }
         var cell = new Cell(this, cellWhereToDrop, deduceY, deduceX, false);
-        // build list of references
         board[deduceY][deduceX] = cell;
         this.position = cell.numberCell;
         this.y = deduceY;
         this.x = deduceX;
-        console.log("Le Joueur 2 à trouvé ou attérir!")
+        console.log("Player 2 found his land!")
         return cell
     } else {
         players[1].changeDropArea()
@@ -160,10 +156,10 @@ Character.prototype.changeOfPlayerSTour = function () {
 }
 
 // Objet joueur premier
-var player1 = new Character("Joueur 1", 100, weapons[0]);
+var player1 = new Character("Player 1", 100, weapons[0]);
 
 // Objet joueur second
-var player2 = new Character("Joueur 2", 100, weapons[0]);
+var player2 = new Character("Player 2", 100, weapons[0]);
 
 // Character Array!
 var players = [player1, player2];

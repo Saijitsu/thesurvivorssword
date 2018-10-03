@@ -1,4 +1,4 @@
-// Variables gobales et variables définies par l'utilisateur
+// Globale Variable
 var numbersOfPlayers = 2;
 var obstacleCell = 10;
 var chestCell = 4;
@@ -14,17 +14,18 @@ var tilePixelCut = 50;
 var yOnClick = null;
 var xOnClick = null;
 
-// modify CSS elements
+// Modify CSS elements
 var elmt = document.getElementById("canvas");
 
-// modify style
+// Modify style
 elmt.style.background = getGradiantBackground();
 elmt.style.border = "1px solid white";
 elmt.width = width;
 elmt.height = height;
 
 function getGradiantBackground() {
-    var valuesOfHex = ["#9dc183", "#708238", "#00A86B", "#00A572", "#66FF66", "#B4D7BF", "#66CDAA", "#36DBCA", "#0AC92B", "#BCED91", "#8CDD81", "#90FEFB"];
+    var valuesOfHex = ["#9dc183", "#708238", "#00A86B", "#00A572", "#66FF66", 
+    "#B4D7BF", "#66CDAA", "#36DBCA", "#0AC92B", "#BCED91", "#8CDD81", "#90FEFB"];
     var firstColor = valuesOfHex[Math.floor(Math.random() * valuesOfHex.length)];
     var secondColor = valuesOfHex[Math.floor(Math.random() * valuesOfHex.length)];
     var angle = Math.round(Math.random() * 360);
@@ -33,8 +34,6 @@ function getGradiantBackground() {
     return value
 }
 
-// TOOLS SECTION : OUTILS POUR CREER L'ALEA DU BOARD
-// Board de 100 Cellules rangées dans un ordre aléatoire (entre 0 et 99).
 function randomInt(mini, maxi) {
     var nb = mini + (maxi + 1 - mini) * Math.random();
     return Math.floor(nb);
@@ -56,7 +55,7 @@ for (i = 0; i < totalCells; i++) {
     randomList[i] = i;
 }
 
-randomList.shuffle(); // on mélange les éléments du tableau
+randomList.shuffle(); 
 console.log(randomList.join());
 
 function containType() { // Contain of the board!
@@ -64,7 +63,7 @@ function containType() { // Contain of the board!
         if (currentCellPosition == randomList[i]) {
             var designIs = getRandomIntInclusive(1, 3);
             var cell = new Cell(1, currentCellPosition, y, x, false, designIs);
-            return cell; // Affectation des cellules obstacles 
+            return cell; // obstacle cell 
         }
     }
     for (var j = obstacleCell; j < obstacleCell + chestCell; j++) {
@@ -73,7 +72,7 @@ function containType() { // Contain of the board!
             weaponsId = weaponsEntry[selectEntry];
             var cell = new Cell(weapons[weaponsId], currentCellPosition, y, x, true);
             weaponsEntry.splice(selectEntry, 1);
-            return cell; // Affectation des coffres   
+            return cell; // Chest cell  
         }
     }
     if (currentCellPosition == randomList[obstacleCell + chestCell]) {
@@ -81,18 +80,20 @@ function containType() { // Contain of the board!
         players[0].position = cell.numberCell;
         players[0].y = y;
         players[0].x = x;
-        return cell; // Affectation du Joueur 1
+        return cell; // player 1 confirmed
     } else if (currentCellPosition == randomList[obstacleCell + chestCell + 1]) {
-        if (players[1].characterNear(x, y, board.length, board, numberToTest = randomList[obstacleCell + chestCell + 1]) == false) {
+        if (players[1].characterNear(x, y, board.length, board, 
+            numberToTest = randomList[obstacleCell + chestCell + 1]) == false) {
             var cell = new Cell(players[1], currentCellPosition, y, x, false);
             players[1].position = cell.numberCell;
             players[1].y = y;
             players[1].x = x;
-            return cell; // Safe zone: Affectation du Joueur 2
-        } else if (players[1].characterNear(x, y, board.length, board, numberToTest = randomList[obstacleCell + chestCell + 1]) == true) {
-            players[1].changeDropArea() // Unsafe zone: Nouvelle Affectation du Joueur 2
+            return cell; // Safe zone: player 2 confirmed
+        } else if (players[1].characterNear(x, y, board.length, board, 
+            numberToTest = randomList[obstacleCell + chestCell + 1]) == true) {
+            players[1].changeDropArea() // Unsafe zone: Player 2 need new location.
             var cell = new Cell(0, currentCellPosition, y, x, true);
-            return cell; // Joueur 1 proche: Affectation d'une cellule vide.
+            return cell; // Player 1 near, Empty cell dropped.
         }
     } else {
         if (board[y][x] !== undefined) {
@@ -100,28 +101,27 @@ function containType() { // Contain of the board!
             players[1].position = cell.numberCell;
             players[1].y = y;
             players[1].x = x;
-            return cell; // Confirmation de la Cellule Joueur 2{
+            return cell; // player 2 confirmed
         } else {
             var designIs = getRandomIntInclusive(1, 3);
             var cell = new Cell(0, currentCellPosition, y, x, true, designIs);
-            return cell; // Affectation par défaut de cellules vides
+            return cell; // Empty Cells by default.
         }
     }
 };
 
-// On renvoie un entier aléatoire entre une valeur min (incluse)
-// et une valeur max (incluse).
-// Attention : si on utilisait Math.round(), on aurait une distribution
-// non uniforme !
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Return where user click on canvas.*
-////////////////////LE CANVAS////////////////////////////
-// Return where user click on canvas.
+/*Return where user click on canvas: 
+method which returns the mouse coordinates based on the position 
+ of the client mouse and the position of the canvas obtained from 
+ the getBoundingClientRect() method of the window object:
+ The Element.getBoundingClientRect() method returns 
+ the size of an element and its position relative to the viewport*/
 canvas.addEventListener("click", function (e) {
     var getMousePositionYX = getMousePosition(canvas, e);
     var getMousePositionY = getMousePositionYX[0];
@@ -200,11 +200,6 @@ function clearCurrentPlayerHighLightning() {
         board[deduceY][deduceX].highLightning = false;
     }
 }
-/*method which returns the mouse coordinates based on the position 
- of the client mouse and the position of the canvas obtained from 
- the getBoundingClientRect() method of the window object:
- The Element.getBoundingClientRect() method returns 
- the size of an element and its position relative to the viewport*/
 
 function writeMessage(message) {
     console.log(message)

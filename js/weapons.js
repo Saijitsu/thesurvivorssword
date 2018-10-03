@@ -1,34 +1,33 @@
-// Les Armes ------------------------------------------------------------------------------------
 function Weapons(name, power, worn) {
     this.name = name;
     this.power = power;
     this.worn = worn; // already equiped
 }
 
-// Fonctions applicables aux armes
-
 Weapons.prototype.describe = function () {
-    var description = this.name + " donne une force de " + this.power + " dégats d'attaque à son propriétaire!";
+    var description = this.name + " gives a strength of " + this.power + 
+    " attack damage to its owner!";
     return description;
 };
 
-// Objet Arme 0
+// Objet Weapon 0
 var peasantSword = new Weapons("Peasant Sword", 10, true);
-// Objet Arme 1
+// Objet Weapon 1
 var swordOfWind = new Weapons("Sword Of Wind", 13, false);
-// Objet Arme 2
+// Objet Weapon 2
 var swordOfFire = new Weapons("Sword Of Fire", 15, false);
-// Objet Arme 3
+// Objet Weapon 3
 var swordOfThunder = new Weapons("Sword Of Thunder", 17, false);
-// Objet Arme 4
+// Objet Weapon 4
 var magicWand = new Weapons("Magic Wand", 14, false);
-// Objet Arme 5
+// Objet Weapon 5
 var bowOfLight = new Weapons("Bow Of Light", 18, false);
-// Objet Arme 6
+// Objet Weapon 6
 var ironHammer = new Weapons("Iron Hammer", 19, false);
 
 // Weapons Array!
-var weapons = [peasantSword, swordOfWind, swordOfFire, swordOfThunder, magicWand, bowOfLight, ironHammer]
+var weapons = [peasantSword, swordOfWind, swordOfFire, swordOfThunder, 
+    magicWand, bowOfLight, ironHammer]
 
 // Array of entry in weapons Array (less the first one):
 var weaponsEntry = []
