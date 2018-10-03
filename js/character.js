@@ -215,7 +215,7 @@ Character.prototype.duel = function () {
             if (opponentPlayer.defensiveStance == true) {
                 opponentPlayer.heal = opponentPlayer.heal - currentPlayer.dommageDeal() / 2;
                 opponentPlayer.defensiveStance == false
-            } else if (opponentPlayer.defensiveStance == undefined /*false*/) {
+            } else if (opponentPlayer.defensiveStance == undefined || opponentPlayer.defensiveStance == false) {
                 opponentPlayer.heal = opponentPlayer.heal - currentPlayer.dommageDeal();
             }
             if (opponentPlayer.heal > 0) {
