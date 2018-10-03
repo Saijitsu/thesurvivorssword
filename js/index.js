@@ -148,7 +148,7 @@ canvas.addEventListener("click", function (e) {
 
         draw(); // Update canvas
 
-        currentPlayer.changeOfPlayerSTour();
+        currentPlayer.changeOfPlayerSTurn();
     }
 }, false);
 
@@ -209,7 +209,7 @@ function writeMessage(message) {
     console.log(message)
 }
 
-function moreThanOneHundredCells() {
+function moreThanOneHundredCells() { // New Player 2 drop location
     var min = obstacleCell + chestCell + 1;
     oneHundredDeduceY = getRandomIntInclusive(0, boardSize - 1);
     oneHundredDeduceX = getRandomIntInclusive(0, boardSize - 1);
@@ -219,10 +219,32 @@ function moreThanOneHundredCells() {
             return moreThanOneHundredCells();
         }
     }
-
     if (players[1].characterNear(oneHundredDeduceX, oneHundredDeduceY, board.length, board, numberToTest = randomList[cellWhereToDrop]) == false) {
         return [oneHundredDeduceY, oneHundredDeduceX, cellWhereToDrop]
     } else {
         return moreThanOneHundredCells();
+    }
+}
+
+function lessThanOneHundredCells() { // New Player 2 drop location
+    var min = obstacleCell + chestCell + numbersOfPlayers;
+    var max = totalCells - 1;
+    var numberDropTry = getRandomIntInclusive(min, max);
+    if (players[1].characterNear(x, y, board.length, board, numberToTest = randomList[numberDropTry]) == false) {
+        var cellWhereToDrop = randomList[numberDropTry];
+        chaineTransform = cellWhereToDrop.toString()
+        /*chn.substr(early[, length])
+                   The substr() method extracts parts of a string, beginning at the character 
+                   at the specified position, and returns the specified number of characters.*/
+        if (cellWhereToDrop < 10) {
+            var deduceY = 0;
+            var deduceX = cellWhereToDrop;
+        } else if (cellWhereToDrop >= 10) {
+            var deduceY = parseInt(chaineTransform.substr(0, 1));
+            var deduceX = parseInt(chaineTransform.substr(1, 1));
+        }
+        return [deduceY, deduceX, cellWhereToDrop]
+    } else {
+        return lessThanOneHundredCells()
     }
 }

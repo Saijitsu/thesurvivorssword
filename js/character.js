@@ -1,4 +1,4 @@
-function Character(name, heal, weapon, weaponToDeposited, position, y, x) {
+function Character(name, heal, weapon, weaponToDeposited, position, y, x, defensiveStance) {
     this.name = name;
     this.heal = heal;
     this.weapon = weapon;
@@ -6,6 +6,7 @@ function Character(name, heal, weapon, weaponToDeposited, position, y, x) {
     this.position = position;
     this.y = y;
     this.x = x;
+    this.defensiveStance = defensiveStance;
 };
 
 Character.prototype.describe = function () {
@@ -75,26 +76,11 @@ Character.prototype.changeDropArea = function () {
     console.log("There was a contact between the players at the creation of the field! Player 2 location has been reset.")
 
     if (totalCells <= 100) {
-        var min = obstacleCell + chestCell + numbersOfPlayers;
-        var max = totalCells - 1;
-        var numberDropTry = getRandomIntInclusive(min, max);
-        if (players[1].characterNear(x, y, board.length, board, numberToTest = randomList[numberDropTry]) == false) {
-            var cellWhereToDrop = randomList[numberDropTry];
-            chaineTransform = cellWhereToDrop.toString() //chn.substr(early[, length])
-            /*The substr() method extracts parts of a string, beginning at the character 
-            at the specified position, and returns the specified number of characters. */
-            if (cellWhereToDrop < 10) {
-                var deduceY = 0;
-                var deduceX = cellWhereToDrop;
-            } else if (cellWhereToDrop >= 10) {
-                var deduceY = parseInt(chaineTransform.substr(0, 1));
-                var deduceX = parseInt(chaineTransform.substr(1, 1));
-            }
-        } else {
-            players[1].changeDropArea();
-        }
-    }
-    else if (totalCells > 100) {
+        var deduceYXandCell = lessThanOneHundredCells();
+        var deduceY = deduceYXandCell[0];
+        var deduceX = deduceYXandCell[1];
+        var cellWhereToDrop = deduceYXandCell[2]
+    } else if (totalCells > 100) {
         var deduceYXandCell = moreThanOneHundredCells();
         var deduceY = deduceYXandCell[0];
         var deduceX = deduceYXandCell[1];
@@ -153,7 +139,7 @@ Character.prototype.tripArea = function () {
 //    var highLightningArray = this.tripArea();
 //}
 
-Character.prototype.changeOfPlayerSTour = function () {
+Character.prototype.changeOfPlayerSTurn = function () {
     if (this.playersCollision() == false) {
         console.log("No fight this turn!");
         if (currentPlayer == players[0]) {
@@ -168,6 +154,15 @@ Character.prototype.changeOfPlayerSTour = function () {
     }
 }
 
+Character.prototype.changeOfPlayerSDuelTurn = function () {
+    if (currentPlayer == players[0]) {
+        currentPlayer = players[1]
+    } else {
+        currentPlayer = players[0]
+    }
+    currentPlayer.duel()
+}
+
 Character.prototype.playersCollision = function () {
     if (this.opponent().position == this.position - 1 || this.opponent().position == this.position + 1 ||
         this.opponent().position == this.position - rows || this.opponent().position == this.position + rows) {
@@ -176,7 +171,7 @@ Character.prototype.playersCollision = function () {
         return false;
     }
 }
-
+/*
 Character.prototype.duel = function () {
     console.log("Fight this turn!");
     var opponentPlayer = currentPlayer.opponent();
@@ -208,6 +203,34 @@ Character.prototype.duel = function () {
             duelIsEnd = true;
             break;
         }
+    }
+}*/
+
+Character.prototype.duel = function () {
+    console.log("Fight this turn!");
+    var opponentPlayer = currentPlayer.opponent();
+    var duelIsEnd = false;
+    while (duelIsEnd == false) {
+        if (opponentPlayer.heal > 0) {
+            if (opponentPlayer.defensiveStance == true) {
+                opponentPlayer.heal = opponentPlayer.heal - currentPlayer.dommageDeal() / 2;
+                opponentPlayer.defensiveStance == false
+            } else if (opponentPlayer.defensiveStance == undefined /*false*/) {
+                opponentPlayer.heal = opponentPlayer.heal - currentPlayer.dommageDeal();
+            }
+            if (opponentPlayer.heal > 0) {
+                console.log(opponentPlayer.name + " has " + opponentPlayer.heal + " heal points!")
+            } else {
+                console.log(opponentPlayer.name + " was overhit!");
+            }
+        }
+        if (opponentPlayer.heal <= 0) {
+            console.log(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!");
+            duelIsEnd = true;
+            break;
+        }
+        currentPlayer.changeOfPlayerSDuelTurn()
+        break;
     }
 }
 
