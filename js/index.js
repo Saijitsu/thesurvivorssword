@@ -1,11 +1,12 @@
-// Globale Variable
+// Global Variable
 var numbersOfPlayers = 2;
 var obstacleCell = 10;
 var chestCell = 4;
 var currentPlayer = null;
 var highLightning = [];
-var rows = 10;
-var columns = 10;
+var boardSize = 10;
+var rows = boardSize;
+var columns = boardSize;
 var width = columns * 50;
 var height = rows * 50;
 var totalCells = rows * columns;
