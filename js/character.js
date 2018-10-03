@@ -200,7 +200,6 @@ Character.prototype.duel = function () {
             duelIsEnd = true;
             break;
         }
-
     }
 }
 
