@@ -7,10 +7,28 @@ body {
   padding: 0;
 }
 
+.interface {
+  display: flex; /* or inline-flex */
+  flex-direction: column;
+}
+
+.title {
+  display: flex; /* or inline-flex */
+  flex-direction: row;
+}
+
+.boardAndPlayersInfo {
+  display: flex; /* or inline-flex */
+  flex-direction: row;
+}
+
+.naviChat {
+  display: flex; /* or inline-flex */
+  flex-direction: row;
+}
+
 #canvas{
 background: #567d46;
-display: inline-block;
-    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
@@ -18,9 +36,17 @@ display: inline-block;
     margin: auto;
 }
 
+#stanceButton{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
 button {
-  margin-top: 20px;
-  line-height: 60px;
+  text-align: center;
+  margin: center;
+  line-height: 40px;
   font-weight: bold;
   padding: 0 40px;
   background: #67E6EC	;

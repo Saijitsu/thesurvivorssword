@@ -160,6 +160,7 @@ Character.prototype.changeOfPlayerSDuelTurn = function () {
     } else {
         currentPlayer = players[0]
     }
+    currentPlayer.opponent().defensiveStance =
     currentPlayer.duel()
 }
 
@@ -171,40 +172,6 @@ Character.prototype.playersCollision = function () {
         return false;
     }
 }
-/*
-Character.prototype.duel = function () {
-    console.log("Fight this turn!");
-    var opponentPlayer = currentPlayer.opponent();
-    var duelIsEnd = false;
-    while (duelIsEnd == false) {
-        if (opponentPlayer.heal > 0) {
-            opponentPlayer.heal = opponentPlayer.heal - currentPlayer.dommageDeal();
-            if (opponentPlayer.heal > 0) {
-                console.log(opponentPlayer.name + " has " + opponentPlayer.heal + " heal points!")
-            } else {
-                console.log(opponentPlayer.name + " was overhit!");
-            }
-        }
-        if (opponentPlayer.heal <= 0) {
-            console.log(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!");
-            duelIsEnd = true;
-            break;
-        }
-        if (currentPlayer.heal > 0 && opponentPlayer.heal > 0) {
-            currentPlayer.heal = currentPlayer.heal - opponentPlayer.dommageDeal();
-            if (currentPlayer.heal > 0) {
-                console.log(currentPlayer.name + " has " + currentPlayer.heal + " heal points!")
-            } else {
-                console.log(currentPlayer.name + " was overhit!");
-            }
-        }
-        if (currentPlayer.heal <= 0) {
-            console.log(currentPlayer.name + " is unconscious! " + opponentPlayer.name + " is the winner!");
-            duelIsEnd = true;
-            break;
-        }
-    }
-}*/
 
 Character.prototype.duel = function () {
     console.log("Fight this turn!");
@@ -232,6 +199,16 @@ Character.prototype.duel = function () {
         currentPlayer.changeOfPlayerSDuelTurn()
         break;
     }
+}
+
+Character.prototype.defensiveStance = function () {
+    var txt;
+    if (confirm("Press OK to adopt a defensive stance!\n Press Cancel to a offensive stance!")) {
+        txt = "You adopt a defensive stance!";
+    } else {
+        txt = "You adopt a offensive stance!";
+    }
+    document.getElementById("buttonDefensive").innerHTML = txt;
 }
 
 // Objet joueur premier

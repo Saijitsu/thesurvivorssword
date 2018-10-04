@@ -10,11 +10,43 @@
 </head>
 
 <body onload="draw()">
-    <section>
-            <canvas id="canvas">Votre navigateur ne supporte pas HTML5, veuillez le mettre à
-                jour pour jouer n/ Your browser does not support
-                HTML5, please update it to play</canvas>
-    </section>
+    <main class="Interface">
+        <header class="title">
+            <div>
+                <h1>Sword of Survivor</h1>
+            </div>
+        </header>
+
+        <section class="boardAndPlayersInfo">
+            <article class="board">
+                <div>
+                    <canvas id="canvas">Votre navigateur ne supporte pas HTML5, veuillez le mettre à
+                        jour pour jouer n/ Your browser does not support
+                        HTML5, please update it to play</canvas>
+                </div>
+                <div id="stanceButton">
+                    <button type="button" onclick="Character.prototype.defensiveStance()">
+                        You want adopt a defensive stance?</button>
+                </div>
+            </article>
+            <article class="playerInfo">
+                <div>
+                    <h3>Player 1 Information</h3>
+                </div>
+                <div>
+                    <h3>Player 2 Information</h3>
+                </div>
+            </article>
+        </section>
+        <section class="naviChat">
+            <h3>Navi's console.log chat</h3>
+        </section>
+    </main>
+    <footer>
+        ©2018 SAIJITSU. Tous droits réservés.
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../js/index.js"></script>
     <script src="../js/weapons.js"></script>
     <script src="../js/character.js"></script>
@@ -22,6 +54,7 @@
     <script src="../js/map.js"></script>
     <script src="../js/classes/Tileset.js"></script>
     <script src="../js/canvas.js"></script>
+    <script src="../js/jQuery.js"></script>
 
 </body>
 
