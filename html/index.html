@@ -19,14 +19,14 @@
 
         <section class="boardAndPlayersInfo">
             <article class="board">
-                <div>
-                    <canvas id="canvas">Votre navigateur ne supporte pas HTML5, veuillez le mettre à
-                        jour pour jouer n/ Your browser does not support
-                        HTML5, please update it to play</canvas>
-                </div>
+                <canvas id="canvas">Votre navigateur ne supporte pas HTML5, veuillez le mettre à
+                    jour pour jouer n/ Your browser does not support
+                    HTML5, please update it to play</canvas>
                 <div id="stanceButton">
-                    <button type="button" onclick="Character.prototype.defensiveStance()">
-                        You want adopt a defensive stance?</button>
+                    <div><button type="button" id="buttonDefensive" onclick="Character.prototype.defensiveStance()">
+                            Defensive stance</button></div>
+                    <div><button type="button" id="buttonOffensive" onclick="Character.prototype.offensiveStance()">
+                            Offensive stance</button></div>
                 </div>
             </article>
             <article class="playerInfo">
@@ -39,11 +39,13 @@
             </article>
         </section>
         <section class="naviChat">
-            <h3>Navi's console.log chat</h3>
+            <div> <img src="../image/navi2.gif"> </div>
+            <div id="chatText"><p></p></div>
         </section>
     </main>
     <footer>
-        ©2018 SAIJITSU. Tous droits réservés.
+        ©2018 Nicolas Turlet. Projet réalisé dans le cadre d'une formation de Développeur Front End. Tous droits
+        réservés.
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

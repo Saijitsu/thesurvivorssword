@@ -141,6 +141,7 @@ Character.prototype.tripArea = function () {
 
 Character.prototype.changeOfPlayerSTurn = function () {
     if (this.playersCollision() == false) {
+        $("#chatText").text("No fight this turn!");
         console.log("No fight this turn!");
         if (currentPlayer == players[0]) {
             currentPlayer = players[1]
@@ -161,7 +162,7 @@ Character.prototype.changeOfPlayerSDuelTurn = function () {
         currentPlayer = players[0]
     }
     currentPlayer.opponent().defensiveStance =
-    currentPlayer.duel()
+        currentPlayer.duel()
 }
 
 Character.prototype.playersCollision = function () {
@@ -203,12 +204,22 @@ Character.prototype.duel = function () {
 
 Character.prototype.defensiveStance = function () {
     var txt;
-    if (confirm("Press OK to adopt a defensive stance!\n Press Cancel to a offensive stance!")) {
+    if (confirm("Press OK to adopt a defensive stance!")) {
         txt = "You adopt a defensive stance!";
     } else {
-        txt = "You adopt a offensive stance!";
+        txt = "Defensive stance";
     }
     document.getElementById("buttonDefensive").innerHTML = txt;
+}
+
+Character.prototype.offensiveStance = function () {
+    var txt;
+    if (confirm("Press OK to adopt an offensive stance!")) {
+        txt = "You adopt an offensive stance!";
+    } else {
+        txt = "Offensive stance";
+    }
+    document.getElementById("buttonOffensive").innerHTML = txt;
 }
 
 // Objet joueur premier

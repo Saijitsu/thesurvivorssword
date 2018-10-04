@@ -2,7 +2,6 @@
 var numbersOfPlayers = 2;
 var obstacleCell = 10;
 var chestCell = 4;
-var currentPlayer = null;
 var highLightning = [];
 var boardSize = 10;
 var rows = boardSize;
@@ -12,6 +11,7 @@ var height = rows * 50;
 var totalCells = rows * columns;
 var cellList = [];
 var tilePixelCut = 50;
+var currentPlayer = null;
 var yOnClick = null;
 var xOnClick = null;
 var oneHundredDeduceY = null;

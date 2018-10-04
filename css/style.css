@@ -7,52 +7,73 @@ body {
   padding: 0;
 }
 
+#navi{
+  background-image: url("../image/navi.gif");
+}
+
 .interface {
-  display: flex; /* or inline-flex */
+  display: flex;
+  /* or inline-flex */
   flex-direction: column;
 }
 
 .title {
-  display: flex; /* or inline-flex */
+  display: flex;
+  /* or inline-flex */
   flex-direction: row;
+  justify-content: center;
 }
 
 .boardAndPlayersInfo {
-  display: flex; /* or inline-flex */
+  display: flex;
+  /* or inline-flex */
   flex-direction: row;
+  justify-content: space-around;
+}
+
+.playerInfo {
+  display: flex;
+  flex-direction: column;
+  /* or inline-flex */
+  justify-content: space-around;
 }
 
 .naviChat {
-  display: flex; /* or inline-flex */
+  display: flex;
+  /* or inline-flex */
   flex-direction: row;
+  justify-content: left;
 }
 
-#canvas{
-background: #567d46;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+#chatText {
+text-align: center;
 }
 
-#stanceButton{
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+#canvas {
+  background: #567d46;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
+
+#stanceButton {
+  display: flex;
+  justify-content: space-around;
+
+}
+
 button {
   text-align: center;
   margin: center;
   line-height: 40px;
   font-weight: bold;
   padding: 0 40px;
-  background: #67E6EC	;
+  background: #67E6EC;
   border: 1px solid black;
 }
 
 button:hover {
-  background: #38B0DE	;
+  background: #38B0DE;
 }
