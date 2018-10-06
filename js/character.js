@@ -141,7 +141,7 @@ Character.prototype.tripArea = function () {
 
 Character.prototype.changeOfPlayerSTurn = function () {
     if (this.playersCollision() == false) {
-        $("#chatText").text("No fight this turn!");
+        $("#chatText").text("Hey! Listen! No fight this turn!");
         console.log("No fight this turn!");
         if (currentPlayer == players[0]) {
             currentPlayer = players[1]
@@ -150,6 +150,9 @@ Character.prototype.changeOfPlayerSTurn = function () {
         }
         highLightning = [];
         currentPlayer.tripArea() // Trip Area of current player.
+        setTimeout(function () {
+            $("#chatText").text(currentPlayer.describe());
+        }, 1000);
     } else {
         currentPlayer.duel()
     }
@@ -161,7 +164,10 @@ Character.prototype.changeOfPlayerSDuelTurn = function () {
     } else {
         currentPlayer = players[0]
     }
-    currentPlayer.opponent().defensiveStance =
+    currentPlayer.opponent().defensiveStance = null;
+    setTimeout(function () {
+        $("#chatText").text(currentPlayer.name + " enters the fight." );
+    }, 700);
         currentPlayer.duel()
 }
 
@@ -175,6 +181,7 @@ Character.prototype.playersCollision = function () {
 }
 
 Character.prototype.duel = function () {
+    $("#chatText").text("Hey! Listen! Fight this turn!");
     console.log("Fight this turn!");
     var opponentPlayer = currentPlayer.opponent();
     var duelIsEnd = false;
@@ -187,12 +194,21 @@ Character.prototype.duel = function () {
                 opponentPlayer.heal = opponentPlayer.heal - currentPlayer.dommageDeal();
             }
             if (opponentPlayer.heal > 0) {
+                setTimeout(function () {
+                $("#chatText").text(opponentPlayer.name + " has " + opponentPlayer.heal + " heal points!")
+            }, 700);
                 console.log(opponentPlayer.name + " has " + opponentPlayer.heal + " heal points!")
             } else {
+                setTimeout(function () {
+                $("#chatText").text(opponentPlayer.name + " was overhit!")
+            }, 700);
                 console.log(opponentPlayer.name + " was overhit!");
             }
         }
         if (opponentPlayer.heal <= 0) {
+            setTimeout(function () {
+            $("#chatText").text(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!")
+        }, 700);
             console.log(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!");
             duelIsEnd = true;
             break;
