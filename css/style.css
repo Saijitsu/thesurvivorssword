@@ -32,6 +32,7 @@ header {
   text-align: center;
   background-color: black;
   color: whitesmoke;
+  position: relative;
 }
 header::after {
   background: url(../image/hyrule_rule.png) bottom center;
