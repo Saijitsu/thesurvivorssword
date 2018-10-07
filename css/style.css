@@ -1,5 +1,11 @@
+@font-face {
+	font-family: "triforce";
+	src: url('../css/font/Triforce.ttf');
+}
+
 body {
   background-color: #62A238;
+  font-family: "Triforce", Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
   display: -webkit-flex;
@@ -7,6 +13,11 @@ body {
   -webkit-flex-direction: column;
   flex-direction: column;
   min-height: 100vh;
+}
+
+h1
+{
+font-size: 62px;
 }
 
 header {
@@ -33,7 +44,6 @@ footer {
   text-align: center;
   background-color: black;
   color: whitesmoke;
-  font-weight: Bolder;
 }
 
 
