@@ -34,13 +34,14 @@ header {
   color: whitesmoke;
   position: relative;
 }
+
 header::after {
   background: url(../image/hyrule_rule.png) bottom center;
   height: 86px;
   width: 100%;
   position: absolute;
   bottom: -44px;
-  left: 0;  
+  left: 0;
   content: "";
   margin-top: 100%;
   margin-top: 43px;
@@ -56,12 +57,20 @@ main {
   background-size: cover;
 }
 
-footer {
-  text-align: center;
-  background-color: black;
-  color: whitesmoke;
+footer::after {
+  content: "";
+  height: 1px;
+  background: linear-gradient(to right, #000 0%, #EEC965 50%, #000 100%);
+  position: absolute;
+  left: 0;
+  width: 100%;
 }
 
+footer {
+  background-color: black;
+  color: whitesmoke;
+  text-align: center;
+}
 
 #navi {
   background-image: url("../image/navi.gif");
@@ -70,13 +79,13 @@ footer {
 .interface {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .boardAndPlayersInfo {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding-top: 20px;
 }
 
 .playersInfo {
@@ -107,8 +116,7 @@ footer {
 }
 
 #chatText {
-  text-align: center;
-  margin-left: 16px;
+  justify-content: center;
 }
 
 #canvas {
@@ -229,6 +237,9 @@ button:hover {
 }
 
 .speech-bubble {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: rgba(8, 14, 32, 0.8);
   box-shadow: 0 0 16px 12px rgba(8, 14, 32, 0.8);
   border-radius: 16px;
@@ -242,31 +253,9 @@ button:hover {
   margin-top: 50px;
 }
 
-/*.speech-bubble {
-  width: 542px;
-  margin: 20px;
-  height: 50%;
-  border-radius: 15px;
-  background: #00bfb6;
-  color: #fff;
-  padding: 2px;
-  text-align: center;
-  font-family: arial;
-  position: relative;
-  left: -50px;
-  top: 40px;
-  box-shadow: 24px 20px 5px -2px rgba(0, 0, 0, 0.61);
-}
-
-.speech-bubble-Triangle::before {
-  content: "";
-  width: 0px;
-  height: 0px;
-  position: absolute;
-  border-left: 15px solid transparent;
-  border-right: 15px solid #00bfb6;
-  border-top: 15px solid #00bfb6;
-  border-bottom: 15px solid transparent;
-  left: -16px;
-  top: 0px;
-}*/
+#square{
+  margin: 0 auto;
+  height: 25px;
+  width: 25px;
+  background: rgba(51, 157, 243, 0.8);
+}  

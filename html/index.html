@@ -17,7 +17,7 @@
             <h2>Fight your dark reflection: in the end there will be only one!</h2>
         </div>
     </header>
-    <main>
+    <main class="interface">
         <section class="boardAndPlayersInfo">
             <article class="board">
                 <canvas id="canvas">Votre navigateur ne supporte pas HTML5, veuillez le mettre à
@@ -30,15 +30,19 @@
                             Offensive stance</button></div>
                 </div> -->
             </article>
-            <section class="interface">
+            <section>
                 <article class="playersInfo">
                     <div>
                         <h3>Player 1 : Link</h3>
                         <div class="player">
                             <img src="../image/greenLinkpng2.png" class="imageSpin">
                             <aside class="playerStat">
-                                <div><p>Heal Points:</p></div>
-                                <div><p>Weapon equiped:</p></div>
+                                <div>
+                                    <p>Heal Points:</p>
+                                </div>
+                                <div>
+                                    <p>Weapon equiped:</p>
+                                </div>
                             </aside>
                         </div>
                     </div>
@@ -47,8 +51,12 @@
                         <div class="player">
                             <img src="../image/darkLinkpng2.png" class="imageSpin">
                             <aside class="playerStat">
-                                <div><p>Heal Points:</p></div>
-                                <div><p>Weapon equiped:</p></div>
+                                <div>
+                                    <p>Heal Points:</p>
+                                </div>
+                                <div>
+                                    <p>Weapon equiped:</p>
+                                </div>
                             </aside>
                         </div>
                     </div>
@@ -56,8 +64,8 @@
                 <article class="naviChat">
                     <div class="vibrate"> <img src="../image/navi2.gif"> </div>
                     <div class="speech-bubble">
-                        <span id="chatText">Hey listen! hey listen! hey listen! hey listen! hey listen! hey listen! hey
-                            listen!</span>
+                        <span id="chatText">Hey! Listen!</span>
+                        <div id="square"></div>
                     </div>
                 </article>
             </section>
