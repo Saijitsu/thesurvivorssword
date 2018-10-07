@@ -33,6 +33,18 @@ header {
   background-color: black;
   color: whitesmoke;
 }
+header::after {
+  background: url(../image/hyrule_rule.png) bottom center;
+  height: 86px;
+  width: 100%;
+  position: absolute;
+  bottom: -44px;
+  left: 0;  
+  content: "";
+  margin-top: 100%;
+  margin-top: 43px;
+  z-index: 2;
+}
 
 main {
   -webkit-flex-grow: 1;
