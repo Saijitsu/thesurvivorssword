@@ -22,7 +22,7 @@ var elmt = document.getElementById("canvas");
 
 // Modify style
 elmt.style.background = getGradiantBackground();
-elmt.style.border = "1px solid white";
+elmt.style.border = "1px solid #EEC965";
 elmt.width = width;
 elmt.height = height;
 

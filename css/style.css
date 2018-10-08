@@ -16,23 +16,40 @@ body {
 }
 
 h1 {
-  font-size: 62px;
-}
-
-h3,
-p {
-  font-weight: bold;
-  text-shadow: 2px 2px 3px white;
+  font-size: 68px;
+  font-weight: 800;
+  background: -webkit-linear-gradient(70deg, #EEC965 40%, white 50%, #EEC965 60%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
 }
 
 header {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   text-align: center;
   background-color: black;
   color: whitesmoke;
   position: relative;
+}
+
+header p {
+  font-size: 28px;
+  background: -webkit-linear-gradient(90deg, #EEC965 35%, white 50%, #EEC965 65%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: -10px;
+}
+
+header h3 {
+  background: -webkit-linear-gradient(90deg, #EEC965 25%, white 50%, #EEC965 75%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 100;
 }
 
 header::after {
@@ -82,9 +99,15 @@ footer {
   justify-content: center;
 }
 
+#board {
+  margin: 20px;
+  justify-content: center;
+}
+
 .boardAndPlayersInfo {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -94,6 +117,8 @@ footer {
   flex: 4 auto;
   flex-direction: column;
   justify-content: space-around;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px white;
 }
 
 .player {
@@ -180,7 +205,9 @@ button:hover {
   -webkit-animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-duration: 5s;
-  box-shadow: 5px 4px 5px -2px rgba(0, 0, 0, 0.61);
+  -webkit-box-shadow: 11px 13px 21px -7px rgba(0, 0, 0, 0.61);
+  -moz-box-shadow: 11px 13px 21px -7px rgba(0, 0, 0, 0.61);
+  box-shadow: 11px 13px 21px -7px rgba(0, 0, 0, 0.61)
 }
 
 .vibrate:hover {
@@ -253,9 +280,61 @@ button:hover {
   margin-top: 50px;
 }
 
-#square{
+#square {
   margin: 0 auto;
   height: 25px;
   width: 25px;
-  background: rgba(51, 157, 243, 0.8);
-}  
+  border-radius: 4px;
+  background: linear-gradient(359deg, #e72dbfa1, #1aceeea2);
+  background-size: 400% 400%;
+  -webkit-box-shadow: 11px 13px 10px -4px rgba(0, 0, 0, 0.61);
+  -moz-box-shadow: 11px 13px 10px -4px rgba(0, 0, 0, 0.61);
+  box-shadow: 11px 13px 10px -4px rgba(0, 0, 0, 0.61);
+
+  -webkit-animation: gradientSquare 4s ease infinite;
+  -moz-animation: gradientSquare 4s ease infinite;
+  animation: gradientSquare 4s ease infinite;
+}
+
+
+@-webkit-keyframes gradientSquare {
+  0% {
+    background-position: 0% 5%
+  }
+
+  50% {
+    background-position: 100% 96%
+  }
+
+  100% {
+    background-position: 0% 5%
+  }
+}
+
+@-moz-keyframes gradientSquare {
+  0% {
+    background-position: 0% 5%
+  }
+
+  50% {
+    background-position: 100% 96%
+  }
+
+  100% {
+    background-position: 0% 5%
+  }
+}
+
+@keyframes gradientSquare {
+  0% {
+    background-position: 0% 5%
+  }
+
+  50% {
+    background-position: 100% 96%
+  }
+
+  100% {
+    background-position: 0% 5%
+  }
+}
