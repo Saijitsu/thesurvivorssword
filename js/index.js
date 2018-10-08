@@ -3,7 +3,7 @@ var numbersOfPlayers = 2;
 var obstacleCell = 10;
 var chestCell = 4;
 var highLightning = [];
-var boardSize = 10;
+var boardSize = 15;
 var rows = boardSize;
 var columns = boardSize;
 var width = columns * 50;
@@ -211,8 +211,11 @@ function writeMessage(message) {
 
 function moreThanOneHundredCells() { // New Player 2 drop location
     var min = obstacleCell + chestCell + 1;
-    oneHundredDeduceY = getRandomIntInclusive(0, boardSize - 1);
-    oneHundredDeduceX = getRandomIntInclusive(0, boardSize - 1);
+    var oneHundredY = getRandomIntInclusive(0, boardSize - 1);
+    var oneHundredX = getRandomIntInclusive(0, boardSize - 1);
+    oneHundredDeduceY = oneHundredY
+    oneHundredDeduceX = oneHundredX
+
     var cellWhereToDrop = oneHundredDeduceX + oneHundredDeduceY * board.length;
     for (i = 0; i < min; i++) {
         if (randomList[i] == randomList[cellWhereToDrop]) {

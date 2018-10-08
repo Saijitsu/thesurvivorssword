@@ -18,7 +18,7 @@ body {
 h1 {
   font-size: 68px;
   font-weight: 800;
-  background: -webkit-linear-gradient(70deg, #EEC965 40%, white 50%, #EEC965 60%);
+  background: -webkit-linear-gradient(70deg, #FFFF00 20%, #EEC965 40%, white 50%, #EEC965 60%, #FFFF00 80%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -50,6 +50,7 @@ header h3 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 100;
+  margin-top: -5px;
 }
 
 header::after {
@@ -99,11 +100,6 @@ footer {
   justify-content: center;
 }
 
-#board {
-  margin: 20px;
-  justify-content: center;
-}
-
 .boardAndPlayersInfo {
   display: flex;
   flex-direction: row;
@@ -150,7 +146,8 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-  margin: auto;
+  margin: 20px;
+  justify-content: center;
 }
 
 #stanceButton {
