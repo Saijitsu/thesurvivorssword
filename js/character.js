@@ -10,11 +10,11 @@ function Character(name, heal, weapon, weaponToDeposited, position, y, x, defens
 };
 
 Character.prototype.describe = function () {
-    var description = this.name + " is on cell n°" + this.id().position + " has " +
-        this.heal + " points of life, it is equipped with the weapon : \"" +
+    var description = this.name + " is on cell number " + this.id().position + " has " +
+        this.heal + " points of life, he is equipped with the weapon : \"" +
         this.equipedWeapon() + "\" he can inflict " +
         this.dommageDeal() + " damage per hit to " + this.opponent().name +
-        " locate on cell n°" + this.opponent().position + ".";
+        " locate on cell number " + this.opponent().position + ".";
     return description;
 }
 

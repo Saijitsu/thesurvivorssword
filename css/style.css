@@ -3,6 +3,11 @@
   src: url('../css/font/Triforce.ttf');
 }
 
+@font-face {
+  font-family: "RetGanon";
+  src: url('../css/font/RetGanon.ttf');
+}
+
 body {
   background-color: #62A238;
   font-family: "Triforce", Arial, Helvetica, sans-serif;
@@ -13,6 +18,68 @@ body {
   -webkit-flex-direction: column;
   flex-direction: column;
   min-height: 100vh;
+}
+
+#player1Heal,
+#player2Heal {
+  font-family: "RetGanon";
+  color: red;
+  text-shadow: 1px 1px 5px black;
+  font-Size: 48px;
+  margin-top: 25px;
+  margin-left: 10px;
+}
+
+#player1HealStat2,
+#player2HealStat2 {
+  font-family: "Triforce";
+  margin-top: -28px;
+  margin-left: 110px;
+}
+
+.weaponStat,
+.healStat {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#player1Weapon,
+#player2Weapon {
+  font-family: "Triforce";
+  color: rgb(13, 13, 26);
+  text-shadow: 1px 1px 5px whitesmoke;
+  font-Size: 35px;
+  margin-top: 25px;
+  margin-left: 10px;
+}
+
+.Peasant_Sword {
+  background-image: url("../image/Peasant_Sword.png");
+}
+
+.Sword_Of_Wind {
+  background-image: url("../image/Sword_Of_Wind.png");
+}
+
+.Sword_Of_Fire {
+  background-image: url("../image/Sword_Of_Fire.png");
+}
+
+.Sword_Of_Thunder {
+  background-image: url("../image/Sword_Of_Thunder.png");
+}
+
+.Magic_Wand {
+  background-image: url("../image/Magic_Wand.png");
+}
+
+.Bow_Of_Light {
+  background-image: url("../image/Bow_Of_Light.png");
+}
+
+.Iron_Hammer {
+  background-image: url("../image/Iron_Hammer.png");
 }
 
 h1 {
@@ -108,13 +175,26 @@ footer {
 }
 
 .playersInfo {
+  font-family: "RetGanon";
+  font-weight: bolder;
   padding-left: 40px;
   display: flex;
   flex: 4 auto;
   flex-direction: column;
   justify-content: space-around;
   font-weight: bold;
-  text-shadow: 2px 2px 2px white;
+  text-shadow: 2px 2px 6px white;
+}
+
+.playersInfo h3 {
+  font-size: 32px;
+  line-height: 0px;
+  margin-bottom: 18px;
+}
+
+.playersInfo p {
+  font-size: 25px;
+  line-height: 0%;
 }
 
 .player {
@@ -137,6 +217,8 @@ footer {
 }
 
 #chatText {
+  font-family: "RetGanon";
+  font-Size: 25px;
   justify-content: center;
 }
 
@@ -148,6 +230,7 @@ footer {
   right: 0;
   margin: 20px;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 #stanceButton {

@@ -7,20 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="../css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="32x32" href="../image/favicon-32x32.png">
-    <title>Sword of Survivor</title>
+    <title>The Survivor's Sword</title>
 </head>
 
 <body onload="draw()">
     <header>
         <p>The legend of</p>
         <h1>* The Survivor's Sword *</h1>
-        <h3>Fight your dark reflection: in the end there will be only one!</h3>
+        <h3>Fight your dark reflection: in the end there will be only one !</h3>
     </header>
     <main class="interface">
         <section class="boardAndPlayersInfo">
-            <canvas id="canvas">Votre navigateur ne supporte pas HTML5, veuillez le mettre à
+            <div><canvas id="canvas">Votre navigateur ne supporte pas HTML5, veuillez le mettre à
                 jour pour jouer n/ Your browser does not support
-                HTML5, please update it to play</canvas>
+                HTML5, please update it to play</canvas></div>
             <!-- <div id="stanceButton" display="hide">
                     <div><button type="button" id="buttonDefensive" onclick="Character.prototype.defensiveStance()">
                             Defensive stance</button></div>
@@ -32,13 +32,14 @@
                     <div>
                         <h3>Player 1 : Link</h3>
                         <div class="player">
-                            <img src="../image/greenLinkpng2.png" class="imageSpin">
+                            <div><img src="../image/greenLinkpng2.png" class="imageSpin"></div>
                             <aside class="playerStat">
-                                <div>
-                                    <p>Heal Points:</p>
+                                <div class="healStat">
+                                    <p>Heal Points:</p><p id="player1Heal">##########</p>
                                 </div>
-                                <div>
-                                    <p>Weapon equiped:</p>
+                                <div id="player1HealStat2">100/100</div>
+                                <div class="weaponStat" id="player0ImgWeapon">
+                                    <p>Equiped Weapon:</p><p id="player1Weapon">Sword of Peasant</p>
                                 </div>
                             </aside>
                         </div>
@@ -46,13 +47,14 @@
                     <div>
                         <h3>Player 2: Dark Link</h3>
                         <div class="player">
-                            <img src="../image/darkLinkpng2.png" class="imageSpin">
+                            <div><img src="../image/darkLinkpng2.png" class="imageSpin"></div>
                             <aside class="playerStat">
-                                <div>
-                                    <p>Heal Points:</p>
+                                <div class="healStat">
+                                    <p>Heal Points:</p> <p id="player2Heal">##########</p>
                                 </div>
-                                <div>
-                                    <p>Weapon equiped:</p>
+                                <div id="player2HealStat2">100/100</div>
+                                <div class="weaponStat" id="player1ImgWeapon">
+                                    <p>Equiped Weapon:</p><p id="player2Weapon">Sword of Peasant</p>
                                 </div>
                             </aside>
                         </div>
