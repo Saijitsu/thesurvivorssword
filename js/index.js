@@ -251,3 +251,25 @@ function lessThanOneHundredCells() { // New Player 2 drop location
         return lessThanOneHundredCells()
     }
 }
+
+function updateStatistics() {
+    for (i = 0; i < 2; i++) {
+        var valueToTransform = players[i].weapon.name;
+        var regex = / /gi;
+        var weaponIcon = (valueToTransform.replace(regex, "_"));
+        var heart = "#";
+        var emptyHeart = "*";
+        var nbHeart = Math.max(0, Math.round(players[i].heal / 10));
+        // if value < 0, return 0 as the max value of this method.
+        var nbEmptyHeart = 10 - nbHeart
+
+        $("#player" + i + "Heal").empty();
+        $("#player" + i + "HealStat2").empty();
+        $("#player" + i + "Weapon").empty();
+        $("#player" + i + "ImgWeapon").empty();
+        $("#player" + i + "Heal").append(heart.repeat(nbHeart) + emptyHeart.repeat(nbEmptyHeart));
+        $("#player" + i + "HealStat2").append(Math.max(0, players[i].heal) + "/100");
+        $("#player" + i + "Weapon").append(players[i].weapon.name);
+        $("#player" + i + "ImgWeapon").append("<div class=\"" + weaponIcon + " imageRotate\"></div>");
+    }
+};

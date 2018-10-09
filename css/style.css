@@ -20,8 +20,8 @@ body {
   min-height: 100vh;
 }
 
-#player1Heal,
-#player2Heal {
+#player0Heal,
+#player1Heal {
   font-family: "RetGanon";
   color: red;
   text-shadow: 1px 1px 5px black;
@@ -30,8 +30,8 @@ body {
   margin-left: 10px;
 }
 
-#player1HealStat2,
-#player2HealStat2 {
+#player0HealStat2,
+#player1HealStat2 {
   font-family: "Triforce";
   margin-top: -28px;
   margin-left: 110px;
@@ -44,8 +44,8 @@ body {
   flex-wrap: wrap;
 }
 
-#player1Weapon,
-#player2Weapon {
+#player0Weapon,
+#player1Weapon {
   font-family: "Triforce";
   color: rgb(13, 13, 26);
   text-shadow: 1px 1px 5px whitesmoke;
@@ -55,31 +55,69 @@ body {
 }
 
 .Peasant_Sword {
+  height: 50px;
+  width: 50px;
   background-image: url("../image/Peasant_Sword.png");
 }
 
 .Sword_Of_Wind {
+  height: 50px;
+  width: 50px;
   background-image: url("../image/Sword_Of_Wind.png");
 }
 
 .Sword_Of_Fire {
+  height: 50px;
+  width: 50px;
   background-image: url("../image/Sword_Of_Fire.png");
 }
 
 .Sword_Of_Thunder {
+  height: 50px;
+  width: 50px;
   background-image: url("../image/Sword_Of_Thunder.png");
 }
 
 .Magic_Wand {
+  height: 50px;
+  width: 50px;
   background-image: url("../image/Magic_Wand.png");
 }
 
 .Bow_Of_Light {
+  height: 50px;
+  width: 50px;
   background-image: url("../image/Bow_Of_Light.png");
 }
 
 .Iron_Hammer {
+  height: 50px;
+  width: 50px;
   background-image: url("../image/Iron_Hammer.png");
+  
+}
+
+.imageRotate {
+  animation: rotation 3s infinite linear;
+  -webkit-animation: rotation 3s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+      -webkit-transform: rotate(0deg);
+  }
+  to {
+      -webkit-transform: rotate(359deg);
+  }
+}
+
+@-webkit-keyframes rotation {
+  from {
+      -webkit-transform: rotate(0deg);
+  }
+  to {
+      -webkit-transform: rotate(359deg);
+  }
 }
 
 h1 {
@@ -290,6 +328,29 @@ button:hover {
   box-shadow: 11px 13px 21px -7px rgba(0, 0, 0, 0.61)
 }
 
+@keyframes spin {
+  from {
+    transform: rotateY(0deg);
+    moz-transform: rotateY(0deg);
+    ms-transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(360deg);
+    moz-transform: rotateY(360deg);
+    ms-transform: rotateY(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotateY(0deg);
+  }
+
+  to {
+    -webkit-transform: rotateY(360deg);
+  }
+}
 .vibrate:hover {
   /* Start the shake animation and make the animation last for 0.5 seconds */
   animation: shake 0.5s;

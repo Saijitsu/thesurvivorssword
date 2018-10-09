@@ -6,4 +6,5 @@ function start() {
     currentPlayer = players[playerNumber];
     console.log("The player "+ players[playerNumber].name +" can start the game. Good luck!")
     currentPlayer.tripArea();
+    updateStatistics()
 }

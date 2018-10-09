@@ -13,17 +13,17 @@ Weapons.prototype.describe = function () {
 // Object Weapon 0
 var peasantSword = new Weapons("Peasant Sword", 10, true);
 // Object Weapon 1
-var swordOfWind = new Weapons("Sword Of Wind", 13, false);
+var swordOfWind = new Weapons("Sword Of Wind", 11, false);
 // Object Weapon 2
-var swordOfFire = new Weapons("Sword Of Fire", 15, false);
+var swordOfFire = new Weapons("Sword Of Fire", 13, false);
 // Object Weapon 3
 var swordOfThunder = new Weapons("Sword Of Thunder", 17, false);
 // Object Weapon 4
-var magicWand = new Weapons("Magic Wand", 14, false);
+var magicWand = new Weapons("Magic Wand", 19, false);
 // Object Weapon 5
-var bowOfLight = new Weapons("Bow Of Light", 18, false);
+var bowOfLight = new Weapons("Bow Of Light", 21, false);
 // Object Weapon 6
-var ironHammer = new Weapons("Iron Hammer", 19, false);
+var ironHammer = new Weapons("Iron Hammer", 23, false);
 
 // Weapons Array!
 var weapons = [peasantSword, swordOfWind, swordOfFire, swordOfThunder, 
