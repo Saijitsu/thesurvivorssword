@@ -20,7 +20,7 @@ body {
   min-height: 100vh;
 }
 
-.gameOptionRules{
+.gameOptionRules {
   font-family: "RetGanon";
   font-weight: bolder;
   display: flex;
@@ -29,7 +29,20 @@ body {
   justify-content: center;
 }
 
-#gameOption, #gameRules{
+.gameOptionRules p{
+  font-size: 20px
+}
+
+.gameOptionRules h2{
+  font-size: 30px
+}
+
+.gameOptionRules h3{
+  font-size: 25px
+}
+
+#gameOption,
+#gameRules {
   background-color: rgba(238, 201, 101, 0.575);
   border-radius: 15px;
   display: flex;
@@ -38,17 +51,69 @@ body {
   width: 600px;
   height: 600px;
   margin: 20px;
-text-align: center}
+  text-align: center;
+}
+
+ul {
+  list-style-type:none;
+  line-height: 2;
+  text-align: left;
+  font-size: 20px;
+}
+
+li:before {
+  content: url("../image/sword_decorator.png");
+  padding-right: 10px;
+  display: inline-block;
+}
+
+li:hover:before {
+  transform: rotate(360000deg);
+  transition: 300s;
+}
 
 #player0Heal,
 #player1Heal {
   font-family: "RetGanon";
   color: red;
-  text-shadow: 1px 1px 5px black;
-  font-Size: 48px;
+  font-Size: 44px;
   margin-top: 25px;
   margin-left: 10px;
+  animation: neon 1.5s ease-in-out infinite alternate;
+  -webkit-animation: neon 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon 1.5s ease-in-out infinite alternate;
 }
+
+@keyframes neon {
+  from {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px rgba(255, 17, 120, 0.664), 0 0 35px rgba(255, 17, 120, 0.664), 0 0 40px rgba(255, 17, 120, 0.664), 0 0 50px rgba(255, 17, 120, 0.664), 0 0 75px rgba(255, 17, 120, 0.664);
+  }
+
+  to {
+    text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #fff, 0 0 8px rgba(255, 17, 120, 0.664), 0 0 10px rgba(255, 17, 120, 0.664), 0 0 12px rgba(255, 17, 120, 0.664), 0 0 14px rgba(255, 17, 120, 0.664), 0 0 16px rgba(255, 17, 120, 0.664);
+  }
+}
+
+@-webkit-keyframes neon {
+  from {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px rgba(255, 17, 120, 0.664), 0 0 35px rgba(255, 17, 120, 0.664), 0 0 40px rgba(255, 17, 120, 0.664), 0 0 50px rgba(255, 17, 120, 0.664), 0 0 75px rgba(255, 17, 120, 0.664);
+  }
+
+  to {
+    text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #fff, 0 0 8px rgba(255, 17, 120, 0.664), 0 0 10px rgba(255, 17, 120, 0.664), 0 0 12px rgba(255, 17, 120, 0.664), 0 0 14px rgba(255, 17, 120, 0.664), 0 0 16px rgba(255, 17, 120, 0.664);
+  }
+}
+
+@-moz-keyframes neon {
+  from {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px rgba(255, 17, 120, 0.664), 0 0 35px rgba(255, 17, 120, 0.664), 0 0 40px rgba(255, 17, 120, 0.664), 0 0 50px rgba(255, 17, 120, 0.664), 0 0 75px rgba(255, 17, 120, 0.664);
+  }
+
+  to {
+    text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #fff, 0 0 8px rgba(255, 17, 120, 0.664), 0 0 10px rgba(255, 17, 120, 0.664), 0 0 12px rgba(255, 17, 120, 0.664), 0 0 14px rgba(255, 17, 120, 0.664), 0 0 16px rgba(255, 17, 120, 0.664);
+  }
+}
+
 
 #player0HealStat2,
 #player1HealStat2 {
@@ -114,7 +179,7 @@ text-align: center}
   height: 50px;
   width: 50px;
   background-image: url("../image/Iron_Hammer.png");
-  
+
 }
 
 .imageRotate {
@@ -124,19 +189,21 @@ text-align: center}
 
 @keyframes rotation {
   from {
-      -webkit-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
   }
+
   to {
-      -webkit-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
   }
 }
 
 @-webkit-keyframes rotation {
   from {
-      -webkit-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
   }
+
   to {
-      -webkit-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
   }
 }
 
@@ -371,6 +438,7 @@ button:hover {
     -webkit-transform: rotateY(360deg);
   }
 }
+
 .vibrate:hover {
   /* Start the shake animation and make the animation last for 0.5 seconds */
   animation: shake 0.5s;
