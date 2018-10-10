@@ -222,6 +222,20 @@ li:hover:before {
 
 }
 
+.Goron_s_Sword {
+  height: 50px;
+  width: 50px;
+  background-image: url("../image/Goron_s_Sword.png");
+
+}
+
+.Kakariko_Bomb {
+  height: 50px;
+  width: 50px;
+  background-image: url("../image/Kakariko_Bomb.png");
+
+}
+
 .imageRotate {
   animation: rotation 3s infinite linear;
   -webkit-animation: rotation 3s infinite linear;
@@ -415,30 +429,6 @@ button {
 
 button:hover {
   background: #38B0DE;
-}
-
-@keyframes spin {
-  from {
-    transform: rotateY(0deg);
-    moz-transform: rotateY(0deg);
-    ms-transform: rotateY(0deg);
-  }
-
-  to {
-    transform: rotateY(360deg);
-    moz-transform: rotateY(360deg);
-    ms-transform: rotateY(360deg);
-  }
-}
-
-@-webkit-keyframes spin {
-  from {
-    -webkit-transform: rotateY(0deg);
-  }
-
-  to {
-    -webkit-transform: rotateY(360deg);
-  }
 }
 
 .imageSpin {

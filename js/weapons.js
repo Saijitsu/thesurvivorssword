@@ -24,10 +24,15 @@ var magicWand = new Weapons("Magic Wand", 19, false);
 var bowOfLight = new Weapons("Bow Of Light", 21, false);
 // Object Weapon 6
 var ironHammer = new Weapons("Iron Hammer", 23, false);
+// Object Weapon 7
+var GoronsSword = new Weapons("Goron s Sword", 25, false);
+// Object Weapon 8
+var KakarikoBomb = new Weapons("Kakariko Bomb", 34, false);
+
 
 // Weapons Array!
 var weapons = [peasantSword, swordOfWind, swordOfFire, swordOfThunder, 
-    magicWand, bowOfLight, ironHammer]
+    magicWand, bowOfLight, ironHammer, GoronsSword, KakarikoBomb]
 
 // Array of entry in weapons Array (less the first one):
 var weaponsEntry = []
