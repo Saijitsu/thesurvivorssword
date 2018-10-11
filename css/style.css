@@ -656,3 +656,19 @@ button:hover {
     background-position: 0% 5%
   }
 }
+
+#duel {
+  display: none;
+  height: 500px;
+  width: 600px;
+  border: 1px solid red;
+  background: linear-gradient(180deg, rgb(255, 255, 0) 20%, rgb(238, 201, 101) 30%,
+   rgb(255, 255, 255) 60%, transparent 62%,transparent 100%), url("../image/DuelBackground.gif") no-repeat bottom;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 20px;
+  justify-content: center;
+  flex-shrink: 0;
+}
