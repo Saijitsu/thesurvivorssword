@@ -82,7 +82,9 @@ li:hover:before {
 }
 
 
-.sliderMap, .sliderChest, .sliderObstacle {
+.sliderMap,
+.sliderChest,
+.sliderObstacle {
   -webkit-appearance: none;
   width: 100%;
   height: 25px;
@@ -93,7 +95,9 @@ li:hover:before {
   transition: opacity .2s;
 }
 
-.sliderMap:hover, .sliderObstacle:hover, .sliderChest:hover {
+.sliderMap:hover,
+.sliderObstacle:hover,
+.sliderChest:hover {
   opacity: 1;
 }
 
@@ -382,7 +386,7 @@ footer {
 }
 
 .boardAndPlayersInfo {
-  display: flex;
+  display: none;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;

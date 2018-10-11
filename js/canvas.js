@@ -64,6 +64,3 @@ function draw() {
         }
     }
 };
-
-// Start the game:
-start()

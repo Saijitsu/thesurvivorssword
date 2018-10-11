@@ -10,23 +10,56 @@
     <title>The Survivor's Sword</title>
 </head>
 
-<body onload="draw()">
+<body>
     <header>
         <p>The legend of</p>
         <h1>* The Survivor's Sword *</h1>
         <h3>Fight your dark reflection: in the end there will be only one !</h3>
     </header>
     <main class="interface">
+                <section class="gameOptionRules">
+            <article id="gameOption">
+                    <h2>Welcome to the game!</h2>
+                    <p>Here you can adjust the game settings.</p>
+                    <p>By default, the playing field has a size of 10 x 10 and a square shape like
+                        a classic board game, 4 weapon chests and 10 impassable obstacles.
+                        Although it is possible to have a table of 100 x 100 with 300 obstacles
+                        and a maximum number of chests, each weapon is unique.
+                        We prefer to limit this number for technical reasons!</p>
+                    <h3>Game settings</h3>
+                    <p>Board size:</p>
+                    <div class="slidecontainer">
+                    <input type="range" min="10" max="20" value="10" class="sliderMap">
+                </div>
+                    <p>Obstacle:</p>
+                    <div class="slidecontainer">
+                    <input type="range" min="10" max="50" value="10" class="sliderObstacle">
+                </div>
+                    <p>Weapon chest:</p>
+                    <div class="slidecontainer">
+                    <input type="range" min="1" max="6" value="4" class="sliderChest">
+                </div>
+                    <div><button type="button" id="startButton">
+                        Start</button></div>
+            </article>
+            <article id="gameOption">
+                <h2>Game's rules</h2>
+                <ul>
+                    <li>The default weapon that equips the players inflict 10 points of damage.</li>
+                    <li>If you pick up a weapon in a chest you will drop it on the ground.</li>
+                    <li>The placement of both players is also random when loading the game.</li>
+                    <li>They can not be in contact in the first turn of play.</li>
+                    <li>If the players make contact on the vertical or horizontal squares, the duel begins.</li>
+                    <li>Players may attack or defend during the duel.If they defend themselves: Half the domage.</li>
+                    <li>The winner is the duel's survivor!</li>
+                </ul>
+                <h3>The master of the game</h3>
+            </article>
+        </section>
         <section class="boardAndPlayersInfo">
             <div><canvas id="canvas">Votre navigateur ne supporte pas HTML5, veuillez le mettre à
                     jour pour jouer n/ Your browser does not support
                     HTML5, please update it to play</canvas></div>
-            <!-- <div id="stanceButton" display="hide">
-                    <div><button type="button" id="buttonDefensive" onclick="Character.prototype.defensiveStance()">
-                            Defensive stance</button></div>
-                    <div><button type="button" id="buttonOffensive" onclick="Character.prototype.offensiveStance()">
-                            Offensive stance</button></div>
-                </div> -->
             <aside>
                 <article class="playersInfo">
                     <div id="player1">
@@ -84,9 +117,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../js/index.js"></script>
-    <script src="../js/weapons.js"></script>
+     <script src="../js/game.js"></script>
+     <script src="../js/weapons.js"></script>
     <script src="../js/character.js"></script>
-    <script src="../js/game.js"></script>
     <script src="../js/map.js"></script>
     <script src="../js/classes/Tileset.js"></script>
     <script src="../js/canvas.js"></script>
