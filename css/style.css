@@ -81,7 +81,8 @@ li:hover:before {
   width: 80%;
 }
 
-.slider {
+
+.sliderMap, .sliderChest, .sliderObstacle {
   -webkit-appearance: none;
   width: 100%;
   height: 25px;
@@ -92,25 +93,59 @@ li:hover:before {
   transition: opacity .2s;
 }
 
-.slider:hover {
+.sliderMap:hover, .sliderObstacle:hover, .sliderChest:hover {
   opacity: 1;
 }
 
-.slider::-webkit-slider-thumb {
+.sliderMap::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 25px;
   height: 25px;
-  background: #4CAF50;
+  background-image: url("../image/mapRange.png");
   cursor: pointer;
 }
 
-.slider::-moz-range-thumb {
+.sliderMap::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background-image: url("../image/mapRange.png");
+  cursor: pointer;
+}
+
+.sliderObstacle::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background-image: url("../image/ObstacleRange.png");
+  cursor: pointer;
+}
+
+.sliderObstacle::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background-image: url("../image/ObstacleRange.png");
+  cursor: pointer;
+}
+
+.sliderChest::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background-image: url("../image/chestRange.png");
+  cursor: pointer;
+}
+
+.sliderChest::-moz-range-thumb {
   width: 25px;
   height: 25px;
   background: #4CAF50;
+  background-image: url("../image/chestRange.png");
   cursor: pointer;
 }
+
 
 #player0Heal,
 #player1Heal {
