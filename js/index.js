@@ -1,7 +1,7 @@
 // Global Variable
 var numbersOfPlayers = 2;
 var obstacleCell = 10;
-var chestCell = 4;
+var chestCell = parseInt(document.getElementById("sliderChest").value)
 var highLightning = [];
 var boardSize = 10;
 var rows = boardSize;
@@ -287,3 +287,30 @@ function updateStatistics() {
         $("#player" + i + "ImgWeapon").append("<div class=\"" + weaponIcon + " imageRotate\"></div>");
     }
 };
+
+var sliderMap = document.getElementById("sliderMap");
+var outputMap = document.getElementById("sliderMapValue");
+outputMap.innerHTML = sliderMap.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+sliderMap.oninput = function() {
+    outputMap.innerHTML = this.value;
+}
+
+var sliderObstacle = document.getElementById("sliderObstacle");
+var outputObstacle = document.getElementById("sliderObstacleValue");
+outputObstacle.innerHTML = sliderObstacle.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+sliderObstacle.oninput = function() {
+    outputObstacle.innerHTML = this.value;
+}
+
+var sliderChest = document.getElementById("sliderChest");
+var outputChest = document.getElementById("sliderChestValue");
+outputChest.innerHTML = sliderChest.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+sliderChest.oninput = function() {
+    outputChest.innerHTML = this.value;
+}
