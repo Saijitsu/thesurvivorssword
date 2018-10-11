@@ -144,11 +144,7 @@ Character.prototype.changeOfPlayerSTurn = function () {
     if (this.playersCollision() == false) {
         $("#chatText").text("Hey! Listen! No fight this turn!");
         console.log("No fight this turn!");
-        if (currentPlayer == players[0]) {
-            currentPlayer = players[1]
-        } else {
-            currentPlayer = players[0]
-        }
+       currentPlayerIs()
         highLightning = [];
         currentPlayer.tripArea(); // Trip Area of current player.
         setTimeout(function () {
@@ -160,11 +156,7 @@ Character.prototype.changeOfPlayerSTurn = function () {
 }
 
 Character.prototype.changeOfPlayerSDuelTurn = function () {
-    if (currentPlayer == players[0]) {
-        currentPlayer = players[1]
-    } else {
-        currentPlayer = players[0]
-    }
+    currentPlayerIs()
     currentPlayer.opponent().defensiveStance = null;
     updateStatistics()
     setTimeout(function () {
@@ -243,10 +235,10 @@ Character.prototype.offensiveStance = function () {
     document.getElementById("buttonOffensive").innerHTML = txt;
 }
 
-// Objet joueur premier
+// Object Player One
 var player1 = new Character("Player 1", 100, weapons[0]);
 
-// Objet joueur second
+// Object Player two
 var player2 = new Character("Player 2", 100, weapons[0]);
 
 // Character Array!

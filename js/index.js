@@ -252,6 +252,20 @@ function lessThanOneHundredCells() { // New Player 2 drop location
     }
 }
 
+function currentPlayerIs() {
+    if (currentPlayer == players[0]) {
+        currentPlayer = players[1]
+        $("#player2").addClass("currentPlayerIs2");
+        $("#player1").removeClass("currentPlayerIs1");
+        return currentPlayer
+    } else {
+        currentPlayer = players[0]
+        $("#player1").addClass("currentPlayerIs1");
+        $("#player2").removeClass("currentPlayerIs2");
+        return currentPlayer
+    }
+}
+
 function updateStatistics() {
     for (i = 0; i < 2; i++) {
         var valueToTransform = players[i].weapon.name;

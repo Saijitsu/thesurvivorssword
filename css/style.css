@@ -29,15 +29,15 @@ body {
   justify-content: center;
 }
 
-.gameOptionRules p{
+.gameOptionRules p {
   font-size: 20px
 }
 
-.gameOptionRules h2{
+.gameOptionRules h2 {
   font-size: 30px
 }
 
-.gameOptionRules h3{
+.gameOptionRules h3 {
   font-size: 25px
 }
 
@@ -54,12 +54,12 @@ body {
   text-align: center;
 }
 
-#gameOption p{
-margin:0px
+#gameOption p {
+  margin: 0px
 }
 
 ul {
-  list-style-type:none;
+  list-style-type: none;
   line-height: 2;
   text-align: left;
   font-size: 20px;
@@ -356,7 +356,6 @@ footer {
 .playersInfo {
   font-family: "RetGanon";
   font-weight: bolder;
-  padding-left: 40px;
   display: flex;
   flex: 4 auto;
   flex-direction: column;
@@ -366,6 +365,7 @@ footer {
 }
 
 .playersInfo h3 {
+  padding-left: 40px;
   font-size: 32px;
   line-height: 0px;
   margin-bottom: 18px;
@@ -379,6 +379,7 @@ footer {
 .player {
   display: flex;
   flex-direction: row;
+  padding-left: 40px;
 }
 
 .playerStat {
@@ -555,6 +556,25 @@ button:hover {
   animation: gradientSquare 4s ease infinite;
 }
 
+.currentPlayerIs1 {
+  border-radius: 15px;
+  border: 1px solid rgba(238, 201, 101, 0.815);
+  background: linear-gradient(359deg, rgba(92, 236, 123, 0.705), rgba(146, 233, 253, 0.705));
+  background-size: 400% 400%;
+  -webkit-animation: gradientSquare 4s ease infinite;
+  -moz-animation: gradientSquare 4s ease infinite;
+  animation: gradientSquare 4s ease infinite;
+}
+
+.currentPlayerIs2 {
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.815);
+  background: linear-gradient(359deg, rgba(40, 44, 117, 0.705), rgba(152, 35, 60, 0.705));
+  background-size: 400% 400%;
+  -webkit-animation: gradientSquare 4s ease infinite;
+  -moz-animation: gradientSquare 4s ease infinite;
+  animation: gradientSquare 4s ease infinite;
+}
 
 @-webkit-keyframes gradientSquare {
   0% {
