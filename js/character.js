@@ -159,12 +159,10 @@ Character.prototype.changeOfPlayerSTurn = function () {
 
 Character.prototype.changeOfPlayerSDuelTurn = function () {
     currentPlayerIs()
-    currentPlayer.opponent().defensiveStance = null;
     updateStatistics()
     setTimeout(function () {
         $("#chatText").text(currentPlayer.name + " enters the fight.");
     }, 700);
-    currentPlayer.duel()
 }
 
 Character.prototype.playersCollision = function () {
@@ -182,51 +180,19 @@ Character.prototype.duel = function () {
     console.log("Fight this turn!");
     $("#duel").show();
     $("#canvas").hide();
-    var opponentPlayer = currentPlayer.opponent();
-    var duelIsEnd = false;
-    while (duelIsEnd == false) {
-        if (opponentPlayer.heal > 0) {
-            if (opponentPlayer.defensiveStance == true) {
-                opponentPlayer.heal = opponentPlayer.heal - currentPlayer.dommageDeal() / 2;
-                opponentPlayer.defensiveStance == false;
-                updateStatistics()
-            } else if (opponentPlayer.defensiveStance == undefined || opponentPlayer.defensiveStance == false) {
-                opponentPlayer.heal = opponentPlayer.heal - currentPlayer.dommageDeal();
-                updateStatistics();
-            }
-            if (opponentPlayer.heal > 0) {
-                setTimeout(function () {
-                    $("#chatText").text(opponentPlayer.name + " has " + opponentPlayer.heal + " heal points!")
-                }, 700);
-                console.log(opponentPlayer.name + " has " + opponentPlayer.heal + " heal points!")
-            } else {
-                setTimeout(function () {
-                    $("#chatText").text(opponentPlayer.name + " was overhit!")
-                }, 700);
-                console.log(opponentPlayer.name + " was overhit!");
-            }
-        }
-        if (opponentPlayer.heal <= 0) {
-            updateStatistics()
-            change_track(victoryMusic)
-            setTimeout(function () {
-                $("#chatText").text(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!")
-            }, 700);
-            console.log(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!");
-            duelIsEnd = true;
-            break;
-        }
-        currentPlayer.changeOfPlayerSDuelTurn()
-        break;
-    }
 }
 
-Character.prototype.defensiveStance = function () {
-    currentPlayer.defensiveStance == true
+Character.prototype.isDefensiveStance = function () {
+    currentPlayer = this;
+    currentPlayer.defensiveStance = true;
+    console.log("Current Player adopt a defensive stance!")
+    fight()
 }
 
-Character.prototype.offensiveStance = function () {
-    currentPlayer.defensiveStance == true
+Character.prototype.isOffensiveStance = function () {
+    currentPlayer.defensiveStance = false;
+    console.log("Current Player adopt an offensive stance!")
+    fight()
 }
 
 // Object Player One

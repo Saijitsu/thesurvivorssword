@@ -334,7 +334,7 @@ sliderChest.oninput = function () {
 }
 
 //Game music
-$(function () {//Low audio volume
+$(function () { //Low audio volume
     var audio = document.getElementById("myAudio");
     audio.volume = 0.1;
 });
@@ -344,14 +344,59 @@ function heyListen() {
     audio.play();
     audio.volume = 0.2;
 }
-var adventureMusic = src="http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/nuyjimms/06%20-%20Kokiri%20Forest.mp3"
-var fightMusic = src="http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/hlcsbajc/79%20-%20Last%20Battle.mp3"
-var victoryMusic = src="http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/ikoatnrm/49%20-%20Medal%20Get%20Fanfare.mp3"
+var adventureMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/nuyjimms/06%20-%20Kokiri%20Forest.mp3"
+var fightMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/hlcsbajc/79%20-%20Last%20Battle.mp3"
+var victoryMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/ikoatnrm/49%20-%20Medal%20Get%20Fanfare.mp3"
 
 function change_track(sourceUrl) {
-    var audio = $("#myAudio");      
+    var audio = $("#myAudio");
     $("#mp3_src").attr("src", sourceUrl);
     audio[0].pause();
-    audio[0].load();//suspends and restores all audio element
+    audio[0].load(); //suspends and restores all audio element
     audio[0].oncanplaythrough = audio[0].play();
+}
+
+// CODE IN PROGRESS/ FAIL DEFENSIVE STANCE ATM
+function fight() {
+   var opponentPlayer = currentPlayer.opponent();
+    if (currentPlayer.defensiveStance == true) {
+        return currentPlayer.changeOfPlayerSDuelTurn()
+    }
+    var duelIsEnd = false;
+    while (duelIsEnd == false) {
+        if (opponentPlayer.heal > 0) {
+            if (opponentPlayer.defensiveStance == true) {
+                opponentPlayer.heal = opponentPlayer.heal - currentPlayer.dommageDeal() / 2;
+                opponentPlayer.defensiveStance == false;
+                updateStatistics()
+            } else if (opponentPlayer.defensiveStance == undefined || opponentPlayer.defensiveStance == false) {
+                opponentPlayer.heal = opponentPlayer.heal - currentPlayer.dommageDeal();
+                updateStatistics();
+            }
+            if (opponentPlayer.heal > 0) {
+                setTimeout(function () {
+                    $("#chatText").text(opponentPlayer.name + " has " + opponentPlayer.heal + " heal points!")
+                }, 700);
+                console.log(opponentPlayer.name + " has " + opponentPlayer.heal + " heal points!")
+            } else {
+                setTimeout(function () {
+                    $("#chatText").text(opponentPlayer.name + " was overhit!")
+                }, 700);
+                console.log(opponentPlayer.name + " was overhit!");
+            }
+        }
+        if (opponentPlayer.heal <= 0) {
+            updateStatistics()
+            change_track(victoryMusic)
+            setTimeout(function () {
+                $("#chatText").text(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!")
+            }, 700);
+            console.log(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!");
+            duelIsEnd = true;
+            break;
+        }
+        opponentPlayer.defensiveStance == false
+        currentPlayer.changeOfPlayerSDuelTurn()
+        break;
+    }
 }
