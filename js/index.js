@@ -19,6 +19,18 @@ var oneHundredDeduceX = null;
 var currentCellPosition = 0;
 var randomList = [];
 
+// User-defined settings
+function userDefinedSettings() {
+    obstacleCell = parseInt(document.getElementById("sliderObstacle").value)
+    chestCell = parseInt(document.getElementById("sliderChest").value)
+    boardSize = parseInt(document.getElementById("sliderMap").value)
+    rows = boardSize
+    columns = boardSize
+    width = columns * 50;
+    height = rows * 50;
+    totalCells = columns * rows;
+}
+
 function getGradiantBackground() {
     var valuesOfHex = ["#9dc183", "#708238", "#00A86B", "#00A572", "#66FF66",
         "#B4D7BF", "#66CDAA", "#36DBCA", "#0AC92B", "#BCED91", "#8CDD81", "#90FEFB"
@@ -36,17 +48,28 @@ function randomInt(mini, maxi) {
     return Math.floor(nb);
 }
 
-Array.prototype.shuffle = function (n) {
-    if (!n)
-        n = this.length;
-    if (n > 1) {
-        var i = randomInt(0, n - 1);
-        var tmp = this[i];
-        this[i] = this[n - 1];
-        this[n - 1] = tmp;
-        this.shuffle(n - 1);
+
+function createRandomCellList() { // Arry of random list of total cells.
+    Array.prototype.shuffle = function (n) {
+        if (!n)
+            n = this.length;
+        if (n > 1) {
+            var i = randomInt(0, n - 1);
+            var tmp = this[i];
+            this[i] = this[n - 1];
+            this[n - 1] = tmp;
+            this.shuffle(n - 1);
+        }
     }
+    randomList = new Array();
+    for (i = 0; i < totalCells; i++) {
+        randomList[i] = i;
+    }
+
+    randomList.shuffle();
+    console.log(randomList.join());
 }
+
 
 function containType() { // Contain of the board!
     obstacleCell = parseInt(document.getElementById("sliderObstacle").value)
