@@ -39,4 +39,3 @@ var weaponsEntry = []
 for (var entry = 1; entry < weapons.length; entry++) {
     weaponsEntry.push(entry)
 }
-weaponsEntry.shuffle();

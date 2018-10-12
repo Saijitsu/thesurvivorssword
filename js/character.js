@@ -218,9 +218,11 @@ Character.prototype.duel = function () {
 }
 
 Character.prototype.defensiveStance = function () {
+    currentPlayer.defensiveStance == true
 }
 
 Character.prototype.offensiveStance = function () {
+    currentPlayer.defensiveStance == true
 }
 
 // Object Player One

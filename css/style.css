@@ -63,6 +63,17 @@ body {
   margin: 0px
 }
 
+#gameOption button {
+  font-family: "Return of Ganon Regular", "Triforce";
+  margin: auto;
+  margin-top: 40px;
+  background: linear-gradient(359deg, rgb(243, 195, 64), rgba(109, 243, 31, 0.863));
+  background-size: 400% 400%;
+  -webkit-animation: gradientSquare 4s ease infinite;
+  -moz-animation: gradientSquare 4s ease infinite;
+  animation: gradientSquare 4s ease infinite;
+}
+
 ul {
   list-style-type: none;
   line-height: 2;
@@ -463,23 +474,32 @@ footer {
   cursor: pointer;
 }
 
-#stanceButton {
-  display: flex;
-  justify-content: space-around;
-}
-
 button {
+  display: flex;
+  font-family: "triforce";
+  border-radius: 5px;
+  margin-top: 50px;
+  font-size: 30px;
+  width: 242px;
+  height: 36px;
+  background: linear-gradient(70deg, #FFFF00 10%, #EEC965 20%, white 50%, #EEC965 70%, #FFFF00 90%);
   text-align: center;
-  margin: center;
-  line-height: 40px;
-  font-weight: bold;
-  padding: 0 40px;
-  background: #67E6EC;
+  font-weight: 700;
   border: 1px solid black;
 }
 
-button:hover {
-  background: #38B0DE;
+#startButton,
+#offensiveStance,
+#defensiveStance {
+  justify-content: space-around;
+}
+
+#defensiveStance:hover {
+  background: linear-gradient(70deg, rgb(96, 201, 243), white);
+}
+
+#offensiveStance:hover {
+  background: linear-gradient(70deg, rgb(243, 113, 96), white);
 }
 
 .imageSpin {
@@ -669,6 +689,8 @@ button:hover {
 }
 
 #duel {
+  display: flex;
+  justify-content: space-around;
   height: 500px;
   width: 600px;
   border: 1px solid red;
@@ -679,7 +701,6 @@ button:hover {
   left: 0;
   right: 0;
   margin: 20px;
-  justify-content: center;
   flex-shrink: 0;
   cursor: pointer;
 }
