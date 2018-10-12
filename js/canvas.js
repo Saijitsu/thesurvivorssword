@@ -7,8 +7,8 @@ function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     // Variables utiles au canvas
     // vérifier la présence du canvas:
-    for (var i = 0; i < myMap.rows; i++) {
-        for (var j = 0; j < myMap.rows; j++) {
+    for (var i = 0; i < rows; i++) {
+        for (var j = 0; j < columns; j++) {
             var dx = j * Tilewidth;
             var dy = i * Tilewidth;
 

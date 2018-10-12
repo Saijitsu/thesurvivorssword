@@ -177,6 +177,8 @@ Character.prototype.playersCollision = function () {
 Character.prototype.duel = function () {
     $("#chatText").text("Hey! Listen! Fight this turn!");
     console.log("Fight this turn!");
+    $("#duel").show();
+    $("#canvas").hide();
     var opponentPlayer = currentPlayer.opponent();
     var duelIsEnd = false;
     while (duelIsEnd == false) {
@@ -216,23 +218,9 @@ Character.prototype.duel = function () {
 }
 
 Character.prototype.defensiveStance = function () {
-    var txt;
-    if (confirm("Press OK to adopt a defensive stance!")) {
-        txt = "You adopt a defensive stance!";
-    } else {
-        txt = "Defensive stance";
-    }
-    document.getElementById("buttonDefensive").innerHTML = txt;
 }
 
 Character.prototype.offensiveStance = function () {
-    var txt;
-    if (confirm("Press OK to adopt an offensive stance!")) {
-        txt = "You adopt an offensive stance!";
-    } else {
-        txt = "Offensive stance";
-    }
-    document.getElementById("buttonOffensive").innerHTML = txt;
 }
 
 // Object Player One

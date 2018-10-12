@@ -40,7 +40,7 @@
 
                 <div class="slidecontainer">
                     <p>Weapon chest: <span id="sliderChestValue"></span></p>
-                    <input type="range" min="1" max="6" value="4" id="sliderChest">
+                    <input type="range" min="1" max="8" value="4" id="sliderChest">
                 </div>
                 <div><button type="button" id="startButton">
                         Start</button></div>
@@ -64,7 +64,7 @@
                     jour pour jouer n/ Your browser does not support
                     HTML5, please update it to play</canvas></div>
             <div id="duel"></div>
-            <aside>
+            <aside id="generalInformations">
                 <article class="playersInfo">
                     <div id="player1">
                         <h3>Player 1 : Link</h3>
@@ -104,7 +104,7 @@
                     </div>
                 </article>
                 <article class="naviChat">
-                    <div class="vibrate"> <img src="../image/navi2.gif"> </div>
+                    <div class="vibrate"></div>
                     <div class="speech-bubble">
                         <span id="chatText">Hey! Listen!</span>
                         <div id="square"></div>
@@ -120,13 +120,15 @@
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
     <script src="../js/index.js"></script>
-    <script src="../js/game.js"></script>
     <script src="../js/weapons.js"></script>
     <script src="../js/character.js"></script>
+    <script src="../js/game.js"></script>
     <script src="../js/map.js"></script>
     <script src="../js/classes/Tileset.js"></script>
     <script src="../js/canvas.js"></script>
+    
 
 </body>
 

@@ -1,9 +1,9 @@
 // Global Variable
 var numbersOfPlayers = 2;
-var obstacleCell = 10;
-var chestCell = parseInt(document.getElementById("sliderChest").value)
+var obstacleCell = parseInt(document.getElementById("sliderObstacle").value);
+var chestCell = parseInt(document.getElementById("sliderChest").value);
 var highLightning = [];
-var boardSize = 10;
+var boardSize = parseInt(document.getElementById("sliderMap").value);
 var rows = boardSize;
 var columns = boardSize;
 var width = columns * 50;
@@ -16,15 +16,8 @@ var yOnClick = null;
 var xOnClick = null;
 var oneHundredDeduceY = null;
 var oneHundredDeduceX = null;
-
-// Modify CSS elements
-var elmt = document.getElementById("canvas");
-
-// Modify style
-elmt.style.background = getGradiantBackground();
-elmt.style.border = "1px solid #EEC965";
-elmt.width = width;
-elmt.height = height;
+var currentCellPosition = 0;
+var randomList = [];
 
 function getGradiantBackground() {
     var valuesOfHex = ["#9dc183", "#708238", "#00A86B", "#00A572", "#66FF66",
@@ -54,15 +47,11 @@ Array.prototype.shuffle = function (n) {
         this.shuffle(n - 1);
     }
 }
-var randomList = new Array();
-for (i = 0; i < totalCells; i++) {
-    randomList[i] = i;
-}
-
-randomList.shuffle();
-console.log(randomList.join());
 
 function containType() { // Contain of the board!
+    obstacleCell = parseInt(document.getElementById("sliderObstacle").value)
+    chestCell = parseInt(document.getElementById("sliderChest").value)
+    boardSize = parseInt(document.getElementById("sliderMap").value)
     for (var i = 0; i < obstacleCell; i++) {
         if (currentCellPosition == randomList[i]) {
             var designIs = getRandomIntInclusive(1, 3);
@@ -257,11 +246,17 @@ function currentPlayerIs() {
         currentPlayer = players[1]
         $("#player2").addClass("currentPlayerIs2");
         $("#player1").removeClass("currentPlayerIs1");
+        $(".vibrate").empty()
+        $(".vibrate").append("<img src='../image/shadowNavi.gif'></img>")
+        $("#duel").css("background", "linear-gradient(180deg, rgb(106, 47, 243) 20%, rgb(180, 49, 241) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('../image/DuelBackground.gif') no-repeat bottom")
         return currentPlayer
     } else {
         currentPlayer = players[0]
         $("#player1").addClass("currentPlayerIs1");
         $("#player2").removeClass("currentPlayerIs2");
+        $(".vibrate").empty()
+        $(".vibrate").append("<img src='../image/navi.gif'></img>")
+        $("#duel").css("background", "linear-gradient(180deg, rgb(61, 189, 248) 20%, rgb(66, 212, 248) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('../image/DuelBackground.gif') no-repeat bottom")
         return currentPlayer
     }
 }
@@ -293,7 +288,7 @@ var outputMap = document.getElementById("sliderMapValue");
 outputMap.innerHTML = sliderMap.value; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
-sliderMap.oninput = function() {
+sliderMap.oninput = function () {
     outputMap.innerHTML = this.value;
 }
 
@@ -302,7 +297,7 @@ var outputObstacle = document.getElementById("sliderObstacleValue");
 outputObstacle.innerHTML = sliderObstacle.value; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
-sliderObstacle.oninput = function() {
+sliderObstacle.oninput = function () {
     outputObstacle.innerHTML = this.value;
 }
 
@@ -311,6 +306,6 @@ var outputChest = document.getElementById("sliderChestValue");
 outputChest.innerHTML = sliderChest.value; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
-sliderChest.oninput = function() {
+sliderChest.oninput = function () {
     outputChest.innerHTML = this.value;
 }

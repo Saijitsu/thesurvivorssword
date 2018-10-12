@@ -22,26 +22,36 @@ function Cell(contain, numberCell, y, x, freeCell, design, highLightning) {
     this.freeCell = freeCell; // true by defaut
     this.design = design;
     this.highLightning = false; // false by defaut
-    
+
 }
 
-// New Map created
-var myMap = new Map(rows, columns, width, height);
-
-// Board creation
-var board = new Array(myMap.columns);
-for (var i = 0; i < myMap.rows; i++) {
-    board[i] = new Array(myMap.rows);
+// Reference array of total cells
+/*
+        obstacleCell = parseInt(document.getElementById("sliderObstacle").value)
+        chestCell = parseInt(document.getElementById("sliderChest").value)
+        boardSize = parseInt(document.getElementById("sliderMap").value)
+var randomList = new Array();
+for (i = 0; i < totalCells; i++) {
+    randomList[i] = i;
 }
 
-// Board Contain
-for (var y = 0; y < (board.length); y++) {
-    for (var x = 0; x < (board.length); x++) {
-var currentCellPosition = x + y * board.length;
-// create the object and store a reference to the cell object so you can do something with it later
-        var containTypeCell = containType(x, y, board.length, board, currentCellPosition);
-        board[y][x] = containTypeCell;
-        cellList.push(containTypeCell);
+randomList.shuffle();
+console.log(randomList.join());
+
+    // Board creation
+    board = new Array(myMap.columns);
+    for (var i = 0; i < myMap.rows; i++) {
+        board[i] = new Array(myMap.rows);
     }
-}
-console.log(board);
+
+    // Board Contain
+    for (var y = 0; y < (board.length); y++) {
+        for (var x = 0; x < (board.length); x++) {
+            var currentCellPosition = x + y * board.length;
+            // create the object and store a reference to the cell object so you can do something with it later
+            var containTypeCell = containType(x, y, board.length, board, currentCellPosition);
+            board[y][x] = containTypeCell;
+            cellList.push(containTypeCell);
+        }
+    }
+    console.log(board);*/
