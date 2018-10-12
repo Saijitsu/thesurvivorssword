@@ -143,6 +143,7 @@ Character.prototype.changeOfPlayerSTurn = function () {
     updateStatistics()
     if (this.playersCollision() == false) {
         $("#chatText").text("Hey! Listen! No fight this turn!");
+        heyListen()
         console.log("No fight this turn!");
        currentPlayerIs()
         highLightning = [];
@@ -151,6 +152,7 @@ Character.prototype.changeOfPlayerSTurn = function () {
             $("#chatText").text(currentPlayer.describe());
         }, 1000);
     } else {
+        change_track(fightMusic)
         currentPlayer.duel()
     }
 }
@@ -176,6 +178,7 @@ Character.prototype.playersCollision = function () {
 
 Character.prototype.duel = function () {
     $("#chatText").text("Hey! Listen! Fight this turn!");
+    heyListen()
     console.log("Fight this turn!");
     $("#duel").show();
     $("#canvas").hide();
@@ -205,6 +208,7 @@ Character.prototype.duel = function () {
         }
         if (opponentPlayer.heal <= 0) {
             updateStatistics()
+            change_track(victoryMusic)
             setTimeout(function () {
                 $("#chatText").text(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!")
             }, 700);

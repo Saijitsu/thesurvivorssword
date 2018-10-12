@@ -24,4 +24,5 @@ $("#startButton").click(function () {
     draw()
     currentPlayer.tripArea();
     updateStatistics()
+    change_track(adventureMusic)
 });

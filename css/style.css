@@ -704,3 +704,7 @@ button {
   flex-shrink: 0;
   cursor: pointer;
 }
+
+audio{
+  margin-bottom: 10px;
+}

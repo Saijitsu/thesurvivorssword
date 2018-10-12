@@ -332,3 +332,26 @@ outputChest.innerHTML = sliderChest.value; // Display the default slider value
 sliderChest.oninput = function () {
     outputChest.innerHTML = this.value;
 }
+
+//Game music
+$(function () {//Low audio volume
+    var audio = document.getElementById("myAudio");
+    audio.volume = 0.1;
+});
+
+function heyListen() {
+    var audio = new Audio("../audio/heyListen.mp3");
+    audio.play();
+    audio.volume = 0.2;
+}
+var adventureMusic = src="http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/nuyjimms/06%20-%20Kokiri%20Forest.mp3"
+var fightMusic = src="http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/hlcsbajc/79%20-%20Last%20Battle.mp3"
+var victoryMusic = src="http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/ikoatnrm/49%20-%20Medal%20Get%20Fanfare.mp3"
+
+function change_track(sourceUrl) {
+    var audio = $("#myAudio");      
+    $("#mp3_src").attr("src", sourceUrl);
+    audio[0].pause();
+    audio[0].load();//suspends and restores all audio element
+    audio[0].oncanplaythrough = audio[0].play();
+}
