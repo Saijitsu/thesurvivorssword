@@ -221,7 +221,14 @@ li:hover:before {
 .healStat {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
   flex-wrap: wrap;
+}
+
+#player0WeaponPower, #player1WeaponPower{
+  color:Red;
+  font-size: 35px;
+  margin-top: 25px; 
 }
 
 #player0Weapon,

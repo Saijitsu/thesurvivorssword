@@ -161,7 +161,7 @@ Character.prototype.changeOfPlayerSDuelTurn = function () {
     updateStatistics()
     setTimeout(function () {
         $("#chatText").text(currentPlayer.name + " enters the fight.");
-    }, 1000);
+    }, 2500);
 }
 
 Character.prototype.playersCollision = function () {
@@ -183,7 +183,7 @@ Character.prototype.duel = function () {
 Character.prototype.isDefensiveStance = function () {
     currentPlayer = this;
     currentPlayer.defensiveStance = true;
-    $("#chatText").text(currentPlayer.name + " adopt a defensive stance!");
+    $("#chatText").text(currentPlayer.name + " adopt a defensive stance! Half damage on the next attack received.");
     fight()
 }
 

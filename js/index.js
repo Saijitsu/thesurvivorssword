@@ -299,10 +299,12 @@ function updateStatistics() {
         $("#player" + i + "HealStat2").empty();
         $("#player" + i + "Weapon").empty();
         $("#player" + i + "ImgWeapon").empty();
+        $("#player" + i + "WeaponPower").empty();
         $("#player" + i + "Heal").append(heart.repeat(nbHeart) + emptyHeart.repeat(nbEmptyHeart));
         $("#player" + i + "HealStat2").append(Math.max(0, players[i].heal) + "/100");
         $("#player" + i + "Weapon").append(players[i].weapon.name);
         $("#player" + i + "ImgWeapon").append("<div class=\"" + weaponIcon + " imageRotate\"></div>");
+        $("#player" + i + "WeaponPower").append(players[i].weapon.power);
     }
 };
 
@@ -369,7 +371,7 @@ function change_track(sourceUrl) {
     audio[0].oncanplaythrough = audio[0].play();
 }
 
-// CODE IN PROGRESS/ FAIL DEFENSIVE STANCE ATM
+// CODE IN PROGRESS
 function fight() {
    var opponentPlayer = currentPlayer.opponent();
     if (currentPlayer.defensiveStance == true) {
@@ -389,13 +391,11 @@ function fight() {
             if (opponentPlayer.heal > 0) {
                 setTimeout(function () {
                     $("#chatText").text(opponentPlayer.name + " has " + opponentPlayer.heal + " heal points!")
-                }, 700);
-                console.log(opponentPlayer.name + " has " + opponentPlayer.heal + " heal points!")
+                }, 1200);
             } else {
                 setTimeout(function () {
                     $("#chatText").text(opponentPlayer.name + " was overhit!")
-                }, 700);
-                console.log(opponentPlayer.name + " was overhit!");
+                }, 1000);
             }
         }
         if (opponentPlayer.heal <= 0) {
@@ -403,8 +403,7 @@ function fight() {
             change_track(victoryMusic)
             setTimeout(function () {
                 $("#chatText").text(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!")
-            }, 700);
-            console.log(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!");
+            }, 2000);
             duelIsEnd = true;
             break;
         }
