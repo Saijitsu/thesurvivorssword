@@ -269,16 +269,16 @@ function currentPlayerIs() {
         currentPlayer = players[1]
         $("#player2").addClass("currentPlayerIs2");
         $("#player1").removeClass("currentPlayerIs1");
-        $(".vibrate").empty()
-        $(".vibrate").append("<img src='../image/shadowNavi.gif'></img>")
+        $(".naviGif").empty()
+        $(".naviGif").append("<img src='../image/shadowNavi.gif'></img>")
         $("#duel").css("background", "linear-gradient(180deg, rgb(106, 47, 243) 20%, rgb(180, 49, 241) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('../image/DuelBackground.gif') no-repeat bottom")
         return currentPlayer
     } else {
         currentPlayer = players[0]
         $("#player1").addClass("currentPlayerIs1");
         $("#player2").removeClass("currentPlayerIs2");
-        $(".vibrate").empty()
-        $(".vibrate").append("<img src='../image/navi.gif'></img>")
+        $(".naviGif").empty()
+        $(".naviGif").append("<img src='../image/navi.gif'></img>")
         $("#duel").css("background", "linear-gradient(180deg, rgb(61, 189, 248) 20%, rgb(66, 212, 248) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('../image/DuelBackground.gif') no-repeat bottom")
         return currentPlayer
     }
@@ -335,6 +335,13 @@ sliderChest.oninput = function () {
     outputChest.innerHTML = this.value;
 }
 
+function shakeBottleImage() {
+    $(".naviGif").parent().addClass("vibrate");
+    setTimeout(function () {
+    $(".naviGif").parent().removeClass("vibrate");
+}, 1600); //animation time, waiting to remove.
+}
+
 //Game music
 $("#menuMusicButton").click(function () {
     change_track(menuMusic);
@@ -373,7 +380,7 @@ function change_track(sourceUrl) {
 
 // CODE IN PROGRESS
 function fight() {
-   var opponentPlayer = currentPlayer.opponent();
+    var opponentPlayer = currentPlayer.opponent();
     if (currentPlayer.defensiveStance == true) {
         return currentPlayer.changeOfPlayerSDuelTurn()
     }
@@ -390,10 +397,12 @@ function fight() {
             }
             if (opponentPlayer.heal > 0) {
                 setTimeout(function () {
+                    shakeBottleImage()
                     $("#chatText").text(opponentPlayer.name + " has " + opponentPlayer.heal + " heal points!")
                 }, 1200);
             } else {
                 setTimeout(function () {
+                    shakeBottleImage()
                     $("#chatText").text(opponentPlayer.name + " was overhit!")
                 }, 1000);
             }
@@ -402,6 +411,7 @@ function fight() {
             updateStatistics()
             change_track(victoryMusic)
             setTimeout(function () {
+                shakeBottleImage()
                 $("#chatText").text(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!")
             }, 2000);
             duelIsEnd = true;

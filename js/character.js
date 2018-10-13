@@ -142,6 +142,7 @@ Character.prototype.tripArea = function () {
 Character.prototype.changeOfPlayerSTurn = function () {
     updateStatistics()
     if (this.playersCollision() == false) {
+        shakeBottleImage()
         $("#chatText").text("Hey! Listen! No fight this turn!");
         heyListen()
        currentPlayerIs()
@@ -174,6 +175,7 @@ Character.prototype.playersCollision = function () {
 }
 
 Character.prototype.duel = function () {
+    shakeBottleImage()
     $("#chatText").text("Hey! Listen! Fight this turn!");
     heyListen()
     $("#duel").show();
@@ -183,12 +185,14 @@ Character.prototype.duel = function () {
 Character.prototype.isDefensiveStance = function () {
     currentPlayer = this;
     currentPlayer.defensiveStance = true;
+    shakeBottleImage()
     $("#chatText").text(currentPlayer.name + " adopt a defensive stance! Half damage on the next attack received.");
     fight()
 }
 
 Character.prototype.isOffensiveStance = function () {
     currentPlayer.defensiveStance = false;
+    shakeBottleImage()
     $("#chatText").text(currentPlayer.name + " adopt an offensive stance!");
     fight()
 }
