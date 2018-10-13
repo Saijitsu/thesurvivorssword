@@ -24,6 +24,10 @@
     <main class="interface">
         <section class="gameOptionRules">
             <article id="gameOption">
+                <div id="musicMenu">
+                    <button type="button" id="menuMusicButton"><img src="../image/musicIconPlay.png">Activate Music</button>
+                    <button type="button" id="muteMusicButton"><img src="../image/musicIconMute.png">Mute Music</button>
+                </div>
                 <h2>Welcome to the game!</h2>
                 <p>Here you can adjust the game settings.</p>
                 <p>By default, the playing field has a size of 10 x 10 and a square shape like
@@ -47,7 +51,7 @@
                     <p>Weapon chest: <span id="sliderChestValue"></span></p>
                     <input type="range" min="1" max="8" value="4" id="sliderChest">
                 </div>
-                <div><button type="button" id="startButton">PUSH START BUTTON</button></div>
+                <button type="button" id="startButton">PUSH START BUTTON</button>
             </article>
             <article id="gameOption">
                 <h2>Game's rules</h2>
@@ -68,8 +72,10 @@
                     jour pour jouer n/ Your browser does not support
                     HTML5, please update it to play</canvas></div>
             <div id="duel">
-                <button type="button" id="offensiveStance" onclick="currentPlayer.isOffensiveStance();">@ Offensive Stance</button>
-                <button type="button" id="defensiveStance" onclick="currentPlayer.isDefensiveStance();">* Defensive Stance</button>
+                <button type="button" id="offensiveStance" onclick="currentPlayer.isOffensiveStance();">@ Offensive
+                    Stance</button>
+                <button type="button" id="defensiveStance" onclick="currentPlayer.isDefensiveStance();">* Defensive
+                    Stance</button>
             </div>
             <aside id="generalInformations">
                 <article class="playersInfo">

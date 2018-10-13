@@ -334,6 +334,17 @@ sliderChest.oninput = function () {
 }
 
 //Game music
+$("#menuMusicButton").click(function () {
+    change_track(menuMusic);
+    var audio = document.getElementById("myAudio");
+    audio.volume = 0.1;
+});
+
+$("#muteMusicButton").click(function () {
+    var audio = document.getElementById("myAudio");
+    audio.volume = 0.0;
+});
+
 $(function () { //Low audio volume
     var audio = document.getElementById("myAudio");
     audio.volume = 0.1;
@@ -344,6 +355,8 @@ function heyListen() {
     audio.play();
     audio.volume = 0.2;
 }
+var menuMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/onwohiey/05%20-%20House.mp3"
+//menuMusic create because autoplay doesn't work on Google Chrome since version 66: change_track(adventureMusic)
 var adventureMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/nuyjimms/06%20-%20Kokiri%20Forest.mp3"
 var fightMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/hlcsbajc/79%20-%20Last%20Battle.mp3"
 var victoryMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/ikoatnrm/49%20-%20Medal%20Get%20Fanfare.mp3"

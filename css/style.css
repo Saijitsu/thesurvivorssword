@@ -14,7 +14,6 @@
 
 
 body {
-  background-color: #62A238;
   font-family: "Triforce", "Return of Ganon Regular", Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
@@ -25,7 +24,8 @@ body {
   min-height: 100vh;
 }
 
-.gameOptionRules {
+.gameOptionRules,
+#musicMenu {
   font-family: "Return of Ganon Regular";
   font-weight: bolder;
   display: flex;
@@ -63,7 +63,7 @@ body {
   margin: 0px
 }
 
-#gameOption button {
+#startButton {
   font-family: "Return of Ganon Regular", "Triforce";
   margin: auto;
   margin-top: 40px;
@@ -490,8 +490,23 @@ button {
 
 #startButton,
 #offensiveStance,
-#defensiveStance {
+#defensiveStance,
+#menuMusicButton,
+#muteMusicButton {
   justify-content: space-around;
+}
+
+#menuMusicButton,
+#muteMusicButton {
+  font-family: "Return of Ganon Regular", "Triforce";
+  margin: auto;
+  margin-top: 40px;
+  background: linear-gradient(70deg, #FFFF00 10%, #EEC965 20%, white 50%, #EEC965 70%, #FFFF00 90%);
+}
+
+#menuMusicButton,
+#muteMusicButton {
+  width: 220px;
 }
 
 #defensiveStance:hover {
@@ -705,6 +720,6 @@ button {
   cursor: pointer;
 }
 
-audio{
+audio {
   margin-bottom: 10px;
 }

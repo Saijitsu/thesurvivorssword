@@ -144,7 +144,6 @@ Character.prototype.changeOfPlayerSTurn = function () {
     if (this.playersCollision() == false) {
         $("#chatText").text("Hey! Listen! No fight this turn!");
         heyListen()
-        console.log("No fight this turn!");
        currentPlayerIs()
         highLightning = [];
         currentPlayer.tripArea(); // Trip Area of current player.
@@ -162,7 +161,7 @@ Character.prototype.changeOfPlayerSDuelTurn = function () {
     updateStatistics()
     setTimeout(function () {
         $("#chatText").text(currentPlayer.name + " enters the fight.");
-    }, 700);
+    }, 1000);
 }
 
 Character.prototype.playersCollision = function () {
@@ -177,7 +176,6 @@ Character.prototype.playersCollision = function () {
 Character.prototype.duel = function () {
     $("#chatText").text("Hey! Listen! Fight this turn!");
     heyListen()
-    console.log("Fight this turn!");
     $("#duel").show();
     $("#canvas").hide();
 }
@@ -185,21 +183,21 @@ Character.prototype.duel = function () {
 Character.prototype.isDefensiveStance = function () {
     currentPlayer = this;
     currentPlayer.defensiveStance = true;
-    console.log("Current Player adopt a defensive stance!")
+    $("#chatText").text(currentPlayer.name + " adopt a defensive stance!");
     fight()
 }
 
 Character.prototype.isOffensiveStance = function () {
     currentPlayer.defensiveStance = false;
-    console.log("Current Player adopt an offensive stance!")
+    $("#chatText").text(currentPlayer.name + " adopt an offensive stance!");
     fight()
 }
 
 // Object Player One
-var player1 = new Character("Player 1", 100, weapons[0]);
+var player1 = new Character("Link", 100, weapons[0]);
 
 // Object Player two
-var player2 = new Character("Player 2", 100, weapons[0]);
+var player2 = new Character("Dark Link", 100, weapons[0]);
 
 // Character Array!
 var players = [player1, player2];
