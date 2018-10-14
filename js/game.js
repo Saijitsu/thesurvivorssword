@@ -5,6 +5,7 @@ $("#startButton").click(function () {
 $("#startButton").click(function () {
     $(".gameOptionRules").hide();
     $("#duel").hide();
+    $("#victory").hide()
     userDefinedSettings()
     // Who starting the game? Select the player Number
     var playerNumber = Math.floor(Math.random() * Math.floor(numbersOfPlayers));
