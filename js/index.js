@@ -269,6 +269,8 @@ function currentPlayerIs() {
         currentPlayer = players[1]
         $("#player2").addClass("currentPlayerIs2");
         $("#player1").removeClass("currentPlayerIs1");
+        $("#avatarplayer1").addClass("imageSpin");
+        $("#avatarplayer0").removeClass("imageSpin");
         $(".naviGif").empty()
         $(".naviGif").append("<img src='../image/shadowNavi.gif'></img>")
         $("#duel").css("background", "linear-gradient(180deg, rgb(106, 47, 243) 20%, rgb(180, 49, 241) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('../image/DuelBackground.gif') no-repeat bottom")
@@ -277,6 +279,8 @@ function currentPlayerIs() {
         currentPlayer = players[0]
         $("#player1").addClass("currentPlayerIs1");
         $("#player2").removeClass("currentPlayerIs2");
+        $("#avatarplayer0").addClass("imageSpin");
+        $("#avatarplayer1").removeClass("imageSpin");
         $(".naviGif").empty()
         $(".naviGif").append("<img src='../image/navi.gif'></img>")
         $("#duel").css("background", "linear-gradient(180deg, rgb(61, 189, 248) 20%, rgb(66, 212, 248) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('../image/DuelBackground.gif') no-repeat bottom")
@@ -338,8 +342,8 @@ sliderChest.oninput = function () {
 function shakeBottleImage() {
     $(".naviGif").parent().addClass("vibrate");
     setTimeout(function () {
-    $(".naviGif").parent().removeClass("vibrate");
-}, 1600); //animation time, waiting to remove.
+        $(".naviGif").parent().removeClass("vibrate");
+    }, 1600); //animation time, waiting to remove.
 }
 
 //Game music
@@ -415,10 +419,23 @@ function fight() {
                 $("#chatText").text(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!")
             }, 2000);
             duelIsEnd = true;
+            victory()
             break;
         }
         opponentPlayer.defensiveStance == false
         currentPlayer.changeOfPlayerSDuelTurn()
         break;
+    }
+}
+
+function victory() {
+    $("#duel").hide();
+    $("#victory").show();
+    if (currentPlayer == players[1]) {
+        $("#victory").css("background", "linear-gradient(180deg, rgb(106, 47, 243) 20%, rgb(180, 49, 241) 30%, rgb(255, 255, 255) 100%)")
+        $("#victory").append("<h1>Dark Link</h1> <h1>is the WINNER!</h1><img src='../image/darkLinkFinalVictory.gif'>")
+    } else {
+        $("#victory").css("background", "linear-gradient(180deg, rgb(61, 189, 248) 20%, rgb(66, 212, 248) 30%, rgb(255, 255, 255) 100%)")
+        $("#victory").append("<h1>Link</h1> <h1>is the WINNER!</h1><img src='../image/LinkFinalVictory.gif'>")
     }
 }

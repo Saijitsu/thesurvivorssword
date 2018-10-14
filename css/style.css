@@ -225,10 +225,11 @@ li:hover:before {
   flex-wrap: wrap;
 }
 
-#player0WeaponPower, #player1WeaponPower{
-  color:Red;
+#player0WeaponPower,
+#player1WeaponPower {
+  color: Red;
   font-size: 35px;
-  margin-top: 25px; 
+  margin-top: 25px;
 }
 
 #player0Weapon,
@@ -333,7 +334,7 @@ header {
   position: relative;
 }
 
-header h1 {
+header h1, #victory h1 {
   font-size: 68px;
   font-weight: 800;
   background: -webkit-linear-gradient(70deg, #FFFF00 20%, #EEC965 40%, white 50%, #EEC965 60%, #FFFF00 80%);
@@ -352,7 +353,7 @@ header p {
   margin-bottom: -10px;
 }
 
-header h3 {
+header h3{
   background: -webkit-linear-gradient(90deg, #EEC965 25%, white 50%, #EEC965 75%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -727,6 +728,26 @@ button {
   cursor: pointer;
 }
 
+#victory {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+text-align: center;
+  height: 500px;
+  width: 600px;
+  border: 1px solid black;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 20px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+#victory h1{
+  font-Size: 6em
+}
 audio {
   margin-bottom: 10px;
 }
