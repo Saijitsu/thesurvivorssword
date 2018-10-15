@@ -22,7 +22,7 @@ $("#startButton").click(function () {
     elmt.height = height;
     console.log("Welcome to Sword of Survivor! There can be only one! The player " +
         players[playerNumber].name + " can start the game. Good luck!")
-    ts.onload= draw()
+    draw()
     currentPlayer.tripArea();
     updateStatistics()
     change_track(adventureMusic)

@@ -122,14 +122,14 @@ li:hover:before {
   appearance: none;
   width: 25px;
   height: 25px;
-  background-image: url("../image/mapRange.png");
+  background: url("../image/css_sprites.png") -249px -159px;
   cursor: pointer;
 }
 
 #sliderMap::-moz-range-thumb {
   width: 25px;
   height: 25px;
-  background-image: url("../image/mapRange.png");
+  background: url("../image/css_sprites.png") -249px -159px;
   cursor: pointer;
 }
 
@@ -138,14 +138,14 @@ li:hover:before {
   appearance: none;
   width: 25px;
   height: 25px;
-  background-image: url("../image/ObstacleRange.png");
+  background: url("../image/css_sprites.png") -249px -105px;
   cursor: pointer;
 }
 
 #sliderObstacle::-moz-range-thumb {
   width: 25px;
   height: 25px;
-  background-image: url("../image/ObstacleRange.png");
+  background: url("../image/css_sprites.png") -249px -105px;
   cursor: pointer;
 }
 
@@ -154,7 +154,7 @@ li:hover:before {
   appearance: none;
   width: 25px;
   height: 25px;
-  background-image: url("../image/chestRange.png");
+  background: url("../image/css_sprites.png") -249px -132px;
   cursor: pointer;
 }
 
@@ -162,7 +162,7 @@ li:hover:before {
   width: 25px;
   height: 25px;
   background: #4CAF50;
-  background-image: url("../image/chestRange.png");
+  background: url("../image/css_sprites.png") -249px -132px;
   cursor: pointer;
 }
 
@@ -245,57 +245,57 @@ li:hover:before {
 .Peasant_Sword {
   height: 50px;
   width: 50px;
-  background-image: url("../image/Peasant_Sword.png");
+  background: url("../image/css_sprites.png") -53px -151px;
 }
 
 .Sword_Of_Wind {
   height: 50px;
   width: 50px;
-  background-image: url("../image/Sword_Of_Wind.png");
+  background: url("../image/css_sprites.png") -105px -99px;
 }
 
 .Sword_Of_Fire {
   height: 50px;
   width: 50px;
-  background-image: url("../image/Sword_Of_Fire.png");
+  background: url("../image/css_sprites.png") -197px -1px;
 }
 
 .Sword_Of_Thunder {
   height: 50px;
   width: 50px;
-  background-image: url("../image/Sword_Of_Thunder.png");
+  background: url("../image/css_sprites.png") -1px -151px;
 }
 
 .Magic_Wand {
   height: 50px;
   width: 50px;
-  background-image: url("../image/Magic_Wand.png");
+  background: url("../image/css_sprites.png") -197px -53px;
 }
 
 .Bow_Of_Light {
   height: 50px;
   width: 50px;
-  background-image: url("../image/Bow_Of_Light.png");
+  background: url("../image/css_sprites.png") -105px -151px;
 }
 
 .Iron_Hammer {
   height: 50px;
   width: 50px;
-  background-image: url("../image/Iron_Hammer.png");
+  background: url("../image/css_sprites.png") -249px -1px;
 
 }
 
 .Goron_s_Sword {
   height: 50px;
   width: 50px;
-  background-image: url("../image/Goron_s_Sword.png");
+  background: url("../image/css_sprites.png") -249px -53px;
 
 }
 
 .Kakariko_Bomb {
   height: 50px;
   width: 50px;
-  background-image: url("../image/Kakariko_Bomb.png");
+  background: url("../image/css_sprites.png") -157px -151px;
 
 }
 
@@ -749,11 +749,37 @@ button {
 #victory h1 {
   font-Size: 65px;
 }
-#victory button{
+
+#victory button {
   margin: auto;
   margin-top: 20px;
 }
 
 audio {
   margin-bottom: 10px;
+}
+
+/* Css Sprites*/
+.bg-musicIconMute {
+  width: 50px;
+  height: 50px;
+  background: url("../image/css_sprites.png") -1px -99px;
+}
+
+.bg-musicIconPlay {
+  width: 50px;
+  height: 50px;
+  background: url("../image/css_sprites.png") -53px -99px;
+}
+
+.bg-greenLinkpng2 {
+  width: 96px;
+  height: 96px;
+  background: url("../image/css_sprites.png") -1px -1px;
+}
+
+.bg-darkLinkpng2 {
+  width: 96px;
+  height: 96px;
+  background: url("../image/css_sprites.png") -99px -1px;
 }
