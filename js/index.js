@@ -364,9 +364,9 @@ $(function () { //Low audio volume
 });
 
 function heyListen() {
-    var audio = new Audio("../audio/heyListen.mp3");
+    var audio = new Audio("https://www.myinstants.com/media/sounds/hey_listen.mp3");
     audio.play();
-    audio.volume = 0.2;
+    audio.volume = 0.1;
 }
 var menuMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/onwohiey/05%20-%20House.mp3"
 //menuMusic create because autoplay doesn't work on Google Chrome since version 66: change_track(adventureMusic)
