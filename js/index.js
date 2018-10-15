@@ -288,101 +288,7 @@ function currentPlayerIs() {
     }
 }
 
-function updateStatistics() {
-    for (i = 0; i < 2; i++) {
-        var valueToTransform = players[i].weapon.name;
-        var regex = / /gi;
-        var weaponIcon = (valueToTransform.replace(regex, "_"));
-        var heart = "#";
-        var emptyHeart = "*";
-        var nbHeart = Math.max(0, Math.round(players[i].heal / 10));
-        // if value < 0, return 0 as the max value of this method.
-        var nbEmptyHeart = 10 - nbHeart
 
-        $("#player" + i + "Heal").empty();
-        $("#player" + i + "HealStat2").empty();
-        $("#player" + i + "Weapon").empty();
-        $("#player" + i + "ImgWeapon").empty();
-        $("#player" + i + "WeaponPower").empty();
-        $("#player" + i + "Heal").append(heart.repeat(nbHeart) + emptyHeart.repeat(nbEmptyHeart));
-        $("#player" + i + "HealStat2").append(Math.max(0, players[i].heal) + "/100");
-        $("#player" + i + "Weapon").append(players[i].weapon.name);
-        $("#player" + i + "ImgWeapon").append("<div class=\"" + weaponIcon + " imageRotate\"></div>");
-        $("#player" + i + "WeaponPower").append(players[i].weapon.power);
-    }
-};
-
-var sliderMap = document.getElementById("sliderMap");
-var outputMap = document.getElementById("sliderMapValue");
-outputMap.innerHTML = sliderMap.value; // Display the default slider value
-
-// Update the current slider value (each time you drag the slider handle)
-sliderMap.oninput = function () {
-    outputMap.innerHTML = this.value;
-}
-
-var sliderObstacle = document.getElementById("sliderObstacle");
-var outputObstacle = document.getElementById("sliderObstacleValue");
-outputObstacle.innerHTML = sliderObstacle.value; // Display the default slider value
-
-// Update the current slider value (each time you drag the slider handle)
-sliderObstacle.oninput = function () {
-    outputObstacle.innerHTML = this.value;
-}
-
-var sliderChest = document.getElementById("sliderChest");
-var outputChest = document.getElementById("sliderChestValue");
-outputChest.innerHTML = sliderChest.value; // Display the default slider value
-
-// Update the current slider value (each time you drag the slider handle)
-sliderChest.oninput = function () {
-    outputChest.innerHTML = this.value;
-}
-
-function shakeBottleImage() {
-    $(".naviGif").parent().addClass("vibrate");
-    setTimeout(function () {
-        $(".naviGif").parent().removeClass("vibrate");
-    }, 1600); //animation time, waiting to remove.
-}
-
-//Game music
-$("#menuMusicButton").click(function () {
-    change_track(menuMusic);
-    var audio = document.getElementById("myAudio");
-    audio.volume = 0.1;
-});
-
-$("#muteMusicButton").click(function () {
-    var audio = document.getElementById("myAudio");
-    audio.volume = 0.0;
-});
-
-$(function () { //Low audio volume
-    var audio = document.getElementById("myAudio");
-    audio.volume = 0.1;
-});
-
-function heyListen() {
-    var audio = new Audio("https://www.myinstants.com/media/sounds/hey_listen.mp3");
-    audio.play();
-    audio.volume = 0.1;
-}
-var menuMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/onwohiey/05%20-%20House.mp3"
-//menuMusic create because autoplay doesn't work on Google Chrome since version 66: change_track(adventureMusic)
-var adventureMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/nuyjimms/06%20-%20Kokiri%20Forest.mp3"
-var fightMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/hlcsbajc/79%20-%20Last%20Battle.mp3"
-var victoryMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/ikoatnrm/49%20-%20Medal%20Get%20Fanfare.mp3"
-
-function change_track(sourceUrl) {
-    var audio = $("#myAudio");
-    $("#mp3_src").attr("src", sourceUrl);
-    audio[0].pause();
-    audio[0].load(); //suspends and restores all audio element
-    audio[0].oncanplaythrough = audio[0].play();
-}
-
-// CODE IN PROGRESS
 function fight() {
     var opponentPlayer = currentPlayer.opponent();
     if (currentPlayer.defensiveStance == true) {
@@ -438,4 +344,71 @@ function victory() {
         $("#victory").css("background", "linear-gradient(180deg, rgb(61, 189, 248) 20%, rgb(66, 212, 248) 30%, rgb(255, 255, 255) 100%)")
         $("#victory").append("<h1>Link</h1> <h1>is the WINNER!</h1><img src='https://zupimages.net/up/18/42/qhv2.gif'>")
     }
+}
+
+function updateStatistics() {
+    for (i = 0; i < 2; i++) {
+        var valueToTransform = players[i].weapon.name;
+        var regex = / /gi;
+        var weaponIcon = (valueToTransform.replace(regex, "_"));
+        var heart = "#";
+        var emptyHeart = "*";
+        var nbHeart = Math.max(0, Math.round(players[i].heal / 10));
+        // if value < 0, return 0 as the max value of this method.
+        var nbEmptyHeart = 10 - nbHeart
+
+        $("#player" + i + "Heal").empty();
+        $("#player" + i + "HealStat2").empty();
+        $("#player" + i + "Weapon").empty();
+        $("#player" + i + "ImgWeapon").empty();
+        $("#player" + i + "WeaponPower").empty();
+        $("#player" + i + "Heal").append(heart.repeat(nbHeart) + emptyHeart.repeat(nbEmptyHeart));
+        $("#player" + i + "HealStat2").append(Math.max(0, players[i].heal) + "/100");
+        $("#player" + i + "Weapon").append(players[i].weapon.name);
+        $("#player" + i + "ImgWeapon").append("<div class=\"" + weaponIcon + " imageRotate\"></div>");
+        $("#player" + i + "WeaponPower").append(players[i].weapon.power);
+    }
+};
+
+function shakeBottleImage() {
+    $(".naviGif").parent().addClass("vibrate");
+    setTimeout(function () {
+        $(".naviGif").parent().removeClass("vibrate");
+    }, 1600); //animation time, waiting to remove.
+}
+
+//Game music
+$("#menuMusicButton").click(function () {
+    change_track(menuMusic);
+    var audio = document.getElementById("myAudio");
+    audio.volume = 0.1;
+});
+
+$("#muteMusicButton").click(function () {
+    var audio = document.getElementById("myAudio");
+    audio.volume = 0.0;
+});
+
+$(function () { //Low audio volume
+    var audio = document.getElementById("myAudio");
+    audio.volume = 0.1;
+});
+
+function heyListen() {
+    var audio = new Audio("https://www.myinstants.com/media/sounds/hey_listen.mp3");
+    audio.play();
+    audio.volume = 0.1;
+}
+var menuMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/onwohiey/05%20-%20House.mp3"
+//menuMusic create because autoplay doesn't work on Google Chrome since version 66: change_track(adventureMusic)
+var adventureMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/nuyjimms/06%20-%20Kokiri%20Forest.mp3"
+var fightMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/hlcsbajc/79%20-%20Last%20Battle.mp3"
+var victoryMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/ikoatnrm/49%20-%20Medal%20Get%20Fanfare.mp3"
+
+function change_track(sourceUrl) {
+    var audio = $("#myAudio");
+    $("#mp3_src").attr("src", sourceUrl);
+    audio[0].pause();
+    audio[0].load(); //suspends and restores all audio element
+    audio[0].oncanplaythrough = audio[0].play();
 }

@@ -1,5 +1,5 @@
 var Tilewidth = 50;
-var ts = new Tileset("https://zupimages.net/up/18/42/szax.png");
+var ts = new Tileset(src="https://zupimages.net/up/18/42/szax.png");
 
 function draw() {
     var canvas = document.getElementById("canvas");
