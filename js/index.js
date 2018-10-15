@@ -433,9 +433,9 @@ function victory() {
     $("#victory").show();
     if (currentPlayer == players[1]) {
         $("#victory").css("background", "linear-gradient(180deg, rgb(106, 47, 243) 20%, rgb(180, 49, 241) 30%, rgb(255, 255, 255) 100%)")
-        $("#victory").append("<h1>Dark Link</h1> <h1>is the WINNER!</h1><img src='../image/darkLinkFinalVictory.gif'>")
+        $("#victory").append("<h1>Dark Link</h1> <h1>is the WINNER!</h1><img src='https://github.com/Saijitsu/theSurvivorSSword/blob/master/image/darkLinkFinalVictory.gif?raw=true'>")
     } else {
         $("#victory").css("background", "linear-gradient(180deg, rgb(61, 189, 248) 20%, rgb(66, 212, 248) 30%, rgb(255, 255, 255) 100%)")
-        $("#victory").append("<h1>Link</h1> <h1>is the WINNER!</h1><img src='../image/LinkFinalVictory.gif'>")
+        $("#victory").append("<h1>Link</h1> <h1>is the WINNER!</h1><img src='https://github.com/Saijitsu/theSurvivorSSword/blob/master/image/LinkFinalVictory.gif?raw=true'>")
     }
 }
