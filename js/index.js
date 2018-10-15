@@ -272,8 +272,8 @@ function currentPlayerIs() {
         $("#avatarplayer1").addClass("imageSpin");
         $("#avatarplayer0").removeClass("imageSpin");
         $(".naviGif").empty()
-        $(".naviGif").append("<img src='https://github.com/Saijitsu/theSurvivorSSword/blob/master/image/shadowNavi.gif?raw=true'></img>")
-        $("#duel").css("background", "linear-gradient(180deg, rgb(106, 47, 243) 20%, rgb(180, 49, 241) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('https://github.com/Saijitsu/theSurvivorSSword/blob/master/image/DuelBackground.gif?raw=true') no-repeat bottom")
+        $(".naviGif").append("<img src='https://zupimages.net/up/18/42/dbpt.gif'></img>")
+        $("#duel").css("background", "linear-gradient(180deg, rgb(106, 47, 243) 20%, rgb(180, 49, 241) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('https://zupimages.net/up/18/42/xq1b.gif') no-repeat bottom")
         return currentPlayer
     } else {
         currentPlayer = players[0]
@@ -282,8 +282,8 @@ function currentPlayerIs() {
         $("#avatarplayer0").addClass("imageSpin");
         $("#avatarplayer1").removeClass("imageSpin");
         $(".naviGif").empty()
-        $(".naviGif").append("<img src='https://github.com/Saijitsu/theSurvivorSSword/blob/master/image/Navi.gif?raw=true'></img>")
-        $("#duel").css("background", "linear-gradient(180deg, rgb(61, 189, 248) 20%, rgb(66, 212, 248) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('https://github.com/Saijitsu/theSurvivorSSword/blob/master/image/DuelBackground.gif?raw=true') no-repeat bottom")
+        $(".naviGif").append("<img src='https://zupimages.net/up/18/42/ueit.gif'></img>")
+        $("#duel").css("background", "linear-gradient(180deg, rgb(61, 189, 248) 20%, rgb(66, 212, 248) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('https://zupimages.net/up/18/42/xq1b.gif') no-repeat bottom")
         return currentPlayer
     }
 }
@@ -433,9 +433,9 @@ function victory() {
     $("#victory").show();
     if (currentPlayer == players[1]) {
         $("#victory").css("background", "linear-gradient(180deg, rgb(106, 47, 243) 20%, rgb(180, 49, 241) 30%, rgb(255, 255, 255) 100%)")
-        $("#victory").append("<h1>Dark Link</h1> <h1>is the WINNER!</h1><img src='https://github.com/Saijitsu/theSurvivorSSword/blob/master/image/darkLinkFinalVictory.gif?raw=true'>")
+        $("#victory").append("<h1>Dark Link</h1> <h1>is the WINNER!</h1><img src='https://zupimages.net/up/18/42/qhw6.gif'>")
     } else {
         $("#victory").css("background", "linear-gradient(180deg, rgb(61, 189, 248) 20%, rgb(66, 212, 248) 30%, rgb(255, 255, 255) 100%)")
-        $("#victory").append("<h1>Link</h1> <h1>is the WINNER!</h1><img src='https://github.com/Saijitsu/theSurvivorSSword/blob/master/image/LinkFinalVictory.gif?raw=true'>")
+        $("#victory").append("<h1>Link</h1> <h1>is the WINNER!</h1><img src='https://zupimages.net/up/18/42/qhv2.gif'>")
     }
 }
