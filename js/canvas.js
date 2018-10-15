@@ -1,5 +1,5 @@
 var Tilewidth = 50;
-var ts = new Tileset("basicImage.png");
+var ts = new Tileset("https://github.com/Saijitsu/theSurvivorSSword/blob/master/image/tilesets/basicImage.png?raw=true");
 
 function draw() {
     var canvas = document.getElementById("canvas");

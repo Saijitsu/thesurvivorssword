@@ -12,7 +12,7 @@ function Tileset(url) {
         // Width of tileset tiles
         this.referenceOfTileset.width = this.width / Tilewidth;
     }
-    this.image.src = "../image/tilesets/" + url;
+    this.image.src = "https://github.com/Saijitsu/theSurvivorSSword/blob/master/image/tilesets/basicImage.png?raw=true"
 }
 
 // Drawing method of tile number in 2D context at x and y location
