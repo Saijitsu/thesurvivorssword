@@ -272,8 +272,8 @@ function currentPlayerIs() {
         $("#avatarplayer1").addClass("imageSpin");
         $("#avatarplayer0").removeClass("imageSpin");
         $(".naviGif").empty()
-        $(".naviGif").append("<img src='../image/shadowNavi.gif'></img>")
-        $("#duel").css("background", "linear-gradient(180deg, rgb(106, 47, 243) 20%, rgb(180, 49, 241) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('../image/DuelBackground.gif') no-repeat bottom")
+        $(".naviGif").append("<img src='https://github.com/Saijitsu/theSurvivorSSword/blob/master/image/shadowNavi.gif?raw=true'></img>")
+        $("#duel").css("background", "linear-gradient(180deg, rgb(106, 47, 243) 20%, rgb(180, 49, 241) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('https://github.com/Saijitsu/theSurvivorSSword/blob/master/image/DuelBackground.gif?raw=true') no-repeat bottom")
         return currentPlayer
     } else {
         currentPlayer = players[0]
@@ -282,8 +282,8 @@ function currentPlayerIs() {
         $("#avatarplayer0").addClass("imageSpin");
         $("#avatarplayer1").removeClass("imageSpin");
         $(".naviGif").empty()
-        $(".naviGif").append("<img src='../image/navi.gif'></img>")
-        $("#duel").css("background", "linear-gradient(180deg, rgb(61, 189, 248) 20%, rgb(66, 212, 248) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('../image/DuelBackground.gif') no-repeat bottom")
+        $(".naviGif").append("<img src='https://github.com/Saijitsu/theSurvivorSSword/blob/master/image/Navi.gif?raw=true'></img>")
+        $("#duel").css("background", "linear-gradient(180deg, rgb(61, 189, 248) 20%, rgb(66, 212, 248) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('https://github.com/Saijitsu/theSurvivorSSword/blob/master/image/DuelBackground.gif?raw=true') no-repeat bottom")
         return currentPlayer
     }
 }
