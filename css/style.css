@@ -624,11 +624,10 @@ button {
   color: #fff;
   padding: 2px;
   width: 542px;
-  height: 100px;
-  margin: 20px;
+  height: 110px;
   text-align: center;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 #square {
