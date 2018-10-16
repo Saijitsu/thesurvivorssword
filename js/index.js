@@ -1,9 +1,9 @@
 // Global Variable
 var numbersOfPlayers = 2;
-var obstacleCell = parseInt(document.getElementById("sliderObstacle").value);
-var chestCell = parseInt(document.getElementById("sliderChest").value);
+var obstacleCell = null;
+var chestCell = null;
 var highLightning = [];
-var boardSize = parseInt(document.getElementById("sliderMap").value);
+var boardSize = null;
 var rows = boardSize;
 var columns = boardSize;
 var width = columns * 50;
@@ -12,13 +12,13 @@ var totalCells = rows * columns;
 var cellList = [];
 var tilePixelCut = 50;
 var currentPlayer = null;
+var opponentPlayer = null;
 var yOnClick = null;
 var xOnClick = null;
 var oneHundredDeduceY = null;
 var oneHundredDeduceX = null;
 var currentCellPosition = 0;
 var randomList = [];
-var opponentPlayer = null;
 
 // User-defined settings
 function userDefinedSettings() {
@@ -73,59 +73,81 @@ function createRandomCellList() { // Arry of random list of total cells.
 
 
 function containType() { // Contain of the board!
-    obstacleCell = parseInt(document.getElementById("sliderObstacle").value)
-    chestCell = parseInt(document.getElementById("sliderChest").value)
-    boardSize = parseInt(document.getElementById("sliderMap").value)
     for (var i = 0; i < obstacleCell; i++) {
         if (currentCellPosition == randomList[i]) {
-            var designIs = getRandomIntInclusive(1, 3);
-            var cell = new Cell(1, currentCellPosition, y, x, false, designIs);
-            return cell; // obstacle cell 
+            var cell = createObstacleCell()
+            return cell
         }
     }
     for (var j = obstacleCell; j < obstacleCell + chestCell; j++) {
         if (currentCellPosition == randomList[j]) {
-            var selectEntry = Math.floor(Math.random() * weaponsEntry.length);
-            weaponsId = weaponsEntry[selectEntry];
-            var cell = new Cell(weapons[weaponsId], currentCellPosition, y, x, true);
-            weaponsEntry.splice(selectEntry, 1);
-            return cell; // Chest cell  
+            var cell = createChestCell()
+            return cell
         }
     }
     if (currentCellPosition == randomList[obstacleCell + chestCell]) {
-        var cell = new Cell(players[0], currentCellPosition, y, x, false);
-        players[0].position = cell.numberCell;
-        players[0].y = y;
-        players[0].x = x;
-        return cell; // player 1 confirmed
+        var cell = createPlayer1Cell()
+        return cell
     } else if (currentCellPosition == randomList[obstacleCell + chestCell + 1]) {
-        if (players[1].characterNear(x, y, board.length, board,
-                numberToTest = randomList[obstacleCell + chestCell + 1]) == false) {
-            var cell = new Cell(players[1], currentCellPosition, y, x, false);
-            players[1].position = cell.numberCell;
-            players[1].y = y;
-            players[1].x = x;
-            return cell; // Safe zone: player 2 confirmed
-        } else if (players[1].characterNear(x, y, board.length, board,
-                numberToTest = randomList[obstacleCell + chestCell + 1]) == true) {
-            players[1].changeDropArea() // Unsafe zone: Player 2 need new location.
-            var cell = new Cell(0, currentCellPosition, y, x, true);
-            return cell; // Player 1 near, Empty cell dropped.
-        }
+        var cell = createPlayer2Cell()
+        return cell
     } else {
-        if (board[y][x] !== undefined) {
-            var cell = new Cell(players[1], currentCellPosition, y, x, false);
-            players[1].position = cell.numberCell;
-            players[1].y = y;
-            players[1].x = x;
-            return cell; // player 2 confirmed
-        } else {
-            var designIs = getRandomIntInclusive(1, 3);
-            var cell = new Cell(0, currentCellPosition, y, x, true, designIs);
-            return cell; // Empty Cells by default.
-        }
+        var cell = createEmptyCell()
+        return cell
     }
 };
+
+function createEmptyCell() {
+    if (board[y][x] !== undefined) {
+        var cell = new Cell(players[1], currentCellPosition, y, x, false);
+        players[1].position = cell.numberCell;
+        players[1].y = y;
+        players[1].x = x;
+        return cell; // player 2 confirmed
+    } else {
+        var designIs = getRandomIntInclusive(1, 3);
+        var cell = new Cell(0, currentCellPosition, y, x, true, designIs);
+        return cell; // Empty Cells by default.
+    }
+}
+
+function createObstacleCell() {
+    var designIs = getRandomIntInclusive(1, 3);
+    var cell = new Cell(1, currentCellPosition, y, x, false, designIs);
+    return cell; // obstacle cell 
+}
+
+function createChestCell() {
+    var selectEntry = Math.floor(Math.random() * weaponsEntry.length);
+    weaponsId = weaponsEntry[selectEntry];
+    var cell = new Cell(weapons[weaponsId], currentCellPosition, y, x, true);
+    weaponsEntry.splice(selectEntry, 1);
+    return cell; // Chest cell 
+}
+
+function createPlayer1Cell() {
+    var cell = new Cell(players[0], currentCellPosition, y, x, false);
+    players[0].position = cell.numberCell;
+    players[0].y = y;
+    players[0].x = x;
+    return cell; // player 1 confirmed
+}
+
+function createPlayer2Cell() {
+    if (players[1].characterNear(x, y, board.length, board,
+            numberToTest = randomList[obstacleCell + chestCell + 1]) == false) {
+        var cell = new Cell(players[1], currentCellPosition, y, x, false);
+        players[1].position = cell.numberCell;
+        players[1].y = y;
+        players[1].x = x;
+        return cell; // Safe zone: player 2 confirmed
+    } else if (players[1].characterNear(x, y, board.length, board,
+            numberToTest = randomList[obstacleCell + chestCell + 1]) == true) {
+        players[1].changeDropArea() // Unsafe zone: Player 2 need new location.
+        var cell = new Cell(0, currentCellPosition, y, x, true);
+        return cell; // Player 1 near, Empty cell dropped.
+    }
+}
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
@@ -326,8 +348,7 @@ function livingOpponent() {
             shakeBottleImage()
             $("#chatText").text(opponentPlayer.name + " has " + opponentPlayer.heal + " heal points!")
         }, 1200);
-    }
-    else if (opponentPlayer.heal < 0) {
+    } else if (opponentPlayer.heal < 0) {
         setTimeout(function () {
             shakeBottleImage()
             $("#chatText").text(opponentPlayer.name + " was overhit!")
@@ -337,11 +358,11 @@ function livingOpponent() {
 
 function deadOpponent() {
     updateStatistics()
-            change_track(victoryMusic)
-            setTimeout(function () {
-                shakeBottleImage()
-                $("#chatText").text(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!")
-            }, 2000);
+    change_track(victoryMusic)
+    setTimeout(function () {
+        shakeBottleImage()
+        $("#chatText").text(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!")
+    }, 2000);
 }
 
 function victory() {
