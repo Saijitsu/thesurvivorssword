@@ -14,7 +14,7 @@
 
 
 body {
-  font-family: "Triforce", "Return of Ganon Regular", Arial, Helvetica, sans-serif;
+  font-family: "Triforce";
   margin: 0;
   padding: 0;
   display: flex;
@@ -62,7 +62,7 @@ body {
 }
 
 #startButton {
-  font-family: "Return of Ganon Regular", "Triforce";
+  font-family: "Return of Ganon Regular";
   margin: auto;
   margin-top: 40px;
   background: linear-gradient(359deg, rgb(243, 195, 64), rgba(109, 243, 31, 0.863));
@@ -94,7 +94,6 @@ li:hover:before {
   align-self: center;
   width: 80%;
 }
-
 
 #sliderMap,
 #sliderChest,
@@ -159,7 +158,6 @@ li:hover:before {
 #sliderChest::-moz-range-thumb {
   width: 25px;
   height: 25px;
-  background: #4CAF50;
   background: url("../image/css_sprites.png") -249px -132px;
   cursor: pointer;
 }
@@ -207,7 +205,6 @@ li:hover:before {
   }
 }
 
-
 #player0HealStat2,
 #player1HealStat2 {
   font-family: "Triforce";
@@ -240,59 +237,54 @@ li:hover:before {
   margin-left: 10px;
 }
 
-.Peasant_Sword {
+.Peasant_Sword,
+.Sword_Of_Wind,
+.Sword_Of_Fire,
+.Sword_Of_Thunder,
+.Magic_Wand,
+.Bow_Of_Light,
+.Iron_Hammer,
+.Goron_s_Sword,
+.Kakariko_Bomb {
   height: 50px;
   width: 50px;
+}
+
+.Peasant_Sword {
   background: url("../image/css_sprites.png") -53px -151px;
 }
 
 .Sword_Of_Wind {
-  height: 50px;
-  width: 50px;
   background: url("../image/css_sprites.png") -105px -99px;
 }
 
 .Sword_Of_Fire {
-  height: 50px;
-  width: 50px;
   background: url("../image/css_sprites.png") -197px -1px;
 }
 
 .Sword_Of_Thunder {
-  height: 50px;
-  width: 50px;
   background: url("../image/css_sprites.png") -1px -151px;
 }
 
 .Magic_Wand {
-  height: 50px;
-  width: 50px;
   background: url("../image/css_sprites.png") -197px -53px;
 }
 
 .Bow_Of_Light {
-  height: 50px;
-  width: 50px;
   background: url("../image/css_sprites.png") -105px -151px;
 }
 
 .Iron_Hammer {
-  height: 50px;
-  width: 50px;
   background: url("../image/css_sprites.png") -249px -1px;
 
 }
 
 .Goron_s_Sword {
-  height: 50px;
-  width: 50px;
   background: url("../image/css_sprites.png") -249px -53px;
 
 }
 
 .Kakariko_Bomb {
-  height: 50px;
-  width: 50px;
   background: url("../image/css_sprites.png") -157px -151px;
 
 }
@@ -397,10 +389,6 @@ footer {
   text-align: center;
 }
 
-#navi {
-  background-image: url("../image/navi.gif");
-}
-
 .interface {
   display: flex;
   flex-direction: column;
@@ -482,7 +470,7 @@ footer {
 
 button {
   display: flex;
-  font-family: "triforce";
+  font-family: "Triforce";
   border-radius: 5px;
   margin-top: 50px;
   font-size: 30px;
@@ -504,7 +492,7 @@ button {
 
 #menuMusicButton,
 #muteMusicButton {
-  font-family: "Return of Ganon Regular", "Triforce";
+  font-family: "Return of Ganon Regular";
   margin: auto;
   margin-top: 40px;
   background: linear-gradient(70deg, #FFFF00 10%, #EEC965 20%, white 50%, #EEC965 70%, #FFFF00 90%);
@@ -636,13 +624,9 @@ button {
   width: 25px;
   border-radius: 4px;
   background: linear-gradient(359deg, #e72dbfa1, #1aceeea2);
-  background-size: 400% 400%;
   -webkit-box-shadow: 11px 13px 10px -4px rgba(0, 0, 0, 0.61);
   -moz-box-shadow: 11px 13px 10px -4px rgba(0, 0, 0, 0.61);
   box-shadow: 11px 13px 10px -4px rgba(0, 0, 0, 0.61);
-  -webkit-animation: gradientSquare 4s ease infinite;
-  -moz-animation: gradientSquare 4s ease infinite;
-  animation: gradientSquare 4s ease infinite;
 }
 
 .currentPlayerIs1 {
@@ -650,15 +634,17 @@ button {
   border: 1px solid rgba(238, 201, 101, 0.815);
   background: linear-gradient(359deg, rgba(92, 236, 123, 0.705), rgba(146, 233, 253, 0.705));
   background-size: 400% 400%;
-  -webkit-animation: gradientSquare 4s ease infinite;
-  -moz-animation: gradientSquare 4s ease infinite;
-  animation: gradientSquare 4s ease infinite;
 }
 
 .currentPlayerIs2 {
   border-radius: 15px;
   border: 1px solid rgba(0, 0, 0, 0.815);
   background: linear-gradient(359deg, rgba(40, 44, 117, 0.705), rgba(152, 35, 60, 0.705));
+}
+
+.currentPlayerIs2,
+.currentPlayerIs1,
+#square {
   background-size: 400% 400%;
   -webkit-animation: gradientSquare 4s ease infinite;
   -moz-animation: gradientSquare 4s ease infinite;
@@ -708,27 +694,18 @@ button {
 }
 
 #duel {
-  display: flex;
   justify-content: space-around;
-  height: 500px;
-  width: 600px;
-  border: 1px solid red;
-  background: linear-gradient(180deg, rgb(106, 47, 243) 20%, rgb(180, 49, 241) 30%,
-    rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url("../image/DuelBackground.gif") no-repeat bottom;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 20px;
-  flex-shrink: 0;
-  cursor: pointer;
 }
 
 #victory {
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
+}
+
+#victory,
+#duel {
+  display: flex;
   height: 500px;
   width: 600px;
   border: 1px solid black;
@@ -749,10 +726,6 @@ button {
   margin: auto;
   margin-top: 20px;
   justify-content: center;
-}
-
-audio {
-  margin-bottom: 10px;
 }
 
 /* Css Sprites*/
