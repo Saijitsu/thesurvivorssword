@@ -17,9 +17,7 @@ body {
   font-family: "Triforce", "Return of Ganon Regular", Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
-  display: -webkit-flex;
   display: flex;
-  -webkit-flex-direction: column;
   flex-direction: column;
   min-height: 100vh;
 }
@@ -377,7 +375,6 @@ header::after {
 }
 
 main {
-  -webkit-flex-grow: 1;
   flex-grow: 1;
   background-image: url("../image/background2.jpg");
   background-repeat: no-repeat;
@@ -644,7 +641,6 @@ button {
   -webkit-box-shadow: 11px 13px 10px -4px rgba(0, 0, 0, 0.61);
   -moz-box-shadow: 11px 13px 10px -4px rgba(0, 0, 0, 0.61);
   box-shadow: 11px 13px 10px -4px rgba(0, 0, 0, 0.61);
-
   -webkit-animation: gradientSquare 4s ease infinite;
   -moz-animation: gradientSquare 4s ease infinite;
   animation: gradientSquare 4s ease infinite;
