@@ -18,6 +18,7 @@ var oneHundredDeduceY = null;
 var oneHundredDeduceX = null;
 var currentCellPosition = 0;
 var randomList = [];
+var opponentPlayer = null;
 
 // User-defined settings
 function userDefinedSettings() {
@@ -290,40 +291,17 @@ function currentPlayerIs() {
 
 
 function fight() {
-    var opponentPlayer = currentPlayer.opponent();
+    opponentPlayer = currentPlayer.opponent();
     if (currentPlayer.defensiveStance == true) {
         return currentPlayer.changeOfPlayerSDuelTurn()
     }
     var duelIsEnd = false;
     while (duelIsEnd == false) {
         if (opponentPlayer.heal > 0) {
-            if (opponentPlayer.defensiveStance == true) {
-                opponentPlayer.heal = opponentPlayer.heal - currentPlayer.dommageDeal() / 2;
-                opponentPlayer.defensiveStance == false;
-                updateStatistics()
-            } else if (opponentPlayer.defensiveStance == undefined || opponentPlayer.defensiveStance == false) {
-                opponentPlayer.heal = opponentPlayer.heal - currentPlayer.dommageDeal();
-                updateStatistics();
-            }
-            if (opponentPlayer.heal > 0) {
-                setTimeout(function () {
-                    shakeBottleImage()
-                    $("#chatText").text(opponentPlayer.name + " has " + opponentPlayer.heal + " heal points!")
-                }, 1200);
-            } else {
-                setTimeout(function () {
-                    shakeBottleImage()
-                    $("#chatText").text(opponentPlayer.name + " was overhit!")
-                }, 1000);
-            }
+            livingOpponent();
         }
         if (opponentPlayer.heal <= 0) {
-            updateStatistics()
-            change_track(victoryMusic)
-            setTimeout(function () {
-                shakeBottleImage()
-                $("#chatText").text(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!")
-            }, 2000);
+            deadOpponent();
             duelIsEnd = true;
             victory()
             break;
@@ -332,6 +310,38 @@ function fight() {
         currentPlayer.changeOfPlayerSDuelTurn()
         break;
     }
+}
+
+function livingOpponent() {
+    if (opponentPlayer.defensiveStance == true) {
+        opponentPlayer.heal = opponentPlayer.heal - currentPlayer.dommageDeal() / 2;
+        opponentPlayer.defensiveStance == false;
+        updateStatistics()
+    } else if (opponentPlayer.defensiveStance == undefined || opponentPlayer.defensiveStance == false) {
+        opponentPlayer.heal = opponentPlayer.heal - currentPlayer.dommageDeal();
+        updateStatistics();
+    }
+    if (opponentPlayer.heal > 0) {
+        setTimeout(function () {
+            shakeBottleImage()
+            $("#chatText").text(opponentPlayer.name + " has " + opponentPlayer.heal + " heal points!")
+        }, 1200);
+    }
+    else if (opponentPlayer.heal < 0) {
+        setTimeout(function () {
+            shakeBottleImage()
+            $("#chatText").text(opponentPlayer.name + " was overhit!")
+        }, 1000);
+    }
+}
+
+function deadOpponent() {
+    updateStatistics()
+            change_track(victoryMusic)
+            setTimeout(function () {
+                shakeBottleImage()
+                $("#chatText").text(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!")
+            }, 2000);
 }
 
 function victory() {
