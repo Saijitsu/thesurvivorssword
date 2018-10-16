@@ -489,7 +489,7 @@ button {
   border-radius: 5px;
   margin-top: 50px;
   font-size: 30px;
-  width: 242px;
+  width: 260px;
   height: 36px;
   background: linear-gradient(70deg, #FFFF00 10%, #EEC965 20%, white 50%, #EEC965 70%, #FFFF00 90%);
   text-align: center;
@@ -753,6 +753,7 @@ button {
 #victory button {
   margin: auto;
   margin-top: 20px;
+  justify-content: center;
 }
 
 audio {
