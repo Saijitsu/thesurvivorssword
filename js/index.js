@@ -74,21 +74,21 @@ function createRandomCellList() { // Arry of random list of total cells.
 
 function containType() { // Contain of the board!
     for (var i = 0; i < obstacleCell; i++) {
-        if (currentCellPosition == randomList[i]) {
+        if (currentCellPosition === randomList[i]) {
             var cell = createObstacleCell()
             return cell
         }
     }
     for (var j = obstacleCell; j < obstacleCell + chestCell; j++) {
-        if (currentCellPosition == randomList[j]) {
+        if (currentCellPosition === randomList[j]) {
             var cell = createChestCell()
             return cell
         }
     }
-    if (currentCellPosition == randomList[obstacleCell + chestCell]) {
+    if (currentCellPosition === randomList[obstacleCell + chestCell]) {
         var cell = createPlayer1Cell()
         return cell
-    } else if (currentCellPosition == randomList[obstacleCell + chestCell + 1]) {
+    } else if (currentCellPosition === randomList[obstacleCell + chestCell + 1]) {
         var cell = createPlayer2Cell()
         return cell
     } else {
@@ -135,14 +135,14 @@ function createPlayer1Cell() {
 
 function createPlayer2Cell() {
     if (players[1].characterNear(x, y, board.length, board,
-            numberToTest = randomList[obstacleCell + chestCell + 1]) == false) {
+            numberToTest = randomList[obstacleCell + chestCell + 1]) === false) {
         var cell = new Cell(players[1], currentCellPosition, y, x, false);
         players[1].position = cell.numberCell;
         players[1].y = y;
         players[1].x = x;
         return cell; // Safe zone: player 2 confirmed
     } else if (players[1].characterNear(x, y, board.length, board,
-            numberToTest = randomList[obstacleCell + chestCell + 1]) == true) {
+            numberToTest = randomList[obstacleCell + chestCell + 1]) === true) {
         players[1].changeDropArea() // Unsafe zone: Player 2 need new location.
         var cell = new Cell(0, currentCellPosition, y, x, true);
         return cell; // Player 1 near, Empty cell dropped.
@@ -169,8 +169,8 @@ canvas.addEventListener("click", function (e) {
     xOnClick = (Math.floor(getMousePositionX / tilePixelCut));
     var message = 'Mouse click position is: ' + yOnClick + ',' + xOnClick;
     writeMessage(message);
-    if (board[yOnClick][xOnClick].highLightning == true) {
-        if (board[yOnClick][xOnClick].contain == 0) { // Empty Cell
+    if (board[yOnClick][xOnClick].highLightning === true) {
+        if (board[yOnClick][xOnClick].contain === 0) { // Empty Cell
             clickEmptyCell(yOnClick, xOnClick)
         } else { // Chest Cell
             clickChestCell(yOnClick, xOnClick)
@@ -198,7 +198,7 @@ function clickEmptyCell() {
     board[yOnClick][xOnClick].contain = currentPlayer;
     board[yOnClick][xOnClick].freeCell = false;
 
-    if (currentPlayer.weaponToDeposited == undefined) { // If no weapon to drop
+    if (currentPlayer.weaponToDeposited === undefined) { // If no weapon to drop
         board[currentPlayer.y][currentPlayer.x].contain = 0;
         board[currentPlayer.y][currentPlayer.x].freeCell = true;
     } else { // If weapon to drop
@@ -206,17 +206,17 @@ function clickEmptyCell() {
         currentPlayer.weaponToDeposited = undefined;
         board[currentPlayer.y][currentPlayer.x].freeCell = true;
     }
-    board[currentPlayer.y][currentPlayer.x].contain == 0;
+    board[currentPlayer.y][currentPlayer.x].contain === 0;
     board[currentPlayer.y][currentPlayer.x].freeCell = true;
 }
 
 function clickChestCell() {
     for (var weaponId = 0; weaponId < weapons.length; weaponId++) {
-        if (board[yOnClick][xOnClick].contain == weapons[weaponId]) {
+        if (board[yOnClick][xOnClick].contain === weapons[weaponId]) {
             board[yOnClick][xOnClick].contain = currentPlayer;
             board[yOnClick][xOnClick].freeCell = false;
 
-            if (currentPlayer.weaponToDeposited == undefined) { // If no weapon to drop
+            if (currentPlayer.weaponToDeposited === undefined) { // If no weapon to drop
                 board[currentPlayer.y][currentPlayer.x].contain = 0;
                 board[currentPlayer.y][currentPlayer.x].freeCell = true;
                 currentPlayer.weaponToDeposited = currentPlayer.weapon;
@@ -253,11 +253,11 @@ function moreThanOneHundredCells() { // New Player 2 drop location
 
     var cellWhereToDrop = oneHundredDeduceX + oneHundredDeduceY * board.length;
     for (i = 0; i < min; i++) {
-        if (randomList[i] == randomList[cellWhereToDrop]) {
+        if (randomList[i] === randomList[cellWhereToDrop]) {
             return moreThanOneHundredCells();
         }
     }
-    if (players[1].characterNear(oneHundredDeduceX, oneHundredDeduceY, board.length, board, numberToTest = randomList[cellWhereToDrop]) == false) {
+    if (players[1].characterNear(oneHundredDeduceX, oneHundredDeduceY, board.length, board, numberToTest = randomList[cellWhereToDrop]) === false) {
         return [oneHundredDeduceY, oneHundredDeduceX, cellWhereToDrop]
     } else {
         return moreThanOneHundredCells();
@@ -268,7 +268,7 @@ function lessThanOneHundredCells() { // New Player 2 drop location
     var min = obstacleCell + chestCell + numbersOfPlayers;
     var max = totalCells - 1;
     var numberDropTry = getRandomIntInclusive(min, max);
-    if (players[1].characterNear(x, y, board.length, board, numberToTest = randomList[numberDropTry]) == false) {
+    if (players[1].characterNear(x, y, board.length, board, numberToTest = randomList[numberDropTry]) === false) {
         var cellWhereToDrop = randomList[numberDropTry];
         chaineTransform = cellWhereToDrop.toString()
         /*chn.substr(early[, length])
@@ -288,7 +288,7 @@ function lessThanOneHundredCells() { // New Player 2 drop location
 }
 
 function currentPlayerIs() {
-    if (currentPlayer == players[0]) {
+    if (currentPlayer === players[0]) {
         currentPlayer = players[1]
         $("#player-2").addClass("currentPlayerIs2");
         $("#player-1").removeClass("currentPlayerIs1");
@@ -313,11 +313,11 @@ function currentPlayerIs() {
 
 function fight() {
     opponentPlayer = currentPlayer.opponent();
-    if (currentPlayer.defensiveStance == true) {
+    if (currentPlayer.defensiveStance === true) {
         return currentPlayer.changeOfPlayerSDuelTurn()
     }
     var duelIsEnd = false;
-    while (duelIsEnd == false) {
+    while (duelIsEnd === false) {
         if (opponentPlayer.heal > 0) {
             livingOpponent();
         }
@@ -327,18 +327,18 @@ function fight() {
             victory()
             break;
         }
-        opponentPlayer.defensiveStance == false
+        opponentPlayer.defensiveStance === false
         currentPlayer.changeOfPlayerSDuelTurn()
         break;
     }
 }
 
 function livingOpponent() {
-    if (opponentPlayer.defensiveStance == true) {
+    if (opponentPlayer.defensiveStance === true) {
         opponentPlayer.heal = opponentPlayer.heal - currentPlayer.dommageDeal() / 2;
-        opponentPlayer.defensiveStance == false;
+        opponentPlayer.defensiveStance === false;
         updateStatistics()
-    } else if (opponentPlayer.defensiveStance == undefined || opponentPlayer.defensiveStance == false) {
+    } else if (opponentPlayer.defensiveStance === undefined || opponentPlayer.defensiveStance === false) {
         opponentPlayer.heal = opponentPlayer.heal - currentPlayer.dommageDeal();
         updateStatistics();
     }
@@ -367,7 +367,7 @@ function deadOpponent() {
 function victory() {
     $("#duel").hide();
     $("#victory").show();
-    if (currentPlayer == players[1]) {
+    if (currentPlayer === players[1]) {
         $("#victory").css("background", "linear-gradient(180deg, rgb(106, 47, 243) 20%, rgb(180, 49, 241) 30%, rgb(255, 255, 255) 100%)")
         $("#victory").append("<h1>Dark Link</h1> <h1>is the WINNER!</h1><img src='https://zupimages.net/up/18/42/qhw6.gif'>")
     } else {

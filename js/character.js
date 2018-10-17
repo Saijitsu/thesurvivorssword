@@ -110,17 +110,17 @@ Character.prototype.tripArea = function () {
             if (tryIfFreeCell >= 0 && tryIfFreeCell <= totalCells - 1) {
                 var deduceY = cellList[tryIfFreeCell].y
                 var deduceX = cellList[tryIfFreeCell].x
-                if (board[deduceY][deduceX].freeCell == true) {
-                    if (j == 0 || j == 2) {
+                if (board[deduceY][deduceX].freeCell === true) {
+                    if (j === 0 || j === 2) {
                         var line = this.y;
-                        if (deduceY == line) {
+                        if (deduceY === line) {
                             highLightning.push(tryIfFreeCell);
                             board[deduceY][deduceX].highLightning = true;
                         } else {
                             i = 3
                         }
                     }
-                    if (j == 1 || j == 3) {
+                    if (j === 1 || j === 3) {
                         highLightning.push(tryIfFreeCell);
                         board[deduceY][deduceX].highLightning = true;
                     }
@@ -141,7 +141,7 @@ Character.prototype.tripArea = function () {
 
 Character.prototype.changeOfPlayerSTurn = function () {
     updateStatistics()
-    if (this.playersCollision() == false) {
+    if (this.playersCollision() === false) {
         shakeBottleImage()
         $("#chat-text").text("Hey! Listen! No fight this turn!");
         heyListen()
@@ -166,8 +166,8 @@ Character.prototype.changeOfPlayerSDuelTurn = function () {
 }
 
 Character.prototype.playersCollision = function () {
-    if (this.opponent().position == this.position - 1 || this.opponent().position == this.position + 1 ||
-        this.opponent().position == this.position - rows || this.opponent().position == this.position + rows) {
+    if (this.opponent().position === this.position - 1 || this.opponent().position === this.position + 1 ||
+        this.opponent().position === this.position - rows || this.opponent().position === this.position + rows) {
         return true; // Vertical or horizontal collision détected
     } else {
         return false;
