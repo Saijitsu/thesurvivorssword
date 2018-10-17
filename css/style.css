@@ -22,8 +22,8 @@ body {
   min-height: 100vh;
 }
 
-.gameOptionRules,
-#musicMenu {
+.game-option-rules,
+#music-menu {
   font-family: "Return of Ganon Regular";
   font-weight: bolder;
   display: flex;
@@ -32,20 +32,20 @@ body {
   justify-content: center;
 }
 
-.gameOptionRules p {
+.game-option-rules p {
   font-size: 20px
 }
 
-.gameOptionRules h2 {
+.game-option-rules h2 {
   font-size: 30px
 }
 
-.gameOptionRules h3 {
+.game-option-rules h3 {
   font-size: 25px
 }
 
-#gameOption,
-#gameRules {
+#game-option,
+#game-rules {
   background-color: rgba(238, 201, 101, 0.575);
   border-radius: 15px;
   display: flex;
@@ -57,11 +57,11 @@ body {
   text-align: center;
 }
 
-#gameOption p {
+#game-option p {
   margin: 0px
 }
 
-#startButton {
+#start-button {
   font-family: "Return of Ganon Regular";
   margin: auto;
   margin-top: 40px;
@@ -90,14 +90,14 @@ li:hover:before {
   transition: 300s;
 }
 
-.slidecontainer {
+.slide-container {
   align-self: center;
   width: 80%;
 }
 
-#sliderMap,
-#sliderChest,
-#sliderObstacle {
+#slider-map,
+#slider-chest,
+#slider-obstacle {
   -webkit-appearance: none;
   width: 100%;
   height: 25px;
@@ -108,13 +108,13 @@ li:hover:before {
   transition: opacity .2s;
 }
 
-#sliderMap:hover,
-#sliderObstacle:hover,
-#sliderChest:hover {
+#slider-map:hover,
+#slider-obstacle:hover,
+#slider-chest:hover {
   opacity: 1;
 }
 
-#sliderMap::-webkit-slider-thumb {
+#slider-map::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 25px;
@@ -123,14 +123,14 @@ li:hover:before {
   cursor: pointer;
 }
 
-#sliderMap::-moz-range-thumb {
+#slider-map::-moz-range-thumb {
   width: 25px;
   height: 25px;
   background: url("../image/css_sprites.png") -249px -159px;
   cursor: pointer;
 }
 
-#sliderObstacle::-webkit-slider-thumb {
+#slider-obstacle::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 25px;
@@ -139,14 +139,14 @@ li:hover:before {
   cursor: pointer;
 }
 
-#sliderObstacle::-moz-range-thumb {
+#slider-obstacle::-moz-range-thumb {
   width: 25px;
   height: 25px;
   background: url("../image/css_sprites.png") -249px -105px;
   cursor: pointer;
 }
 
-#sliderChest::-webkit-slider-thumb {
+#slider-chest::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 25px;
@@ -155,7 +155,7 @@ li:hover:before {
   cursor: pointer;
 }
 
-#sliderChest::-moz-range-thumb {
+#slider-chest::-moz-range-thumb {
   width: 25px;
   height: 25px;
   background: url("../image/css_sprites.png") -249px -132px;
@@ -163,8 +163,8 @@ li:hover:before {
 }
 
 
-#player0Heal,
-#player1Heal {
+#player-0-heal,
+#player-1-heal {
   font-family: "Return of Ganon Regular";
   color: red;
   font-Size: 44px;
@@ -205,30 +205,30 @@ li:hover:before {
   }
 }
 
-#player0HealStat2,
-#player1HealStat2 {
+#player-0-heal-stat-1,
+#player-1-heal-stat-2 {
   font-family: "Triforce";
   margin-top: -28px;
   margin-left: 110px;
 }
 
-.weaponStat,
-.healStat {
+.weapon-stat,
+.heal-stat {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
-#player0WeaponPower,
-#player1WeaponPower {
+#player-0-weapon-power,
+#player-1-weapon-power {
   color: Red;
   font-size: 35px;
   margin-top: 25px;
 }
 
-#player0Weapon,
-#player1Weapon {
+#player-0-weapon,
+#player-1-weapon {
   font-family: "Triforce";
   color: rgb(13, 13, 26);
   text-shadow: 1px 1px 5px whitesmoke;
@@ -237,59 +237,59 @@ li:hover:before {
   margin-left: 10px;
 }
 
-.Peasant_Sword,
-.Sword_Of_Wind,
-.Sword_Of_Fire,
-.Sword_Of_Thunder,
-.Magic_Wand,
-.Bow_Of_Light,
-.Iron_Hammer,
-.Goron_s_Sword,
-.Kakariko_Bomb {
+.peasant-sword,
+.sword-of-wind,
+.sword-of-fire,
+.sword-of-thunder,
+.magic-wand,
+.bow-of-light,
+.iron-hammer,
+.goron-s-sword,
+.kakariko-bomb {
   height: 50px;
   width: 50px;
 }
 
-.Peasant_Sword {
+.peasant-sword {
   background: url("../image/css_sprites.png") -53px -151px;
 }
 
-.Sword_Of_Wind {
+.sword-of-wind {
   background: url("../image/css_sprites.png") -105px -99px;
 }
 
-.Sword_Of_Fire {
+.sword-of-fire {
   background: url("../image/css_sprites.png") -197px -1px;
 }
 
-.Sword_Of_Thunder {
+.sword-of-thunder {
   background: url("../image/css_sprites.png") -1px -151px;
 }
 
-.Magic_Wand {
+.magic-wand {
   background: url("../image/css_sprites.png") -197px -53px;
 }
 
-.Bow_Of_Light {
+.bow-of-light {
   background: url("../image/css_sprites.png") -105px -151px;
 }
 
-.Iron_Hammer {
+.iron-hammer {
   background: url("../image/css_sprites.png") -249px -1px;
 
 }
 
-.Goron_s_Sword {
+.goron-s-sword {
   background: url("../image/css_sprites.png") -249px -53px;
 
 }
 
-.Kakariko_Bomb {
+.kakariko-bomb {
   background: url("../image/css_sprites.png") -157px -151px;
 
 }
 
-.imageRotate {
+.image-rotate {
   animation: rotation 8s infinite linear;
   -webkit-animation: rotation 8s infinite linear;
 }
@@ -395,11 +395,11 @@ footer {
   justify-content: center;
 }
 
-#generalInformations {
+#general-informations {
   padding-top: 20px;
 }
 
-.boardAndPlayersInfo {
+.board-and-players-info {
   display: none;
   flex-direction: row;
   flex-wrap: wrap;
@@ -407,7 +407,7 @@ footer {
   margin-top: 20px;
 }
 
-.playersInfo {
+.players-info {
   font-family: "Return of Ganon Regular";
   font-weight: bolder;
   display: flex;
@@ -418,14 +418,14 @@ footer {
   text-shadow: 2px 2px 6px white;
 }
 
-.playersInfo h3 {
+.players-info h3 {
   padding-left: 40px;
   font-size: 32px;
   line-height: 0px;
   margin-bottom: 18px;
 }
 
-.playersInfo p {
+.players-info p {
   font-size: 25px;
   line-height: 0%;
 }
@@ -436,21 +436,21 @@ footer {
   padding-left: 40px;
 }
 
-.playerStat {
+.player-stat {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding-left: 20px;
 }
 
-.naviChat {
+.navi-chat {
   display: flex;
   flex: 1 auto;
   flex-direction: row;
   justify-content: left;
 }
 
-#chatText {
+#chat-text {
   font-family: "Return of Ganon Regular";
   font-Size: 25px;
   justify-content: center;
@@ -482,36 +482,36 @@ button {
   border: 1px solid black;
 }
 
-#startButton,
-#offensiveStance,
-#defensiveStance,
-#menuMusicButton,
-#muteMusicButton {
+#start-button,
+#offensive-stance,
+#defensive-stance,
+#menu-music-button,
+#mute-music-button {
   justify-content: space-around;
 }
 
-#menuMusicButton,
-#muteMusicButton {
+#menu-music-button,
+#mute-music-button {
   font-family: "Return of Ganon Regular";
   margin: auto;
   margin-top: 40px;
   background: linear-gradient(70deg, #FFFF00 10%, #EEC965 20%, white 50%, #EEC965 70%, #FFFF00 90%);
 }
 
-#menuMusicButton,
-#muteMusicButton {
+#menu-music-button,
+#mute-music-button {
   width: 230px;
 }
 
-#defensiveStance:hover {
+#defensive-stance:hover {
   background: linear-gradient(70deg, rgb(96, 201, 243), white);
 }
 
-#offensiveStance:hover {
+#offensive-stance:hover {
   background: linear-gradient(70deg, rgb(243, 113, 96), white);
 }
 
-.imageSpin {
+.image-spin {
   animation-name: spin;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -629,21 +629,21 @@ button {
   box-shadow: 11px 13px 10px -4px rgba(0, 0, 0, 0.61);
 }
 
-.currentPlayerIs1 {
+.current-player-is-1 {
   border-radius: 15px;
   border: 1px solid rgba(238, 201, 101, 0.815);
   background: linear-gradient(359deg, rgba(92, 236, 123, 0.705), rgba(146, 233, 253, 0.705));
   background-size: 400% 400%;
 }
 
-.currentPlayerIs2 {
+.current-player-is-2 {
   border-radius: 15px;
   border: 1px solid rgba(0, 0, 0, 0.815);
   background: linear-gradient(359deg, rgba(40, 44, 117, 0.705), rgba(152, 35, 60, 0.705));
 }
 
-.currentPlayerIs2,
-.currentPlayerIs1,
+.current-player-is-2,
+.current-player-is-1,
 #square {
   background-size: 400% 400%;
   -webkit-animation: gradientSquare 4s ease infinite;
@@ -729,25 +729,25 @@ button {
 }
 
 /* Css Sprites*/
-.musicIconMute {
+.music-icon-mute {
   width: 50px;
   height: 50px;
   background: url("../image/css_sprites.png") -1px -99px;
 }
 
-.musicIconPlay {
+.music-icon-play {
   width: 50px;
   height: 50px;
   background: url("../image/css_sprites.png") -53px -99px;
 }
 
-.greenLink {
+.green-link {
   width: 96px;
   height: 96px;
   background: url("../image/css_sprites.png") -1px -1px;
 }
 
-.darkLink {
+.dark-link {
   width: 96px;
   height: 96px;
   background: url("../image/css_sprites.png") -99px -1px;

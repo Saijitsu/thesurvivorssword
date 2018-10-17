@@ -143,16 +143,16 @@ Character.prototype.changeOfPlayerSTurn = function () {
     updateStatistics()
     if (this.playersCollision() == false) {
         shakeBottleImage()
-        $("#chatText").text("Hey! Listen! No fight this turn!");
+        $("#chat-text").text("Hey! Listen! No fight this turn!");
         heyListen()
        currentPlayerIs()
         highLightning = [];
         currentPlayer.tripArea(); // Trip Area of current player.
         setTimeout(function () {
-            $("#chatText").text(currentPlayer.describe());
+            $("#chat-text").text(currentPlayer.describe());
         }, 1000);
     } else {
-        change_track(fightMusic)
+        changeTrack(fightMusic)
         currentPlayer.duel()
     }
 }
@@ -161,14 +161,14 @@ Character.prototype.changeOfPlayerSDuelTurn = function () {
     currentPlayerIs()
     updateStatistics()
     setTimeout(function () {
-        $("#chatText").text(currentPlayer.name + " enters the fight.");
+        $("#chat-text").text(currentPlayer.name + " enters the fight.");
     }, 2500);
 }
 
 Character.prototype.playersCollision = function () {
     if (this.opponent().position == this.position - 1 || this.opponent().position == this.position + 1 ||
         this.opponent().position == this.position - rows || this.opponent().position == this.position + rows) {
-        return true; // Vertical or horizontal collision détected  
+        return true; // Vertical or horizontal collision détected
     } else {
         return false;
     }
@@ -176,7 +176,7 @@ Character.prototype.playersCollision = function () {
 
 Character.prototype.duel = function () {
     shakeBottleImage()
-    $("#chatText").text("Hey! Listen! Fight this turn!");
+    $("#chat-text").text("Hey! Listen! Fight this turn!");
     heyListen()
     $("#duel").show();
     $("#canvas").hide();
@@ -186,14 +186,14 @@ Character.prototype.isDefensiveStance = function () {
     currentPlayer = this;
     currentPlayer.defensiveStance = true;
     shakeBottleImage()
-    $("#chatText").text(currentPlayer.name + " adopt a defensive stance! Half damage on the next attack received.");
+    $("#chat-text").text(currentPlayer.name + " adopt a defensive stance! Half damage on the next attack received.");
     fight()
 }
 
 Character.prototype.isOffensiveStance = function () {
     currentPlayer.defensiveStance = false;
     shakeBottleImage()
-    $("#chatText").text(currentPlayer.name + " adopt an offensive stance!");
+    $("#chat-text").text(currentPlayer.name + " adopt an offensive stance!");
     fight()
 }
 

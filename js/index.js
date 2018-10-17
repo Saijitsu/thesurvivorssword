@@ -22,9 +22,9 @@ var randomList = [];
 
 // User-defined settings
 function userDefinedSettings() {
-    obstacleCell = parseInt(document.getElementById("sliderObstacle").value)
-    chestCell = parseInt(document.getElementById("sliderChest").value)
-    boardSize = parseInt(document.getElementById("sliderMap").value)
+    obstacleCell = parseInt(document.getElementById("slider-obstacle").value)
+    chestCell = parseInt(document.getElementById("slider-chest").value)
+    boardSize = parseInt(document.getElementById("slider-map").value)
     rows = boardSize
     columns = boardSize
     width = columns * 50;
@@ -114,7 +114,7 @@ function createEmptyCell() {
 function createObstacleCell() {
     var designIs = getRandomIntInclusive(1, 3);
     var cell = new Cell(1, currentCellPosition, y, x, false, designIs);
-    return cell; // obstacle cell 
+    return cell; // obstacle cell
 }
 
 function createChestCell() {
@@ -122,7 +122,7 @@ function createChestCell() {
     weaponsId = weaponsEntry[selectEntry];
     var cell = new Cell(weapons[weaponsId], currentCellPosition, y, x, true);
     weaponsEntry.splice(selectEntry, 1);
-    return cell; // Chest cell 
+    return cell; // Chest cell
 }
 
 function createPlayer1Cell() {
@@ -155,11 +155,11 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-/*Return where user click on canvas: 
-method which returns the mouse coordinates based on the position 
- of the client mouse and the position of the canvas obtained from 
+/*Return where user click on canvas:
+method which returns the mouse coordinates based on the position
+ of the client mouse and the position of the canvas obtained from
  the getBoundingClientRect() method of the window object:
- The Element.getBoundingClientRect() method returns 
+ The Element.getBoundingClientRect() method returns
  the size of an element and its position relative to the viewport*/
 canvas.addEventListener("click", function (e) {
     var getMousePositionYX = getMousePosition(canvas, e);
@@ -272,7 +272,7 @@ function lessThanOneHundredCells() { // New Player 2 drop location
         var cellWhereToDrop = randomList[numberDropTry];
         chaineTransform = cellWhereToDrop.toString()
         /*chn.substr(early[, length])
-                   The substr() method extracts parts of a string, beginning at the character 
+                   The substr() method extracts parts of a string, beginning at the character
                    at the specified position, and returns the specified number of characters.*/
         if (cellWhereToDrop < 10) {
             var deduceY = 0;
@@ -290,22 +290,22 @@ function lessThanOneHundredCells() { // New Player 2 drop location
 function currentPlayerIs() {
     if (currentPlayer == players[0]) {
         currentPlayer = players[1]
-        $("#player2").addClass("currentPlayerIs2");
-        $("#player1").removeClass("currentPlayerIs1");
-        $("#avatarplayer1").addClass("imageSpin");
-        $("#avatarplayer0").removeClass("imageSpin");
-        $(".naviGif").empty()
-        $(".naviGif").append("<img src='https://zupimages.net/up/18/42/dbpt.gif'></img>")
+        $("#player-2").addClass("currentPlayerIs2");
+        $("#player-1").removeClass("currentPlayerIs1");
+        $("#avatar-player-1").addClass("imageSpin");
+        $("#avatar-player-0").removeClass("imageSpin");
+        $(".navi-gif").empty()
+        $(".navi-gif").append("<img src='https://zupimages.net/up/18/42/dbpt.gif'></img>")
         $("#duel").css("background", "linear-gradient(180deg, rgb(106, 47, 243) 20%, rgb(180, 49, 241) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('https://zupimages.net/up/18/42/xq1b.gif') no-repeat bottom")
         return currentPlayer
     } else {
         currentPlayer = players[0]
-        $("#player1").addClass("currentPlayerIs1");
-        $("#player2").removeClass("currentPlayerIs2");
-        $("#avatarplayer0").addClass("imageSpin");
-        $("#avatarplayer1").removeClass("imageSpin");
-        $(".naviGif").empty()
-        $(".naviGif").append("<img src='https://zupimages.net/up/18/42/ueit.gif'></img>")
+        $("#player-1").addClass("currentPlayerIs1");
+        $("#player-2").removeClass("currentPlayerIs2");
+        $("#avatar-player-0").addClass("imageSpin");
+        $("#avatar-player-1").removeClass("imageSpin");
+        $(".navi-gif").empty()
+        $(".navi-gif").append("<img src='https://zupimages.net/up/18/42/ueit.gif'></img>")
         $("#duel").css("background", "linear-gradient(180deg, rgb(61, 189, 248) 20%, rgb(66, 212, 248) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('https://zupimages.net/up/18/42/xq1b.gif') no-repeat bottom")
         return currentPlayer
     }
@@ -346,22 +346,22 @@ function livingOpponent() {
     if (opponentPlayer.heal > 0) {
         setTimeout(function () {
             shakeBottleImage()
-            $("#chatText").text(opponentPlayer.name + " has " + opponentPlayer.heal + " heal points!")
+            $("#chat-text").text(opponentPlayer.name + " has " + opponentPlayer.heal + " heal points!")
         }, 1200);
     } else if (opponentPlayer.heal < 0) {
         setTimeout(function () {
             shakeBottleImage()
-            $("#chatText").text(opponentPlayer.name + " was overhit!")
+            $("#chat-text").text(opponentPlayer.name + " was overhit!")
         }, 1000);
     }
 }
 
 function deadOpponent() {
     updateStatistics()
-    change_track(victoryMusic)
+    changeTrack(victoryMusic)
     setTimeout(function () {
         shakeBottleImage()
-        $("#chatText").text(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!")
+        $("#chat-text").text(opponentPlayer.name + " is unconscious! " + currentPlayer.name + " is the winner!")
     }, 2000);
 }
 
@@ -379,49 +379,49 @@ function victory() {
 
 function updateStatistics() {
     for (i = 0; i < 2; i++) {
-        var valueToTransform = players[i].weapon.name;
+        var valueToTransform = players[i].weapon.name.toLowerCase();
         var regex = / /gi;
-        var weaponIcon = (valueToTransform.replace(regex, "_"));
+        var weaponIcon = (valueToTransform.replace(regex, "-"));
         var heart = "#";
         var emptyHeart = "*";
         var nbHeart = Math.max(0, Math.round(players[i].heal / 10));
         // if value < 0, return 0 as the max value of this method.
         var nbEmptyHeart = 10 - nbHeart
 
-        $("#player" + i + "Heal").empty();
-        $("#player" + i + "HealStat2").empty();
-        $("#player" + i + "Weapon").empty();
-        $("#player" + i + "ImgWeapon").empty();
-        $("#player" + i + "WeaponPower").empty();
-        $("#player" + i + "Heal").append(heart.repeat(nbHeart) + emptyHeart.repeat(nbEmptyHeart));
-        $("#player" + i + "HealStat2").append(Math.max(0, players[i].heal) + "/100");
-        $("#player" + i + "Weapon").append(players[i].weapon.name);
-        $("#player" + i + "ImgWeapon").append("<div class=\"" + weaponIcon + " imageRotate\"></div>");
-        $("#player" + i + "WeaponPower").append(players[i].weapon.power);
+        $("#player-" + i + "-heal").empty();
+        $("#player-" + i + "-heal-stat-2").empty();
+        $("#player-" + i + "-weapon").empty();
+        $("#player-" + i + "-img-weapon").empty();
+        $("#player-" + i + "-weapon-power").empty();
+        $("#player-" + i + "-heal").append(heart.repeat(nbHeart) + emptyHeart.repeat(nbEmptyHeart));
+        $("#player-" + i + "-heal-stat-2").append(Math.max(0, players[i].heal) + "/100");
+        $("#player-" + i + "-weapon").append(players[i].weapon.name);
+        $("#player-" + i + "-img-weapon").append("<div class=\"" + weaponIcon + " image-rotate\"></div>");
+        $("#player-" + i + "-weapon-power").append(players[i].weapon.power);
     }
 };
 
 function shakeBottleImage() {
-    $(".naviGif").parent().addClass("vibrate");
+    $(".navi-gif").parent().addClass("vibrate");
     setTimeout(function () {
-        $(".naviGif").parent().removeClass("vibrate");
+        $(".navi-gif").parent().removeClass("vibrate");
     }, 1600); //animation time, waiting to remove.
 }
 
 //Game music
-$("#menuMusicButton").click(function () {
-    change_track(menuMusic);
-    var audio = document.getElementById("myAudio");
+$("#menu-music-button").click(function () {
+    changeTrack(menuMusic);
+    var audio = document.getElementById("my-audio");
     audio.volume = 0.1;
 });
 
-$("#muteMusicButton").click(function () {
-    var audio = document.getElementById("myAudio");
+$("#mute-music-button").click(function () {
+    var audio = document.getElementById("my-audio");
     audio.volume = 0.0;
 });
 
 $(function () { //Low audio volume
-    var audio = document.getElementById("myAudio");
+    var audio = document.getElementById("my-audio");
     audio.volume = 0.1;
 });
 
@@ -431,14 +431,14 @@ function heyListen() {
     audio.volume = 0.1;
 }
 var menuMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/onwohiey/05%20-%20House.mp3"
-//menuMusic create because autoplay doesn't work on Google Chrome since version 66: change_track(adventureMusic)
+//menuMusic create because autoplay doesn't work on Google Chrome since version 66: changeTrack(adventureMusic)
 var adventureMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/nuyjimms/06%20-%20Kokiri%20Forest.mp3"
 var fightMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/hlcsbajc/79%20-%20Last%20Battle.mp3"
 var victoryMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/ikoatnrm/49%20-%20Medal%20Get%20Fanfare.mp3"
 
-function change_track(sourceUrl) {
-    var audio = $("#myAudio");
-    $("#mp3_src").attr("src", sourceUrl);
+function changeTrack(sourceUrl) {
+    var audio = $("#my-audio");
+    $("#mp3-src").attr("src", sourceUrl);
     audio[0].pause();
     audio[0].load(); //suspends and restores all audio element
     audio[0].oncanplaythrough = audio[0].play();

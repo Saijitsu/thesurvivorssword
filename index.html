@@ -16,18 +16,18 @@
         <p>The legend of</p>
         <h1>* The Survivor's Sword *</h1>
         <h3>Fight your dark reflection: in the end there will be only one !</h3>
-        <audio id="myAudio" controls autoplay loop style="display:none">
-            <source id="mp3_src" src="http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/onwohiey/05%20-%20House.mp3"
+        <audio id="my-audio" controls autoplay loop style="display:none">
+            <source id="mp3-src" src="http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/onwohiey/05%20-%20House.mp3"
                 type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
     </header>
     <main class="interface">
-        <section class="gameOptionRules">
-            <article id="gameOption">
-                <div id="musicMenu">
-                    <button type="button" id="menuMusicButton"><div class="musicIconPlay"></div>Activate Music</button>
-                    <button type="button" id="muteMusicButton"><div class="musicIconMute"></div>Mute Music</button>
+        <section class="game-option-rules">
+            <article id="game-option">
+                <div id="music-menu">
+                    <button type="button" id="menu-music-button"><div class="music-icon-play"></div>Activate Music</button>
+                    <button type="button" id="mute-music-button"><div class="music-icon-mute"></div>Mute Music</button>
                 </div>
                 <h2>Welcome to the game!</h2>
                 <p>Here you can adjust the game settings.</p>
@@ -38,23 +38,23 @@
                     We prefer to limit this number for technical reasons!</p>
                 <h3>Game settings</h3>
 
-                <div class="slidecontainer">
-                    <p>Board size: <span id="sliderMapValue"></span></p>
-                    <input type="range" min="10" max="20" value="10" id="sliderMap">
+                <div class="slide-container">
+                    <p>Board size: <span id="slider-map-value"></span></p>
+                    <input type="range" min="10" max="20" value="10" id="slider-map">
                 </div>
 
-                <div class="slidecontainer">
-                    <p>Obstacle: <span id="sliderObstacleValue"></span></p>
-                    <input type="range" min="10" max="50" value="10" id="sliderObstacle">
+                <div class="slide-container">
+                    <p>Obstacle: <span id="slider-obstacle-value"></span></p>
+                    <input type="range" min="10" max="50" value="10" id="slider-obstacle">
                 </div>
 
-                <div class="slidecontainer">
-                    <p>Weapon chest: <span id="sliderChestValue"></span></p>
-                    <input type="range" min="1" max="8" value="4" id="sliderChest">
+                <div class="slide-container">
+                    <p>Weapon chest: <span id="slider-chest-value"></span></p>
+                    <input type="range" min="1" max="8" value="4" id="slider-chest">
                 </div>
-                <button type="button" id="startButton">PUSH START BUTTON</button>
+                <button type="button" id="start-button">PUSH START BUTTON</button>
             </article>
-            <article id="gameOption">
+            <article id="game-option">
                 <h2>Game's rules</h2>
                 <ul>
                     <li>The default weapon that equips the players inflict 10 points of damage.</li>
@@ -68,68 +68,68 @@
                 <h3>The master of the game</h3>
             </article>
         </section>
-        <section class="boardAndPlayersInfo">
+        <section class="board-and-players-info">
             <div id="board"><canvas id="canvas">Votre navigateur ne supporte pas HTML5, veuillez le mettre à
                     jour pour jouer n/ Your browser does not support
                     HTML5, please update it to play</canvas></div>
             <div id="duel">
-                <button type="button" id="offensiveStance" onclick="currentPlayer.isOffensiveStance();">@ Offensive
+                <button type="button" id="offensive-stance" onclick="currentPlayer.isOffensiveStance();">@ Offensive
                     Stance</button>
-                <button type="button" id="defensiveStance" onclick="currentPlayer.isDefensiveStance();">* Defensive
+                <button type="button" id="defensive-stance" onclick="currentPlayer.isDefensiveStance();">* Defensive
                     Stance</button>
             </div>
             <div id="victory">
-                <div><button type="button" id="backToTheMenu" onclick="window.location.reload();">Back to the Menu</button></div>
+                <div><button type="button" id="back-to-the-menu" onclick="window.location.reload();">Back to the Menu</button></div>
             </div>
-            <aside id="generalInformations">
-                <article class="playersInfo">
-                    <div id="player1">
+            <aside id="general-informations">
+                <article class="players-info">
+                    <div id="player-1">
                         <h3>Player 1 : Link</h3>
                         <div class="player">
-                            <div class="greenLink" id="avatarplayer0"></div>
-                            <aside class="playerStat">
-                                <div class="healStat">
+                            <div class="green-link" id="avatar-player-0"></div>
+                            <aside class="player-stat">
+                                <div class="heal-stat">
                                     <p>Heal Points:</p>
-                                    <p id="player0Heal"></p>
+                                    <p id="player-0-heal"></p>
                                 </div>
-                                <div id="player0HealStat2"></div>
-                                <div class="weaponStat">
+                                <div id="player-0-heal-stat-2"></div>
+                                <div class="weapon-stat">
                                     <p>Equiped Weapon:</p>
-                                    <p id="player0Weapon"></p>
+                                    <p id="player-0-weapon"></p>
                                     <p>Power:</p>
-                                    <p id="player0WeaponPower">10</p>
-                                    <div id="player0ImgWeapon"></div>
+                                    <p id="player-0-weapon-power">10</p>
+                                    <div id="player-0-img-weapon"></div>
                                 </div>
                             </aside>
                         </div>
                     </div>
-                    <div id="player2">
+                    <div id="player-2">
                         <h3>Player 2: Dark Link</h3>
                         <div class="player">
-                            <div class="darkLink" id="avatarplayer1"></div>
-                            <aside class="playerStat">
-                                <div class="healStat">
+                            <div class="dark-link" id="avatar-player-1"></div>
+                            <aside class="player-stat">
+                                <div class="heal-stat">
                                     <p>Heal Points:</p>
-                                    <p id="player1Heal"></p>
+                                    <p id="player-1-heal"></p>
                                 </div>
-                                <div id="player1HealStat2"></div>
-                                <div class="weaponStat">
+                                <div id="player-1-heal-stat-2"></div>
+                                <div class="weapon-stat">
                                     <p>Equiped Weapon:</p>
-                                    <p id="player1Weapon"></p>
+                                    <p id="player-1-weapon"></p>
                                     <p>Power:</p>
-                                    <p id="player1WeaponPower">10</p>
-                                    <div id="player1ImgWeapon"></div>
+                                    <p id="player-1-weapon-power">10</p>
+                                    <div id="player-1-img-weapon"></div>
                                 </div>
                             </aside>
                         </div>
                     </div>
                 </article>
-                <article class="naviChat">
+                <article class="navi-chat">
                     <div>
-                        <div class="naviGif"></div>
+                        <div class="navi-gif"></div>
                     </div>
                     <div class="speech-bubble">
-                        <span id="chatText">Hey! Listen!</span>
+                        <span id="chat-text">Hey! Listen!</span>
                         <div id="square"></div>
                     </div>
                 </article>

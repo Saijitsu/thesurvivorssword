@@ -1,9 +1,9 @@
 // Start the game:
-$("#startButton").click(function () {
-    $(".boardAndPlayersInfo").css("display", "flex");
+$("#start-button").click(function () {
+    $(".board-and-players-info").css("display", "flex");
 });
-$("#startButton").click(function () {
-    $(".gameOptionRules").hide();
+$("#start-button").click(function () {
+    $(".game-option-rules").hide();
     $("#duel").hide();
     $("#victory").hide()
     userDefinedSettings()
@@ -25,5 +25,5 @@ $("#startButton").click(function () {
     draw()
     currentPlayer.tripArea();
     updateStatistics()
-    change_track(adventureMusic)
+    changeTrack(adventureMusic)
 });
