@@ -729,25 +729,25 @@ button {
 }
 
 /* Css Sprites*/
-.bg-musicIconMute {
+.musicIconMute {
   width: 50px;
   height: 50px;
   background: url("../image/css_sprites.png") -1px -99px;
 }
 
-.bg-musicIconPlay {
+.musicIconPlay {
   width: 50px;
   height: 50px;
   background: url("../image/css_sprites.png") -53px -99px;
 }
 
-.bg-greenLinkpng2 {
+.greenLink {
   width: 96px;
   height: 96px;
   background: url("../image/css_sprites.png") -1px -1px;
 }
 
-.bg-darkLinkpng2 {
+.darkLink {
   width: 96px;
   height: 96px;
   background: url("../image/css_sprites.png") -99px -1px;
