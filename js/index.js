@@ -295,8 +295,8 @@ function currentPlayerIs() {
         $("#avatar-player-1").addClass("imageSpin");
         $("#avatar-player-0").removeClass("imageSpin");
         $(".navi-gif").empty()
-        $(".navi-gif").append("<img src='//zupimages.net/up/18/42/dbpt.gif'></img>")
-        $("#duel").css("background", "linear-gradient(180deg, rgb(106, 47, 243) 20%, rgb(180, 49, 241) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('//zupimages.net/up/18/42/xq1b.gif') no-repeat bottom")
+        $(".navi-gif").append("<img src='https://zupimages.net/up/18/42/dbpt.gif'></img>")
+        $("#duel").css("background", "linear-gradient(180deg, rgb(106, 47, 243) 20%, rgb(180, 49, 241) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('https://zupimages.net/up/18/42/xq1b.gif') no-repeat bottom")
         return currentPlayer
     } else {
         currentPlayer = players[0]
@@ -305,8 +305,8 @@ function currentPlayerIs() {
         $("#avatar-player-0").addClass("imageSpin");
         $("#avatar-player-1").removeClass("imageSpin");
         $(".navi-gif").empty()
-        $(".navi-gif").append("<img src='//zupimages.net/up/18/42/ueit.gif'></img>")
-        $("#duel").css("background", "linear-gradient(180deg, rgb(61, 189, 248) 20%, rgb(66, 212, 248) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('//zupimages.net/up/18/42/xq1b.gif') no-repeat bottom")
+        $(".navi-gif").append("<img src='https://zupimages.net/up/18/42/ueit.gif'></img>")
+        $("#duel").css("background", "linear-gradient(180deg, rgb(61, 189, 248) 20%, rgb(66, 212, 248) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('https://zupimages.net/up/18/42/xq1b.gif') no-repeat bottom")
         return currentPlayer
     }
 }
@@ -369,10 +369,10 @@ function victory() {
     $("#victory").show();
     if (currentPlayer == players[1]) {
         $("#victory").css("background", "linear-gradient(180deg, rgb(106, 47, 243) 20%, rgb(180, 49, 241) 30%, rgb(255, 255, 255) 100%)")
-        $("#victory").append("<h1>Dark Link</h1> <h1>is the WINNER!</h1><img src='//zupimages.net/up/18/42/qhw6.gif'>")
+        $("#victory").append("<h1>Dark Link</h1> <h1>is the WINNER!</h1><img src='https://zupimages.net/up/18/42/qhw6.gif'>")
     } else {
         $("#victory").css("background", "linear-gradient(180deg, rgb(61, 189, 248) 20%, rgb(66, 212, 248) 30%, rgb(255, 255, 255) 100%)")
-        $("#victory").append("<h1>Link</h1> <h1>is the WINNER!</h1><img src='//zupimages.net/up/18/42/qhv2.gif'>")
+        $("#victory").append("<h1>Link</h1> <h1>is the WINNER!</h1><img src='https://zupimages.net/up/18/42/qhv2.gif'>")
     }
 }
 
@@ -425,15 +425,15 @@ $(function () { //Low audio volume
 });
 
 function heyListen() {
-    var audio = new Audio("//www.myinstants.com/media/sounds/hey_listen.mp3");
+    var audio = new Audio("https://www.myinstants.com/media/sounds/hey_listen.mp3");
     audio.play();
     audio.volume = 0.1;
 }
-var menuMusic = src = "//66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/onwohiey/05%20-%20House.mp3"
+var menuMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/onwohiey/05%20-%20House.mp3"
 //menuMusic create because autoplay doesn't work on Google Chrome since version 66: changeTrack(adventureMusic)
-var adventureMusic = src = "//66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/nuyjimms/06%20-%20Kokiri%20Forest.mp3"
-var fightMusic = src = "//66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/hlcsbajc/79%20-%20Last%20Battle.mp3"
-var victoryMusic = src = "//66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/ikoatnrm/49%20-%20Medal%20Get%20Fanfare.mp3"
+var adventureMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/nuyjimms/06%20-%20Kokiri%20Forest.mp3"
+var fightMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/hlcsbajc/79%20-%20Last%20Battle.mp3"
+var victoryMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/ikoatnrm/49%20-%20Medal%20Get%20Fanfare.mp3"
 
 function changeTrack(sourceUrl) {
     var audio = $("#my-audio");
