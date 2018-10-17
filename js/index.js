@@ -1,4 +1,4 @@
-// Global Variable
+// Global Variable (no ALL_CAPS standard at the moment)
 var numbersOfPlayers = 2;
 var obstacleCell = null;
 var chestCell = null;
