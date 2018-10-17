@@ -1,5 +1,5 @@
 var Tilewidth = 50;
-var ts = new Tileset(src="https://zupimages.net/up/18/42/szax.png");
+var ts = new Tileset(src="//zupimages.net/up/18/42/szax.png");
 
 function draw() {
     var canvas = document.getElementById("canvas");
@@ -14,7 +14,7 @@ function draw() {
 
             if (board[i][j].contain == 0 || board[i][j].contain == 1) {//Empty & Obstacle Cell
                 switch (board[i][j].contain) {
-                    case 0: // Empty Cell 
+                    case 0: // Empty Cell
                         if (board[i][j].design == 1) {
                             ts.drawTile(1, ctx, dx, dy);
                         } else if (board[i][j].design == 2) {
