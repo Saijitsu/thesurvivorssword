@@ -457,7 +457,8 @@ footer {
 }
 
 #canvas {
-  background: #567d46;
+  display: flex;
+  flex-direction: column;
   top: 0;
   bottom: 0;
   left: 0;
@@ -486,10 +487,14 @@ button {
 #offensive-stance,
 #defensive-stance,
 #menu-music-button,
-#mute-music-button {
+#mute-music-button, #restart-game{
   justify-content: space-around;
 }
 
+#restart-game{
+margin: 0 auto;
+margin-top: -20px;
+}
 #menu-music-button,
 #mute-music-button {
   font-family: "Return of Ganon Regular";

@@ -311,7 +311,6 @@ function currentPlayerIs() {
     }
 }
 
-
 function fight() {
     opponentPlayer = currentPlayer.opponent();
     if (currentPlayer.defensiveStance == true) {

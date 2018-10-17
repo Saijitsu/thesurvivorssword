@@ -180,6 +180,7 @@ Character.prototype.duel = function () {
     heyListen()
     $("#duel").show();
     $("#canvas").hide();
+    $("#restart-game").hide();
 }
 
 Character.prototype.isDefensiveStance = function () {

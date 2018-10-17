@@ -5,7 +5,7 @@ function Weapons(name, power, worn) {
 }
 
 Weapons.prototype.describe = function () {
-    var description = this.name + " gives a strength of " + this.power + 
+    var description = this.name + " gives a strength of " + this.power +
     " attack damage to its owner!";
     return description;
 };
@@ -31,7 +31,7 @@ var KakarikoBomb = new Weapons("Kakariko Bomb", 34, false);
 
 
 // Weapons Array!
-var weapons = [peasantSword, swordOfWind, swordOfFire, swordOfThunder, 
+var weapons = [peasantSword, swordOfWind, swordOfFire, swordOfThunder,
     magicWand, bowOfLight, ironHammer, GoronsSword, KakarikoBomb]
 
 // Array of entry in weapons Array (less the first one):
