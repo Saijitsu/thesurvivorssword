@@ -20,6 +20,28 @@ var oneHundredDeduceX = null;
 var currentCellPosition = 0;
 var randomList = [];
 
+var sliderMapValue = document.getElementById("slider-map");
+var outputMap = document.getElementById("slider-map-value");
+outputMap.innerHTML = sliderMapValue.value// Display the default slider value
+// Update the current slider value (each time you drag the slider handle)
+sliderMapValue.oninput = function() {
+    outputMap.innerHTML = this.value;
+}
+var sliderObstacleValue = document.getElementById("slider-obstacle");
+var outputObstacle = document.getElementById("slider-obstacle-value");
+outputObstacle.innerHTML = sliderObstacleValue.value// Display the default slider value
+// Update the current slider value (each time you drag the slider handle)
+sliderObstacleValue.oninput = function() {
+    outputObstacle.innerHTML = this.value;
+}
+var sliderChestValue = document.getElementById("slider-chest");
+var outputChest = document.getElementById("slider-chest-value");
+outputChest.innerHTML = sliderChestValue.value// Display the default slider value
+// Update the current slider value (each time you drag the slider handle)
+sliderChestValue.oninput = function() {
+    outputChest.innerHTML = this.value;
+}
+
 // User-defined settings
 function userDefinedSettings() {
     obstacleCell = parseInt(document.getElementById("slider-obstacle").value)
@@ -31,6 +53,7 @@ function userDefinedSettings() {
     height = rows * 50;
     totalCells = columns * rows;
 }
+
 
 function getGradiantBackground() {
     var valuesOfHex = ["#9dc183", "#708238", "#00A86B", "#00A572", "#66FF66",
