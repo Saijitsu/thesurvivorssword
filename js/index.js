@@ -290,8 +290,8 @@ function lessThanOneHundredCells() { // New Player 2 drop location
 function currentPlayerIs() {
     if (currentPlayer === players[0]) {
         currentPlayer = players[1]
-        $("#player-2").addClass("currentPlayerIs2");
-        $("#player-1").removeClass("currentPlayerIs1");
+        $("#player-2").addClass("current-player-is-2");
+        $("#player-1").removeClass("current-player-is-1");
         $("#avatar-player-1").addClass("imageSpin");
         $("#avatar-player-0").removeClass("imageSpin");
         $(".navi-gif").empty()
@@ -300,8 +300,8 @@ function currentPlayerIs() {
         return currentPlayer
     } else {
         currentPlayer = players[0]
-        $("#player-1").addClass("currentPlayerIs1");
-        $("#player-2").removeClass("currentPlayerIs2");
+        $("#player-1").addClass("current-player-is-1");
+        $("#player-2").removeClass("current-player-is-2");
         $("#avatar-player-0").addClass("imageSpin");
         $("#avatar-player-1").removeClass("imageSpin");
         $(".navi-gif").empty()
