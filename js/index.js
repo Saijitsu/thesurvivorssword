@@ -292,8 +292,8 @@ function currentPlayerIs() {
         currentPlayer = players[1]
         $("#player-2").addClass("current-player-is-2");
         $("#player-1").removeClass("current-player-is-1");
-        $("#avatar-player-1").addClass("imageSpin");
-        $("#avatar-player-0").removeClass("imageSpin");
+        $("#avatar-player-1").addClass("image-spin");
+        $("#avatar-player-0").removeClass("image-spin");
         $(".navi-gif").empty()
         $(".navi-gif").append("<img src='https://zupimages.net/up/18/42/dbpt.gif'></img>")
         $("#duel").css("background", "linear-gradient(180deg, rgb(106, 47, 243) 20%, rgb(180, 49, 241) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('https://zupimages.net/up/18/42/xq1b.gif') no-repeat bottom")
@@ -302,8 +302,8 @@ function currentPlayerIs() {
         currentPlayer = players[0]
         $("#player-1").addClass("current-player-is-1");
         $("#player-2").removeClass("current-player-is-2");
-        $("#avatar-player-0").addClass("imageSpin");
-        $("#avatar-player-1").removeClass("imageSpin");
+        $("#avatar-player-0").addClass("image-spin");
+        $("#avatar-player-1").removeClass("image-spin");
         $(".navi-gif").empty()
         $(".navi-gif").append("<img src='https://zupimages.net/up/18/42/ueit.gif'></img>")
         $("#duel").css("background", "linear-gradient(180deg, rgb(61, 189, 248) 20%, rgb(66, 212, 248) 30%, rgb(255, 255, 255) 60%, transparent 62%, transparent 100%), url('https://zupimages.net/up/18/42/xq1b.gif') no-repeat bottom")
