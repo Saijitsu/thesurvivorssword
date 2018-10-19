@@ -371,19 +371,34 @@ main {
   background-size: cover;
 }
 
-footer::after {
+footer {
+  background-color: black;
+  color: whitesmoke;
+  text-align: center;
+}
+
+footer::before {
   content: "";
-  height: 1px;
+  height: 2px;
   background: linear-gradient(to right, #000 0%, #EEC965 50%, #000 100%);
   position: absolute;
   left: 0;
   width: 100%;
 }
 
-footer {
-  background-color: black;
-  color: whitesmoke;
-  text-align: center;
+footer p{
+  margin: 6px auto;
+}
+#contact {
+  font-family: "Return of Ganon Regular";
+  font-weight: 700;
+  text-decoration-line: none;
+  color: black;
+  background: -webkit-linear-gradient(70deg, #FFFF00 20%, #EEC965 40%, white 50%, #EEC965 60%, #FFFF00 80%);
+  border: 2px solid white;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right:5px;
 }
 
 .interface {
@@ -484,14 +499,16 @@ button {
 #offensive-stance,
 #defensive-stance,
 #menu-music-button,
-#mute-music-button, #restart-game{
+#mute-music-button,
+#restart-game {
   justify-content: space-around;
 }
 
-#restart-game{
-margin: 0 auto;
-margin-top: -20px;
+#restart-game {
+  margin: 0 auto;
+  margin-top: -20px;
 }
+
 #menu-music-button,
 #mute-music-button {
   font-family: "Return of Ganon Regular";
