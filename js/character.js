@@ -162,7 +162,7 @@ Character.prototype.changeOfPlayerSDuelTurn = function () {
     updateStatistics()
     setTimeout(function () {
         $("#chat-text").text(currentPlayer.name + " enters the fight.");
-    }, 2500);
+    }, 3500);
 }
 
 Character.prototype.playersCollision = function () {
