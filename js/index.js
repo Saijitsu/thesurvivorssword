@@ -91,7 +91,6 @@ function createRandomCellList() { // Arry of random list of total cells.
     }
 
     randomList.shuffle();
-    console.log(randomList.join());
 }
 
 
@@ -190,8 +189,6 @@ canvas.addEventListener("click", function (e) {
     var getMousePositionX = getMousePositionYX[1];
     yOnClick = (Math.floor(getMousePositionY / tilePixelCut));
     xOnClick = (Math.floor(getMousePositionX / tilePixelCut));
-    var message = 'Mouse click position is: ' + yOnClick + ',' + xOnClick;
-    writeMessage(message);
     if (board[yOnClick][xOnClick].highLightning === true) {
         if (board[yOnClick][xOnClick].contain === 0) { // Empty Cell
             clickEmptyCell(yOnClick, xOnClick)
@@ -261,10 +258,6 @@ function clearCurrentPlayerHighLightning() {
         var deduceX = cellList[deduceYX].x
         board[deduceY][deduceX].highLightning = false;
     }
-}
-
-function writeMessage(message) {
-    console.log(message)
 }
 
 function moreThanOneHundredCells() { // New Player 2 drop location

@@ -20,8 +20,6 @@ $("#start-button").click(function () {
     elmt.style.border = "1px solid #EEC965";
     elmt.width = width;
     elmt.height = height;
-    console.log("Welcome to Sword of Survivor! There can be only one! The player " +
-        players[playerNumber].name + " can start the game. Good luck!")
     draw()
     currentPlayer.tripArea();
     updateStatistics()

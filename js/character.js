@@ -73,8 +73,6 @@ Character.prototype.characterNear = function () {
 
 // New player 2 location
 Character.prototype.changeDropArea = function () {
-    console.log("There was a contact between the players at the creation of the field! Player 2 location has been reset.")
-
     if (totalCells <= 100) {
         var deduceYXandCell = lessThanOneHundredCells();
         var deduceY = deduceYXandCell[0];
@@ -91,7 +89,6 @@ Character.prototype.changeDropArea = function () {
     this.position = cell.numberCell;
     this.y = deduceY;
     this.x = deduceX;
-    console.log("Player 2 found his land!");
     return cell;
 }
 
@@ -131,7 +128,6 @@ Character.prototype.tripArea = function () {
         }
     }
     draw();
-    console.log(this.name + " can move to this places: " + highLightning)
 }
 
 // changement de position du joueur sur la carte
