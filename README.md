@@ -27,3 +27,4 @@ Les objets Map, Character, Weapons sont facilements réutilisables dans un jeu d
 -> Développer une application JavaScript orientée objet (JSOO)
 
 L’ensemble des objets Map, Character, Weapons coopèrent ensemble et chaque objet va être en mesure de communiquer avec les autres. Map, Character, Weapons constituent des entités indépendantes avec un rôle distinct.
+
