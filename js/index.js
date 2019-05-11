@@ -445,11 +445,11 @@ function heyListen() {
     audio.play();
     audio.volume = 0.1;
 }
-var menuMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/onwohiey/05%20-%20House.mp3"
+var menuMusic = src = "https://vignette.wikia.nocookie.net/zelda/images/2/2e/Maison_de_Link_%28Ocarina_of_Time%29.ogg/revision/latest?cb=20130401143058&path-prefix=fr"
 //menuMusic create because autoplay doesn't work on Google Chrome since version 66: changeTrack(adventureMusic)
-var adventureMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/nuyjimms/06%20-%20Kokiri%20Forest.mp3"
-var fightMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/hlcsbajc/79%20-%20Last%20Battle.mp3"
-var victoryMusic = src = "http://66.90.93.122/ost/legend-of-zelda-ocarina-of-time-original-sound-track/ikoatnrm/49%20-%20Medal%20Get%20Fanfare.mp3"
+var adventureMusic = src = "https://vignette.wikia.nocookie.net/zelda/images/a/a8/For%C3%AAt_Kokiri.ogg/revision/latest?cb=20130304194658&path-prefix=fr"
+var fightMusic = src = "https://vignette.wikia.nocookie.net/zelda/images/f/f3/Ganon_%28OoT%29.ogg/revision/latest?cb=20130313230720&path-prefix=fr"
+var victoryMusic = src = "https://vignette.wikia.nocookie.net/zelda/images/4/42/Boss_battu_%28Ocarina_of_Time%29.ogg/revision/latest?cb=20130602122858&path-prefix=fr"
 
 function changeTrack(sourceUrl) {
     var audio = $("#my-audio");
